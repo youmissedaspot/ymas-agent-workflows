@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ymas-agent-workflows",
-  "version": "0.1.0",
-  "description": "Reusable repository bootstrap, audit repair, and bug knowledge workflows.",
+  "version": "0.2.0",
+  "description": "Reusable specification-driven development, repository bootstrap, audit repair, and bug knowledge workflows.",
   "author": {
     "name": "YouMissedASpot"
   },
