@@ -17,4 +17,6 @@ When the repository has adopted YMAS documentation conventions, use its own stan
 
 For an explicitly YMAS project that needs a new documentation standard, adapt [the standard template](assets/documentation_standard_template.md) to that repository's actual authority and directories. Preserve any existing project rules. Add a short pointer to the standard in the repository instruction file. Do not copy the template unchanged when its authority fields are unresolved.
 
+When a repository explicitly adopts the YMAS workflow system, establish concise defaults in its own agent instructions (or equivalent) that route through this package's `INDEX.md`, apply the [agent execution loop](../../docs/workflows/agent_execution_loop.md) automatically to substantive work, and require [isolated workbranches](../../docs/rules/multi_agent_workbranches.md) for repository writes. Use actual installed paths and adapt to the repository's existing routing and Git process. Preserve equivalent or stronger rules; do not overwrite existing agent or Git governance. Surface conflicts and follow the repository's governing authority.
+
 End with a concise map of governing sources, current context, unresolved authority questions, and the files changed, if any.

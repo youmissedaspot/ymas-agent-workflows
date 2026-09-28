@@ -4,12 +4,17 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 
 `INDEX.md` routes the task; each `SKILL.md` defines when and how to run its workflow; supporting files provide templates or deeper guidance. An adopting repository's own authority and specifications control its product truth.
 
-## Orient or govern a repository
+## Run and govern development work
+
+- Follow this package's agent instructions → `AGENTS.md`
+- Run substantive work to completion → `docs/workflows/agent_execution_loop.md`
+- Isolate repository writes by task → `docs/rules/multi_agent_workbranches.md`
+- Maintain this package's documentation → `docs/OPS_WORKFLOW_001_documentation_standard.md`
+
+## Orient or bootstrap a repository
 
 - Repository orientation and documentation adoption → `skills/project-bootstrap/SKILL.md`
 - Adapt a documentation standard → `skills/project-bootstrap/assets/documentation_standard_template.md`
-- Maintain this package's documentation → `docs/OPS_WORKFLOW_001_documentation_standard.md`
-- Follow this package's agent instructions → `AGENTS.md`
 
 ## Audit, investigate, or repair
 
@@ -24,3 +29,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Check plugin identity and components → `plugin.json`
 - Check marketplace registration → `.agents/plugins/marketplace.json`
 - Review initial package provenance → `docs/operations/tasks/OPS_TASK_001_initial_plugin_package.md` (historical record)
+- Review routing and operating-defaults change → `docs/operations/tasks/OPS_TASK_002_workflow_routing_and_operating_defaults.md` (task record)
