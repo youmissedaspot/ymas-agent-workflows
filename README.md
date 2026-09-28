@@ -2,6 +2,8 @@
 
 A portable, instruction-only plugin for repository bootstrap, evidence-based audits and repairs, and durable bug knowledge. It contains no MCP server or project-specific product rules.
 
+This repository is a minable engineering knowledge library: reusable workflows and supporting development assets are routed through [`INDEX.md`](INDEX.md). Agents should load only what a task needs; each adopting repository retains its own product authority.
+
 Global `AGENTS.md` stays small so common invariants are always visible. These skills load their detailed procedures only when the task calls for them. Each adopting repository remains the source of truth for its own product, architecture, specifications, and authority hierarchy.
 
 ## Included skills

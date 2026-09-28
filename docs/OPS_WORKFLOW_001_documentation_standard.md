@@ -5,7 +5,7 @@ Scope: This repository only. The reusable template in `skills/project-bootstrap/
 
 ## Locations and names
 
-Markdown is permitted at repository root for `README.md`, `AGENTS.md`, `LICENSE` when applicable, and package-facing files; in `docs/` for numbered project records; and inside `skills/<skill>/` for `SKILL.md`, references, and output assets. Keep other documentation under a clearly named `docs/` functional directory. Do not scatter new Markdown at the root.
+Markdown is permitted at repository root for `README.md`, `AGENTS.md`, `INDEX.md`, `LICENSE` when applicable, and package-facing files; in `docs/` for numbered project records; and inside `skills/<skill>/` for `SKILL.md`, references, and output assets. Keep other documentation under a clearly named `docs/` functional directory. Do not scatter new Markdown at the root.
 
 Numbered records use `<FAMILY>_<three-digit sequence>_<durable-slug>.md`. IDs are scoped to this project, never reused or renumbered, including after a move or archive. Each family has its own sequence. Inspect current and legacy locations before allocating the next number.
 
