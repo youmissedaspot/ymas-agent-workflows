@@ -16,6 +16,18 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Repository orientation and documentation adoption → `skills/project-bootstrap/SKILL.md`
 - Adapt a documentation standard → `skills/project-bootstrap/assets/documentation_standard_template.md`
 
+## Specify product and system development
+
+- Route unresolved product or system work → `skills/spec-driven-development/SKILL.md`
+- Follow the specification-to-acceptance workflow → `docs/workflows/specification_driven_development.md`
+- Frame product intent → `skills/spec-driven-development/assets/true_specification_template.md`
+- Formalize accepted product truth → `skills/spec-driven-development/assets/canonical_specification_template.md`
+- Map major systems and ownership → `skills/spec-driven-development/references/systems_map_checklist.md`
+- Specify detailed system behavior → `skills/spec-driven-development/assets/detailed_system_specification_template.md`
+- Scope a staged increment → `skills/spec-driven-development/references/increment_specification_checklist.md`
+- Plan and review implementation → `skills/spec-driven-development/references/implementation_plan_review.md`
+- Prepare human acceptance → `skills/spec-driven-development/references/human_acceptance_checklist.md`
+
 ## Audit, investigate, or repair
 
 - Audit behavior and repair verified defects → `skills/audit-repair/SKILL.md`
@@ -30,3 +42,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Check marketplace registration → `.agents/plugins/marketplace.json`
 - Review initial package provenance → `docs/operations/tasks/OPS_TASK_001_initial_plugin_package.md` (historical record)
 - Review routing and operating-defaults change → `docs/operations/tasks/OPS_TASK_002_workflow_routing_and_operating_defaults.md` (task record)
+- Review specification-workflow addition → `docs/operations/tasks/OPS_TASK_003_specification_driven_development.md` (task record)

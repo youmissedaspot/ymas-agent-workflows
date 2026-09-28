@@ -11,10 +11,11 @@ Global `AGENTS.md` stays small so common invariants are always visible. These sk
 | Skill | Use it for |
 | --- | --- |
 | `project-bootstrap` | Orient in an unfamiliar repository; locate authority, current context, and documentation conventions. Adapt the YMAS documentation template only for a project adopting it. |
+| `spec-driven-development` | Settle product and system requirements, architecture, and increment scope before planning and implementing consequential changes. |
 | `audit-repair` | Audit requirements against implementation and repair a verified failure at the smallest supported scope. |
 | `bug-knowledge` | Log natural-language bug reports, investigate prior failures, and distill recurring lessons into engineering references. |
 
-The package has a portable root [`plugin.json`](plugin.json), three `skills/<name>/SKILL.md` entrypoints, and a repository [marketplace catalog](.agents/plugins/marketplace.json). Templates sit next to the skills that use them. [`AGENTS.md`](AGENTS.md) and the [documentation standard](docs/OPS_WORKFLOW_001_documentation_standard.md) govern this repository only.
+The package has a portable root [`plugin.json`](plugin.json), four `skills/<name>/SKILL.md` entrypoints, and a repository [marketplace catalog](.agents/plugins/marketplace.json). Templates sit next to the skills that use them. [`AGENTS.md`](AGENTS.md) and the [documentation standard](docs/OPS_WORKFLOW_001_documentation_standard.md) govern this repository only.
 
 ## Install in Codex
 
@@ -22,7 +23,7 @@ The repository is a Git-backed marketplace with one plugin entry. After obtainin
 
 1. Add the marketplace: `codex plugin marketplace add YouMissedASpot/ymas-agent-workflows`.
 2. In the Codex app, open the Plugins Directory, select **YouMissedASpot Workflows**, and install **ymas-agent-workflows**. In Codex CLI, open `/plugins` and install it there.
-3. Start a new chat so the newly installed skills are discoverable. Invoke them by name when useful, such as `$project-bootstrap`, `$audit-repair`, or `$bug-knowledge`.
+3. Start a new chat so the newly installed skills are discoverable. Invoke them by name when useful, such as `$project-bootstrap`, `$spec-driven-development`, `$audit-repair`, or `$bug-knowledge`.
 
 If your Codex CLI does not expose `codex plugin marketplace`, update to a version that supports it or use the repository marketplace in the desktop app. Start a new chat after installation or refresh.
 
@@ -34,6 +35,8 @@ For a repository that adopts these workflows, keep its local agent instructions 
 
 For substantive development work, the [agent execution loop](docs/workflows/agent_execution_loop.md) carries a task through verification and required durable updates; the [workbranch rule](docs/rules/multi_agent_workbranches.md) isolates repository writes. Installing the plugin makes the skills available. A repository adopting the YMAS workflow system must establish these defaults in its own agent instructions, using `project-bootstrap` to preserve equivalent or stronger existing governance and surface conflicts.
 
+When consequential product or system rules are unresolved, [specification-driven development](docs/workflows/specification_driven_development.md) connects accepted product intent, system specifications, implementation review, verification, and any human acceptance gate. Small work with settled requirements stays in its focused workflow.
+
 ## Update and version
 
 Edit the relevant skill and its supporting files, validate all skill front matter and the manifest, then increment `plugin.json`'s semantic version for a distributable release. Tag that commit. Users can refresh the Git marketplace with `codex plugin marketplace upgrade ymas-workflows` and reinstall or refresh the plugin in the app as needed; start a new chat to pick up changed instructions. The marketplace follows the repository's default branch, so tag and branch policies should be chosen deliberately before relying on a release snapshot.
@@ -44,4 +47,4 @@ MIT. See [LICENSE](LICENSE).
 
 ## Credit
 
-The execution loop was informed by the `loop-library` skill's guidance on triggers, verification, stopping conditions, and handoffs. The `project-bootstrap` update was checked against the `skill-creator` skill. The operating rules here are adapted for YMAS.
+The execution loop was informed by the `loop-library` skill's guidance on triggers, verification, stopping conditions, and handoffs. Skill entrypoints were checked against the `skill-creator` skill. The operating rules here are adapted for YMAS.

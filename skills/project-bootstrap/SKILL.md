@@ -19,4 +19,6 @@ For an explicitly YMAS project that needs a new documentation standard, adapt [t
 
 When a repository explicitly adopts the YMAS workflow system, establish concise defaults in its own agent instructions (or equivalent) that route through this package's `INDEX.md`, apply the [agent execution loop](../../docs/workflows/agent_execution_loop.md) automatically to substantive work, and require [isolated workbranches](../../docs/rules/multi_agent_workbranches.md) for repository writes. Use actual installed paths and adapt to the repository's existing routing and Git process. Preserve equivalent or stronger rules; do not overwrite existing agent or Git governance. Surface conflicts and follow the repository's governing authority.
 
+For substantive product or system work, make `spec-driven-development` and its [workflow](../../docs/workflows/specification_driven_development.md) discoverable through the adopting repository's established routing. Map its layers to existing authority; add only layers the work needs. Do not turn routine or already specified tasks into mandatory document creation.
+
 End with a concise map of governing sources, current context, unresolved authority questions, and the files changed, if any.
