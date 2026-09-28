@@ -21,6 +21,7 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Route unresolved product or system work → `skills/spec-driven-development/SKILL.md`
 - Follow the specification-to-acceptance workflow → `docs/workflows/specification_driven_development.md`
 - Frame product intent → `skills/spec-driven-development/assets/true_specification_template.md`
+- Formalize accepted product truth → `skills/spec-driven-development/assets/canonical_specification_template.md`
 - Map major systems and ownership → `skills/spec-driven-development/references/systems_map_checklist.md`
 - Specify detailed system behavior → `skills/spec-driven-development/assets/detailed_system_specification_template.md`
 - Scope a staged increment → `skills/spec-driven-development/references/increment_specification_checklist.md`
