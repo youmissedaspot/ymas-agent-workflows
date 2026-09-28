@@ -1,0 +1,20 @@
+{
+  "name": "ymas-workflows",
+  "interface": {
+    "displayName": "YouMissedASpot Workflows"
+  },
+  "plugins": [
+    {
+      "name": "ymas-agent-workflows",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/YouMissedASpot/ymas-agent-workflows.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
