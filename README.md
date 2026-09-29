@@ -92,7 +92,7 @@ Edit the relevant skill and its supporting files, then run `python -m pip instal
 
 Installation is part of the package's usability contract. Maintainers must also run `python scripts/smoke_install.py --source checkout` to test the candidate package and `python scripts/smoke_install.py --source published` to test the public GitHub installation route. Each uses a disposable Codex home, checks all four installed skills and their package links, repeats installation, and verifies removal/reinstallation. The published-source check also exercises marketplace refresh. These checks require network access and the validation dependencies, but no model session or API key. They do not change the user's Codex home.
 
-CI defines these installation checks for Windows, macOS, and Linux with Codex CLI `0.159.1`. A configured CI job is not a passing result: inspect each platform's run before claiming support. Local Windows checks passed; macOS/Linux execution and desktop discovery remain pending. These tests cannot guarantee every proxy, filesystem policy, future CLI version, or client configuration; report each failure at its actual step and keep recovery guidance current.
+CI defines these installation checks for Windows, macOS, and Linux with Codex CLI `0.159.1`. A configured CI job is not a passing result: inspect each platform's run before claiming support. Windows, macOS, and Linux checks passed on September 29, 2026 ([CI run](https://github.com/youmissedaspot/ymas-agent-workflows/actions/runs/36633783998)). Desktop discovery remains unverified. These tests cannot guarantee every proxy, filesystem policy, future CLI version, or client configuration; report each failure at its actual step and keep recovery guidance current.
 
 ## License
 
