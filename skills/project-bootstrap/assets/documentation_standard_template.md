@@ -12,7 +12,7 @@ Name the permitted root Markdown files, functional directories, and any exceptio
 
 Use `<FAMILY>_<L2_CATEGORY>_<ID>_<L3_DESCRIPTION>.md` for new numbered documents. `ID` is a zero-padded three-digit number. The uppercase Level 2 category identifies the durable domain, system, capability, or technical area that owns the record; Level 3 uses a short durable underscore-separated description. Do not use roadmap, milestone, phase, sprint, release, campaign, or other temporary planning labels as Level 2 categories.
 
-Define this project's adopted Level 2 taxonomy or its category-selection rules below using established project terminology. Preserve sensible existing categories. If ownership is unresolved, use a documented project fallback or mark classification unresolved; do not invent a category. For a new project without a taxonomy, keep any minimal proposed set provisional until adopted. This template supplies no universal Level 2 vocabulary.
+Define this project's adopted Level 2 taxonomy or its category-selection rules below using established project terminology. Treat Level 2 as controlled retrieval vocabulary: choose one canonical token per concept and avoid singular/plural variants, synonyms, or narrower labels for the same area. Preserve sensible existing categories. If ownership is unresolved, use a documented project fallback or mark classification unresolved; do not invent a category. For a new project without a taxonomy, keep any minimal proposed set provisional until adopted. This template supplies no universal Level 2 vocabulary.
 
 IDs are project-scoped, never reused or renumbered, even after archiving or moving. The logical record ID remains `<FAMILY>_<ID>`; Level 2 classifies the filename without changing that ID. Every family has one independent sequence across all Level 2 categories; category changes do not restart numbering. Find the highest family ID across current, archived, and legacy locations before allocating a new one. Existing filenames without Level 2 remain valid legacy names. Rename them only during an intentional migration that preserves logical IDs, history, and links.
 
@@ -20,7 +20,7 @@ Adopt only the families the project actually needs: `SOT` (product source of tru
 
 ## Level 2 taxonomy — project owner must complete
 
-Record adopted durable categories, their meanings, and any documented fallback here. Label proposals as provisional until the project adopts them. Do not put planning periods or campaign names in this taxonomy.
+Record adopted durable categories, their meanings, and any documented fallback here. Check existing and legacy filenames before adding a token, and reuse the canonical token for the same concept. If legacy aliases exist, record their mapping without automatically renaming records. Label proposals as provisional until the project adopts them. Do not put planning periods or campaign names in this taxonomy.
 
 ## Operational memory and workflow discovery
 
