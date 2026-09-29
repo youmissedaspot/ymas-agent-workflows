@@ -33,6 +33,8 @@ The official [plugin packaging and marketplace guide](https://developers.openai.
 
 For a repository that adopts these workflows, keep its local agent instructions concise: point to its own documentation standard and installed workflows. Make that repository's product and architecture authority explicit there. Do not copy the YMAS document families into an unrelated repository merely because the plugin is installed.
 
+YMAS numbered documents use `<FAMILY>_<L2_CATEGORY>_<ID>_<L3_DESCRIPTION>.md`. The adopting repository defines its own durable Level 2 categories; each family keeps one three-digit sequence across categories. Existing numbered files without Level 2 remain valid legacy records and are not renamed automatically. The [documentation standard template](skills/project-bootstrap/assets/documentation_standard_template.md) gives adoption guidance.
+
 For substantive development work, the [agent execution loop](docs/workflows/agent_execution_loop.md) carries a task through verification and required durable updates; the [workbranch rule](docs/rules/multi_agent_workbranches.md) isolates repository writes. Installing the plugin makes the skills available. A repository adopting the YMAS workflow system must establish these defaults in its own agent instructions, using `project-bootstrap` to preserve equivalent or stronger existing governance and surface conflicts.
 
 When consequential product or system rules are unresolved, [specification-driven development](docs/workflows/specification_driven_development.md) connects accepted product intent, system specifications, implementation review, verification, and any human acceptance gate. Small work with settled requirements stays in its focused workflow.

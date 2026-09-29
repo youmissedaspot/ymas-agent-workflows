@@ -1,4 +1,6 @@
-# REF_### — Reusable failure pattern
+# REF_<ID> — Reusable failure pattern
+
+Filename: `REF_<L2_CATEGORY>_<ID>_<L3_DESCRIPTION>.md` using the adopting project's durable technical or domain Level 2 taxonomy and family-wide three-digit `REF` ID.
 
 Status: Draft
 
@@ -19,7 +21,7 @@ Status: Draft
 
 ## Evidence and authority
 
-- Contributing `BUG_###` records:
+- Contributing `BUG` records:
 - Related tests, audits, commits, or documents:
 - Authority status: Engineering knowledge only. Link to any separately accepted requirement promoted to architecture, ADR, workflow, invariant, test strategy, or repository instructions.
 

@@ -1,4 +1,6 @@
-# BUG_### — Short, durable title
+# BUG_<ID> — Short, durable title
+
+Filename: `BUG_<L2_CATEGORY>_<ID>_<L3_DESCRIPTION>.md` using the adopting project's durable Level 2 taxonomy and family-wide three-digit `BUG` ID.
 
 Status: Reported
 Date reported: YYYY-MM-DD

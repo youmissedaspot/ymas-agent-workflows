@@ -7,18 +7,20 @@ Scope: This repository only. The reusable template in `skills/project-bootstrap/
 
 Markdown is permitted at repository root for `README.md`, `AGENTS.md`, `INDEX.md`, `LICENSE` when applicable, and package-facing files; in `docs/` for numbered project records; and inside `skills/<skill>/` for `SKILL.md`, references, and output assets. Keep other documentation under a clearly named `docs/` functional directory. Do not scatter new Markdown at the root.
 
-Numbered records use `<FAMILY>_<three-digit sequence>_<durable-slug>.md`. IDs are scoped to this project, never reused or renumbered, including after a move or archive. Each family has its own sequence. Inspect current and legacy locations before allocating the next number.
+New numbered records use `<FAMILY>_<L2_CATEGORY>_<ID>_<L3_DESCRIPTION>.md`, in that order. `ID` is a zero-padded three-digit number; `L3_DESCRIPTION` is a short durable underscore-separated description. The uppercase Level 2 category names the enduring domain, system, capability, or technical area that owns the record. Use durable terminology, never roadmap, milestone, phase, sprint, release, campaign, or other temporary planning labels as Level 2 categories.
 
-The standard families are `SOT_###`, `RM_###`, `SYS_###`, `SPEC_###`, `PLAN_###`, `AUDIT_###`, `ADR_###`, `BUG_###`, `OPS_TASK_###`, `OPS_STATE_###`, `OPS_NEXT_###`, `OPS_DECISION_###`, `OPS_SPECDEF_###`, `OPS_WORKFLOW_###`, and `REF_###`. Use a family only when the record has that purpose. In this package, `README.md`, `plugin.json`, and skill files are package artifacts rather than numbered project records.
+This repository uses `DOCS` for documentation governance. Add other Level 2 categories to this local standard only when an actual enduring area needs one; flag unclear ownership instead of inventing a category. This local classification does not govern adopting repositories. Each family has one independent sequence across all its Level 2 categories. The logical record ID remains `<FAMILY>_<ID>`; Level 2 classifies the filename without changing that ID. If `AGENT` is later adopted, `OPS_TASK_DOCS_005_...` and `OPS_TASK_AGENT_006_...` would continue the same `OPS_TASK` sequence. IDs are never reused or renumbered, including after a move or archive. Inspect current, archived, and legacy locations across all categories before allocating the next family ID. Existing filenames without Level 2 remain valid legacy names; rename them only in an intentional migration that preserves IDs, Git history, and links.
+
+The standard families are `SOT`, `RM`, `SYS`, `SPEC`, `PLAN`, `AUDIT`, `ADR`, `BUG`, `OPS_TASK`, `OPS_STATE`, `OPS_NEXT`, `OPS_DECISION`, `OPS_SPECDEF`, `OPS_WORKFLOW`, and `REF`. Use a family only when the record has that purpose. In this package, `README.md`, `plugin.json`, and skill files are package artifacts rather than numbered project records.
 
 ## Operational memory
 
-- `docs/operations/tasks/` — `OPS_TASK_###`, substantive completed work.
-- `docs/operations/state/` — `OPS_STATE_###`, project-state snapshots.
-- `docs/operations/next/` — `OPS_NEXT_###`, recommended next actions.
-- `docs/operations/decisions/` — `OPS_DECISION_###`, durable operational decisions; supersession must be explicit.
-- `docs/operations/specdef/` — `OPS_SPECDEF_###`, provisional specification work. Label observations, proposals, unresolved questions, and accepted working decisions; promote accepted product decisions to their authoritative owner.
-- `docs/operations/workflows/` — additional `OPS_WORKFLOW_###` records. Keep this primary standard at `docs/OPS_WORKFLOW_001_documentation_standard.md`.
+- `docs/operations/tasks/` — `OPS_TASK` records of substantive completed work.
+- `docs/operations/state/` — `OPS_STATE` project-state snapshots.
+- `docs/operations/next/` — `OPS_NEXT` recommended next actions.
+- `docs/operations/decisions/` — `OPS_DECISION` durable operational decisions; supersession must be explicit.
+- `docs/operations/specdef/` — `OPS_SPECDEF` provisional specification work. Label observations, proposals, unresolved questions, and accepted working decisions; promote accepted product decisions to their authoritative owner.
+- `docs/operations/workflows/` — additional `OPS_WORKFLOW` records. Keep this primary standard at its existing legacy path, `docs/OPS_WORKFLOW_001_documentation_standard.md`.
 
 When these chronological families exist, the highest numbered `OPS_TASK`, `OPS_STATE`, and `OPS_NEXT` is respectively the latest task, current snapshot, and current next action. Read relevant records, including legacy locations during a migration. Create a new chronological record when it is needed to preserve a meaningful transition; do not generate all three mechanically for every edit.
 
@@ -30,7 +32,7 @@ Distinguish authority, implementation evidence, observation, inference, proposal
 
 ## Functional directories
 
-Use `docs/engineering/bugs/` for `BUG_###` records and `docs/engineering/knowledge/` for generalized engineering `REF_###` records when those workflows are used in this repository. Other families belong in purpose-specific `docs/` directories chosen once and recorded here before use: `docs/sot/`, `docs/roadmap/`, `docs/systems/`, `docs/specifications/`, `docs/plans/`, `docs/audits/`, `docs/decisions/`, and `docs/references/`. Do not create empty directories merely to express this map.
+Use `docs/engineering/bugs/` for `BUG` records and `docs/engineering/knowledge/` for generalized engineering `REF` records when those workflows are used in this repository. Other families belong in purpose-specific `docs/` directories chosen once and recorded here before use: `docs/sot/`, `docs/roadmap/`, `docs/systems/`, `docs/specifications/`, `docs/plans/`, `docs/audits/`, `docs/decisions/`, and `docs/references/`. Do not create empty directories merely to express this map.
 
 ## Creation, updates, and archives
 
