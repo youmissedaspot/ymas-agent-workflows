@@ -19,7 +19,12 @@ ROOT = Path(__file__).resolve().parents[1]
 MARKETPLACE = "ymas-workflows"
 PLUGIN = "ymas-agent-workflows"
 SELECTOR = f"{PLUGIN}@{MARKETPLACE}"
-SKILLS = {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge"}
+# Keep the published release test meaningful while a candidate is not yet on main.
+SKILLS_BY_VERSION = {
+    "0.2.0": {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge"},
+    "0.3.0": {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge",
+              "evaluate-repository", "documentation-consolidation"},
+}
 
 
 def main():
@@ -78,8 +83,14 @@ def main():
             if len(manifests) != 1:
                 raise RuntimeError(f"Expected one installed package, found {len(manifests)}.")
             installed = manifests[0].parent
-            if {path.parent.name for path in (installed / "skills").glob("*/SKILL.md")} != SKILLS:
-                raise RuntimeError("Installed skill set differs from the four documented skills.")
+            version = json.loads(manifests[0].read_text(encoding="utf-8"))["version"]
+            if args.source == "checkout" and version != json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))["version"]:
+                raise RuntimeError("Installed version differs from the candidate package.")
+            expected = SKILLS_BY_VERSION.get(version)
+            if expected is None:
+                raise RuntimeError(f"No documented skill contract for installed version {version}.")
+            if {path.parent.name for path in (installed / "skills").glob("*/SKILL.md")} != expected:
+                raise RuntimeError(f"Installed skill set differs from the {len(expected)} documented skills for {version}.")
             validate_package.ROOT = installed
             validate_package.SKILL_ROOT = installed / "skills"
             validate_package.MARKETPLACE = installed / ".agents/plugins/marketplace.json"
@@ -88,7 +99,7 @@ def main():
                 raise RuntimeError("\n".join(failures))
 
         verify_install()
-        print("PASS: fresh registration, installation, four skills, and package validation", flush=True)
+        print("PASS: fresh registration, installation, versioned skill set, and package validation", flush=True)
         verify_install()
         print("PASS: repeat installation", flush=True)
         if args.source == "published":

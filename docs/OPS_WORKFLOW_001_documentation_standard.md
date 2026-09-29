@@ -34,6 +34,10 @@ Repository `AGENTS.md` governs agent conduct here. This standard governs this re
 
 Distinguish authority, implementation evidence, observation, inference, proposal, recommendation, unresolved question, and accepted decision in records and reports. When sources conflict, identify the conflict and its governing owner rather than inventing a resolution.
 
+## Repository workflow boundaries
+
+Use the index to discover specialized procedures; do not expand always-on instructions with their full contents. Repository evaluation is read-only and returns its assessment in conversation unless a separate write is requested. Documentation consolidation is an explicitly requested migration, with preservation as the default and destructive cleanup requiring explicit intent. Follow the respective skill's authority and information-preservation checks. Ordinary work uses relevant workflows under these project rules without requiring users to choose IDs, categories, or skill commands; repository state alone does not authorize an audit target or a migration.
+
 ## Functional directories
 
 Use `docs/engineering/bugs/` for `BUG` records and `docs/engineering/knowledge/` for generalized engineering `REF` records when those workflows are used in this repository. Other families belong in purpose-specific `docs/` directories chosen once and recorded here before use: `docs/sot/`, `docs/roadmap/`, `docs/systems/`, `docs/specifications/`, `docs/plans/`, `docs/audits/`, `docs/decisions/`, and `docs/references/`. Do not create empty directories merely to express this map.

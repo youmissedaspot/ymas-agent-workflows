@@ -1,6 +1,6 @@
 ---
 name: spec-driven-development
-description: Use for substantive product or system development when unresolved requirements, architecture, ownership, or increment boundaries need authoritative specification before implementation.
+description: Develop specifications for a requested product or system change when requirements, architecture, ownership, or increment boundaries remain unresolved. The target comes from the request or conversation; do not infer product rules from implementation or start this workflow for routine, already specified work.
 ---
 
 # Specification-driven development

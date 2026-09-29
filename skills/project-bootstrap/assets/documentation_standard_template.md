@@ -35,6 +35,8 @@ Record adopted durable categories, their meanings, and any documented fallback h
 
 When present, the highest numbered `OPS_TASK`, `OPS_STATE`, and `OPS_NEXT` is respectively the latest task, current snapshot, and current next action. Find relevant records in legacy locations during migrations. Operational records are context and evidence, not product authority. Discover specialized workflows through the repository's instructions and installed skills; load only those relevant to the task.
 
+During authorized adoption, keep agent instructions concise: point to this project's standard and the available workflow index, and ask the agent to use relevant workflows for ordinary requests without requiring users to name skills or assign record IDs. Preserve local approval and Git rules. Evaluation assesses the current repository without edits; consolidation requires a request and preserves information by default; destructive cleanup requires explicit intent. An audit target must come from the request or conversation, not these operational records. Detailed procedures belong in the specialized skills, not the always-on instructions. Installation alone does not adopt this standard or guarantee automatic skill selection.
+
 ## Authority hierarchy — project owner must complete
 
 List this project's current product, architecture, specification, and decision authorities in their real precedence order, with exact paths or discovery rules. State who resolves conflicts. Do not fill this section by guessing from filenames, Git history, or implementation. Until completed, record authority as unresolved and seek the actual governing source before changing contested behavior.
