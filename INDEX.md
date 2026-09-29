@@ -44,3 +44,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review routing and operating-defaults change → `docs/operations/tasks/OPS_TASK_002_workflow_routing_and_operating_defaults.md` (task record)
 - Review specification-workflow addition → `docs/operations/tasks/OPS_TASK_003_specification_driven_development.md` (task record)
 - Review package validation and installation smoke test → `docs/operations/tasks/OPS_TASK_004_package_validation_and_installation_smoke.md` (task record)
+- Review Level 2 record naming change → `docs/operations/tasks/OPS_TASK_DOCS_005_level-2-record-naming.md` (task record)

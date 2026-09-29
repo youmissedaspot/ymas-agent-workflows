@@ -1,4 +1,6 @@
-# BUG_### — Short, durable title
+# BUG_<ID> — Short, durable title
+
+Filename: `BUG_<L2_CATEGORY>_<ID>_<l3-description>.md` using the adopting project's canonical Level 2 token, family-wide three-digit `BUG` ID, and lowercase hyphen-separated description.
 
 Status: Reported
 Date reported: YYYY-MM-DD
