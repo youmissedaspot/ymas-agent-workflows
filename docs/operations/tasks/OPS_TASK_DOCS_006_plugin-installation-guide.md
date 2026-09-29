@@ -13,3 +13,11 @@ The installed package validator passed: four skill front-matter blocks, 26 Markd
 Updated the README with capability checks, the verified npm upgrade, Windows command-resolution troubleshooting, separate registration and installation steps, and explicit verification boundaries. Package identity, version, manifests, skill behavior, and the historical installation record were unchanged. Desktop installation and discovery remain unverified and require a fresh desktop chat or app restart to check.
 
 Repository verification: `python scripts/validate_package.py` and `git diff --check`. Work is isolated from the existing documentation branch in a separate worktree based on refreshed `origin/main`; integration is left for review.
+
+## Installation reliability follow-up
+
+The user clarified that YMAS exists to help other people with documentation and workflows, making installation reliability part of its usability contract. Added prerequisite checks, step-specific troubleshooting, a discovery-only prompt, and scoped retry/uninstall guidance to the README.
+
+Added `scripts/smoke_install.py` to exercise the real CLI in a disposable Codex home. On Windows with CLI `0.159.1`, both the checkout package and public GitHub package passed fresh installation, installed/enabled verification, all-four-skills validation, repeat installation, removal, and reinstallation. The public route also passed marketplace refresh and reinstall. These tests run no model and require no model credentials. The checkout uses a local catalog fixture so candidate files are exercised before publication; the published route uses the actual Git-backed marketplace.
+
+Added Windows/macOS/Linux CI installation jobs alongside static package validation. Only Windows was executed locally; the other platforms and remote CI results remain pending, as does desktop discovery. No claim of error-free installation across every environment is made. Installation failures must remain distinguishable from registration, package validation, and client discovery results.
