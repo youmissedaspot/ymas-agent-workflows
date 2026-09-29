@@ -27,7 +27,7 @@ The repository is a Git-backed marketplace with one plugin entry. After obtainin
 
 If your Codex CLI does not expose `codex plugin marketplace`, update to a version that supports it or use the repository marketplace in the desktop app. Start a new chat after installation or refresh.
 
-Installation has not been verified end to end on the authoring machine: its locally installed `codex-cli 0.101.0` does not expose the documented marketplace command.
+Marketplace registration and plugin installation were smoke-tested on Windows with `codex-cli 0.158.0` in a temporary `CODEX_HOME`. The installed `0.2.0` package contained all four skills and their supporting files. Skill invocation in a new chat and installation through the desktop app remain unverified. The machine's globally installed `codex-cli 0.101.0` still does not expose the marketplace command.
 
 The official [plugin packaging and marketplace guide](https://developers.openai.com/plugins/build/plugins) documents the portable manifest and `codex plugin marketplace add` command. The [skill guide](https://developers.openai.com/plugins/build/skills) documents `SKILL.md` front matter and supporting resources.
 
@@ -39,7 +39,7 @@ When consequential product or system rules are unresolved, [specification-driven
 
 ## Update and version
 
-Edit the relevant skill and its supporting files, validate all skill front matter and the manifest, then increment `plugin.json`'s semantic version for a distributable release. Tag that commit. Users can refresh the Git marketplace with `codex plugin marketplace upgrade ymas-workflows` and reinstall or refresh the plugin in the app as needed; start a new chat to pick up changed instructions. The marketplace follows the repository's default branch, so tag and branch policies should be chosen deliberately before relying on a release snapshot.
+Edit the relevant skill and its supporting files, then run `python -m pip install -r requirements-dev.txt` and `python scripts/validate_package.py`. The check validates skill front matter, the portable manifest against its online schema, marketplace identity, index routes, and local Markdown links; GitHub Actions runs it on pushes and pull requests. Increment `plugin.json`'s semantic version for a distributable release and tag that commit. Users can refresh the Git marketplace with `codex plugin marketplace upgrade ymas-workflows` and reinstall or refresh the plugin in the app as needed; start a new chat to pick up changed instructions. The marketplace follows the repository's default branch, so tag and branch policies should be chosen deliberately before relying on a release snapshot.
 
 ## License
 

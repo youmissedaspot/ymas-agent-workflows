@@ -1,6 +1,6 @@
 # OPS_TASK_002 — Workflow routing and operating defaults
 
-Status: Complete on `work/index-and-operating-rules`; pending integration.
+Status: Complete on `work/index-and-operating-rules`; integrated into `main` with the `v0.2.0` release.
 
 Added a compact `INDEX.md` for task-based discovery, a mandatory substantive-work execution loop, and a workbranch isolation rule. Root instructions route to the detailed rules; `project-bootstrap` propagates them only when a repository adopts the YMAS workflow system. Adopting repositories retain their own product, agent, and Git authority.
 
