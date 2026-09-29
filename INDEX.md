@@ -16,6 +16,11 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Repository orientation and documentation adoption → `skills/project-bootstrap/SKILL.md`
 - Adapt a documentation standard → `skills/project-bootstrap/assets/documentation_standard_template.md`
 
+## Evaluate or consolidate existing documentation
+
+- Read-only assessment of the current repository and YMAS fit → `skills/evaluate-repository/SKILL.md`
+- Explicit documentation migration; preserve by default, cleanup only when requested → `skills/documentation-consolidation/SKILL.md`
+
 ## Specify product and system development
 
 - Route unresolved product or system work → `skills/spec-driven-development/SKILL.md`
@@ -46,3 +51,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review package validation and installation smoke test → `docs/operations/tasks/OPS_TASK_004_package_validation_and_installation_smoke.md` (task record)
 - Review Level 2 record naming change → `docs/operations/tasks/OPS_TASK_DOCS_005_level-2-record-naming.md` (task record)
 - Review CLI upgrade and plugin installation verification → `docs/operations/tasks/OPS_TASK_DOCS_006_plugin-installation-guide.md` (task record)
+- Review onboarding and repository-management workflows → `docs/operations/tasks/OPS_TASK_DOCS_007_repository-workflow-experience.md` (task record)

@@ -1,11 +1,13 @@
 ---
 name: project-bootstrap
-description: Use when asked to orient or bootstrap a repository, establish or repair its documentation-governance structure, discover its authority hierarchy, or adopt the YMAS documentation standard.
+description: Establish or understand the current repository's documentation and authority foundation during setup, explicit YMAS adoption, or orientation needed by another workflow. Do not take over ordinary implementation or audits, infer adoption from installation, or migrate existing documentation without a request.
 ---
 
 # Project bootstrap
 
-Use for repository orientation and documentation setup. This skill does not make an arbitrary third-party repository adopt YMAS document families.
+Use as supporting infrastructure for orientation and documentation setup; users do not need to remember to bootstrap before ordinary work. Read-only orientation does not authorize setup edits. Installation alone does not make a repository adopt YMAS document families. Instructions below to record or establish governance apply only during authorized setup.
+
+Use [evaluate-repository](../evaluate-repository/SKILL.md) for a standalone read-only assessment of documentation and YMAS fit, and [documentation-consolidation](../documentation-consolidation/SKILL.md) for an explicit migration of existing documentation. For an implementation, audit, or bug task, gather only the foundation needed and return to that task's workflow.
 
 1. Read repository `AGENTS.md` or its established equivalent. Locate its documentation standard or equivalent; if none exists, discover the actual conventions before proposing any structure.
 2. Identify the project's explicit authority hierarchy and the documents relevant to this task: current product truth, architecture, specifications, accepted decisions, and current operational context. Report gaps or conflicts rather than inventing authority.

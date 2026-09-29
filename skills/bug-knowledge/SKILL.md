@@ -1,11 +1,13 @@
 ---
 name: bug-knowledge
-description: Log a casually reported software bug as a durable record, investigate it using prior bug evidence, and distill recurring engineering lessons into knowledge references.
+description: Record naturally reported software bugs, investigate the reported defect using prior evidence, and distill requested recurring lessons. Use bug-report language without requiring an explicit skill command; the target is the reported bug or requested knowledge topic, not an unrelated backlog item. Do not infer root cause from symptoms.
 ---
 
 # Bug knowledge
 
 Use when the user says to log or investigate a bug, update its record, or mine prior defects for reusable lessons. Follow the repository's own documentation rules; use the paths and family names below only when that project adopted this workflow.
+
+Natural-language bug reports are sufficient; users do not need to name this skill or choose a record family. Preserve the request's scope: intake alone does not authorize a repair or a repository-wide audit. Use the existing bug system in repositories that have not adopted YMAS, rather than creating a parallel system.
 
 ## Intake
 
