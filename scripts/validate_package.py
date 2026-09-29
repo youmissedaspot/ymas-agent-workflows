@@ -27,7 +27,7 @@ def check_local_path(source: Path, target: str, errors: list[str]) -> None:
     if not path:
         return
     resolved = (source.parent / path).resolve()
-    if not resolved.is_relative_to(ROOT) or not resolved.exists():
+    if not resolved.is_relative_to(ROOT.resolve()) or not resolved.exists():
         errors.append(f"{source.relative_to(ROOT)}: missing local target {target}")
 
 
