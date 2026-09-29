@@ -1,6 +1,6 @@
 # REF_<ID> — Reusable failure pattern
 
-Filename: `REF_<L2_CATEGORY>_<ID>_<L3_DESCRIPTION>.md` using the adopting project's durable technical or domain Level 2 taxonomy and family-wide three-digit `REF` ID.
+Filename: `REF_<L2_CATEGORY>_<ID>_<l3-description>.md` using the same canonical Level 2 token as other document families for that domain, a family-wide three-digit `REF` ID, and a lowercase hyphen-separated description.
 
 Status: Draft
 
