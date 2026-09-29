@@ -52,3 +52,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review Level 2 record naming change → `docs/operations/tasks/OPS_TASK_DOCS_005_level-2-record-naming.md` (task record)
 - Review CLI upgrade and plugin installation verification → `docs/operations/tasks/OPS_TASK_DOCS_006_plugin-installation-guide.md` (task record)
 - Review onboarding and repository-management workflows → `docs/operations/tasks/OPS_TASK_DOCS_007_repository-workflow-experience.md` (task record)
+- Review sequence-first next-action filenames → `docs/operations/tasks/OPS_TASK_DOCS_008_next-action-filename-order.md` (task record)
