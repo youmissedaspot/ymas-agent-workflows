@@ -1,9 +1,11 @@
+> Status: Historical — superseded; not current authority.
+> Document version: v1 (assigned to the previously unversioned baseline).
+> Superseded by: v2 at the [current document](../OPS_WORKFLOW_001_documentation_standard.md).
+> The original text follows; embedded status statements describe that historical revision.
+
 # OPS_WORKFLOW_001 — Documentation standard
 
 Status: Current
-Document version: v2
-Previous version: [v1](archive/OPS_WORKFLOW_001_documentation_standard_v1.md)
-Change summary: Separate document revisions from sequence IDs; keep current documents in place and archive every substantively superseded version.
 Scope: This repository only. The reusable template in `skills/project-bootstrap/assets/` is adapted by an adopting project; this file does not govern other repositories.
 
 ## Locations and names
@@ -53,8 +55,6 @@ Use `docs/engineering/bugs/` for `BUG` records and `docs/engineering/knowledge/`
 
 Update an existing document when it owns the subject. Create a new ID only for a new durable identity, a required chronological record, or a distinct decision, specification, or workflow. Never duplicate a record because files moved. Prefer links over repeated rules.
 
-Follow [document versioning](workflows/document_versioning.md) for project documents. Sequence IDs identify records, not revisions. New documents start at `v1`; substantive revisions use `v2`, `v3`, or a minor version such as `v3.1`. Keep the current document in its existing functional folder and stable filename with explicit version metadata. Before replacing it, archive the complete predecessor under `docs/archive/`, retaining its ID and filename stem with an old-version suffix. Record the predecessor link and change summary in the current revision. Treat an unversioned predecessor as the `v1` baseline on its first substantive revision; preserve unrelated legacy documents.
-
-Archive every substantively superseded version, mark it historical, and link it to its current owner. Preserve content and decision evidence, rebase relative links when needed, and verify links and stale paths. Archived material must not be cited as current authority. Package artifacts such as skill contracts and templates follow the plugin release rather than receiving project-record IDs or archive copies for each package edit.
+Archive superseded material under a clearly marked `docs/archive/` path when useful history must remain. Preserve IDs, filenames, content history, and working links during moves; verify links and stale paths. Archived material must be marked historical and must not be cited as current authority.
 
 At the end of substantive work, create or update only operational records that capture a material transition, decision, state, or next action. Report which records changed; if none were needed, say so.

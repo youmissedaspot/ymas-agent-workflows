@@ -1,6 +1,9 @@
 # OPS_WORKFLOW_<ID> — Documentation standard
 
 Status: Draft until the project's authority owners and directories are confirmed.
+Document version: v1 [for a new document; use the next revision when updating an existing owner]
+Previous version: [archive link, or none for a new document]
+Change summary: [initial adoption or substantive changes]
 
 Adapt this template to the adopting YMAS project. Preserve existing rules and document IDs. Remove instructions and examples that do not fit the project. This template has no authority in a repository until adopted there.
 
@@ -47,12 +50,20 @@ List this project's current product, architecture, specification, and decision a
 
 Distinguish authority, implementation evidence, observation, inference, proposal, recommendation, unresolved question, and accepted decision. Implementation, tests, operational memory, bug records, and historical documents do not automatically override current approved authority.
 
+For specification formalization, True Specification conversations and settled decisions supply the source material; accepted specification documents define their subjects; `systems.md` integrates the entire current specification set into the architecture map. Individual architecture specifications remain part of that set rather than replacing the integrated map. An existing map may inform architecture/dependency/impact review but must not override newly settled decisions or invent requirements to preserve itself. Review and update it when specifications materially change boundaries, ownership, dependencies, interfaces, or architecture, preserving the project's acceptance process.
+
 ## Functional documentation directories
 
 Map each adopted family to its actual directory. Recommended when applicable: `docs/sot/`, `docs/roadmap/`, `docs/systems/`, `docs/specifications/`, `docs/plans/`, `docs/audits/`, `docs/decisions/`, `docs/references/`, `docs/engineering/bugs/` for `BUG`, and `docs/engineering/knowledge/` for generalized `REF`. Do not create empty directories or relocate existing files merely to match these examples.
 
 ## Creation, updates, and archival
 
-Update an existing owner before creating a duplicate. Create a new ID for a new durable identity, a needed chronological record, or a distinct specification, decision, or workflow. Prefer references over copied rules. Archive useful superseded material with an explicit historical label; preserve its ID, filename, history, and links. Archived records do not regain current authority. Validate links and stale paths after moves.
+Update an existing owner before creating a duplicate. Create a new ID for a new durable identity, a needed chronological record, or a distinct specification, decision, or workflow. Prefer references over copied rules.
+
+Apply [document versioning](../../../docs/workflows/document_versioning.md), adapting its archive path to this project's established directories. Sequence numbers are stable document identities, not versions. New documents start at `v1`; substantive revisions use `v2`, `v3`, or minor versions such as `v3.1` (`v3dot1` in conversation). Preserve the logical ID, existing current folder, and stable filename. Store the version as explicit metadata; do not allocate a new family ID or move the new revision to an archive or version directory.
+
+Before replacing a current document, archive its complete predecessor under the project's archive (default `docs/archive/`), mirroring its functional directory and appending the old version to its filename stem. Never overwrite an archive. Mark it historical and link to the current owner; preserve the old content and decision evidence and rebase relative links as needed. Record the previous archive link and change summary in the new current revision. Treat an existing unversioned predecessor as the `v1` baseline on its first substantive revision. Formatting, spelling, or link-only fixes that leave meaning unchanged can retain the version. Version numbers do not confer approval; preserve the project's acceptance process.
+
+Archive every substantively superseded version. Archived records do not regain current authority. Verify one current owner, preserved ID, version progression, complete predecessor content, links/indexes, and stale paths. This does not require mass-renaming or retroactive versioning of unrelated legacy documents.
 
 At task completion, update only operational records needed to capture a material transition, state, decision, or next action, and report which changed.
