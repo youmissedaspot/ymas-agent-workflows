@@ -19,10 +19,22 @@ Codex can select relevant skills from their descriptions, and the agent follows 
 
 Installing the plugin makes workflows available; it does not rewrite repositories or adopt YMAS on their behalf. For an existing project, ask "Evaluate this repository's documentation and how it fits YMAS" for an assessment without changes. When ready, ask "Consolidate this repository's documentation into YMAS, preserving its history." A new project can ask the agent to establish its YMAS documentation foundation. The agent adapts the setup to existing rules and keeps the always-on instructions short.
 
+## Begin or resume a project
+
+Ask “How do I start with YMAS?” for [workflow-orientation](skills/workflow-orientation/SKILL.md). This is the temporary `/start` idea: a short explanation and relevant next prompt, not a registered slash-command alias or an execution orchestrator. Then describe the actual work naturally. Existing projects are inspected and resume from their current stage.
+
+**Discuss → True Spec Worksheet → Decide → SPEC and/or SPECARC → systems.md → Plan → Implement → Verify → Human Acceptance where applicable**
+
+The [worksheet skill](skills/true-spec-worksheet/SKILL.md) explores unresolved consequential choices through questions, recommendations, reasoning, alternatives, consequences, and decision capture. Its output is provisional source material, not product truth. Accepted SPEC defines what must be true; accepted SPECARC defines a durable architectural concern. They are siblings in either design order. `systems.md` integrates the complete current set when enough material exists for a useful map. ADR preserves specific decision context/rationale, while SYS retains its adopted system-level documentation role. Approval and precedence remain project-owned. Small or already-specified work skips unnecessary stages.
+
+Examples: “I have an idea for an economic simulation”; “Help me figure out how shipping contracts should work”; “We need to define the architecture for event reconciliation”; “These decisions are settled; turn them into specifications”; “Update the architecture map from the current specifications.”
+
 ## Included skills
 
 | Skill | Use it for |
 | --- | --- |
+| `workflow-orientation` | Explain how to start or resume YMAS; orientation only. |
+| `true-spec-worksheet` | Prepare a provisional decision worksheet before formal specifications. |
 | `project-bootstrap` | Supporting orientation and authorized foundation setup. It returns to the ordinary task once the needed context is understood. |
 | `evaluate-repository` | Assess the current repository's documentation, authority, and YMAS fit without changing files. Bare invocation is valid. |
 | `documentation-consolidation` | Explicitly migrate existing documentation. Bare invocation uses the current repository and preserves information; deletion requires an explicit cleanup request. |
@@ -30,7 +42,7 @@ Installing the plugin makes workflows available; it does not rewrite repositorie
 | `audit-repair` | Audit or repair the target you named or established in conversation. Without a target it asks for one; it cannot pick work from repository state. |
 | `bug-knowledge` | Log natural-language bug reports, investigate prior failures, and distill recurring lessons into engineering references. |
 
-The package has a portable root [`plugin.json`](plugin.json), six `skills/<name>/SKILL.md` entrypoints, and a repository [marketplace catalog](.agents/plugins/marketplace.json). Templates sit next to the skills that use them. [`AGENTS.md`](AGENTS.md) and the [documentation standard](docs/OPS_WORKFLOW_001_documentation_standard.md) govern this repository only.
+The package has a portable root [`plugin.json`](plugin.json), eight `skills/<name>/SKILL.md` entrypoints in candidate `0.4.0`, and a repository [marketplace catalog](.agents/plugins/marketplace.json). Templates sit next to the skills that use them. [`AGENTS.md`](AGENTS.md) and the [documentation standard](docs/OPS_WORKFLOW_001_documentation_standard.md) govern this repository only.
 
 ## Install in Codex
 
@@ -67,7 +79,7 @@ You need Git on `PATH`, network access to GitHub, and a Codex CLI with plugin co
 
    Confirm `installed, enabled`. Alternatively, after registration, use the app's Plugins Directory, select **YouMissedASpot Workflows**, and install **ymas-agent-workflows**, or use `/plugins` in a supported CLI.
 
-4. Start a new chat after installation or refresh. For version `0.3.0`, confirm the six skills in the table above are available with the `ymas-agent-workflows:` prefix. Use the plugin-qualified name when a standalone skill has the same name; existing standalone skills do not need to be removed. Version `0.2.0` has four skills and does not include evaluation or consolidation; refresh after `0.3.0` is published to obtain them.
+4. Start a new chat after installation or refresh. For candidate `0.4.0`, confirm all eight skills in the table above are available with the `ymas-agent-workflows:` prefix. Use the plugin-qualified name when a standalone skill has the same name; existing standalone skills do not need to be removed. Published `0.3.0` has six skills and excludes the new orientation and worksheet skills; `0.2.0` has four and also excludes evaluation/consolidation. This branch does not publish `0.4.0`; refresh after its release to obtain the new skills.
 
    For a discovery-only check, ask: "From your available skills, list the ymas-agent-workflows plugin skills and their installed paths. Do not execute a workflow or modify files." Successful installation means both an installed/enabled listing and discovery in the client where you intend to use the workflows.
 
@@ -111,6 +123,8 @@ On September 29, 2026, the Windows npm CLI was upgraded from `0.101.0` to `0.159
 
 The official [plugin packaging and marketplace guide](https://developers.openai.com/plugins/build/plugins) documents the portable manifest and `codex plugin marketplace add` command. The [skill guide](https://developers.openai.com/plugins/build/skills) documents `SKILL.md` front matter and supporting resources.
 
+On October 2, 2026, candidate `0.4.0` passed the disposable-home checkout installation checks on Windows with CLI `0.159.1`: all eight skills, package validation, repeat installation, and removal/reinstallation. The published `0.3.0` route separately passed its six-skill installation, marketplace refresh, and recovery checks. These results verify packaged/installed files, not live agent execution, desktop discovery, automatic selection, or cross-platform candidate CI. See the [workflow task record](docs/operations/tasks/OPS_TASK_DOCS_010_product-definition-and-architecture-workflow.md).
+
 ## Repository adoption
 
 Evaluation is read-only, including bare `$evaluate-repository`. Consolidation is a requested migration: bare `$documentation-consolidation` defaults to preserve mode. Preserve mode retains information, establishes clear current owners, and archives superseded material where appropriate. `$documentation-consolidation cleanup`, or a clear natural-language request to remove superseded material, enables deletion only after information is preserved, authority is understood, references are updated, and Git recovery is established. Ambiguous or uniquely historical material stays.
@@ -121,13 +135,13 @@ By default, YMAS numbered documents use `<FAMILY>_<L2_CATEGORY>_<ID>_<l3-descrip
 
 `OPS_NEXT` alone uses `OPS_NEXT_<ID>_<L2_CATEGORY>_<l3-description>.md`, such as `OPS_NEXT_005_DOCS_update-installation-guidance.md`. Most families optimize domain retrieval; next-action records optimize chronological sorting while retaining searchable Level 2 categories. The highest numeric family-wide ID identifies the current recommended next action unless project authority says otherwise. Never normalize this exception back to category-first order or renumber historical records.
 
-Document sequence IDs are not versions. [Document versions](docs/workflows/document_versioning.md) use `v1`, `v2`, `v3`, and minor revisions such as `v3.1`. A revised document keeps its ID, current folder, and stable filename with updated version metadata; its complete predecessor moves to the archive with its old version recorded. Current links keep pointing to the current path.
+Document sequence IDs are not versions. [Document versions](docs/workflows/document_versioning.md) use `v1`, `v2`, `v3`, and minor revisions such as `v3.1`. A revised document keeps its ID, current folder, and stable filename with updated version metadata; its complete predecessor moves to the archive with its old version recorded. Metadata uses `Version: v3.1`; filenames encode it as `v3dot1`, such as `SPECARC_EVENTS_001_event-reconciliation_v3dot1.md`. The logical family ID remains unchanged. Current links keep pointing to the current path.
 
 For substantive development work, the [agent execution loop](docs/workflows/agent_execution_loop.md) carries a task through verification and required durable updates; the [workbranch rule](docs/rules/multi_agent_workbranches.md) isolates repository writes. Installing the plugin makes the skills available. A repository adopting the YMAS workflow system must establish these defaults in its own agent instructions, using `project-bootstrap` to preserve equivalent or stronger existing governance and surface conflicts.
 
 When consequential product or system rules are unresolved, [specification-driven development](docs/workflows/specification_driven_development.md) connects accepted product intent, system specifications, implementation review, verification, and any human acceptance gate. Small work with settled requirements stays in its focused workflow.
 
-The handoff is **True Specification conversation and decisions → specification documents → `systems.md`**. Architecture can itself be a specification; `systems.md` takes all current specs into account and maps their required systems and relationships to each other. The agent creates or updates that integrated map after writing the specs, records the specification versions it covers, and returns consequential gaps or conflicts to the owning decisions/specifications.
+The specification handoff is **accepted True Spec decisions → SPEC and/or SPECARC → systems.md**. SPECARC can precede surrounding product specifications or a complete map. After substantive SPEC/SPECARC creation or revision, the agent reviews the complete current set and updates `systems.md` when architecture, ownership, boundaries, dependencies, interfaces, flows, or cross-system behavior change. It records specification versions and acceptance status, preserves settled higher product decisions, and returns consequential integration gaps to their owners. Early projects do not need a meaningless map; an accurate existing map does not need a mechanical version bump.
 
 ## Update and version
 
@@ -135,7 +149,7 @@ Edit the relevant skill and its supporting files, then run `python -m pip instal
 
 Installation is part of the package's usability contract. Maintainers must also run `python scripts/smoke_install.py --source checkout` to test the candidate package and `python scripts/smoke_install.py --source published` to test the public GitHub installation route. Each uses a disposable Codex home, checks the complete skill set for the installed version and its package links, repeats installation, and verifies removal/reinstallation. The checkout check also requires the candidate version; the public check accepts the documented older release until the new version is published. The published-source check also exercises marketplace refresh. These checks require network access and the validation dependencies, but no model session or API key. They do not change the user's Codex home.
 
-CI defines these installation checks for Windows, macOS, and Linux with Codex CLI `0.159.1`. A configured CI job is not a passing result: inspect each platform's run before claiming support. Version `0.2.0` passed Windows, macOS, and Linux checks on September 29, 2026 ([CI run](https://github.com/youmissedaspot/ymas-agent-workflows/actions/runs/36633783998)); those results do not establish platform coverage for `0.3.0`. Desktop discovery of the new skills and their automatic selection remain unverified. These tests cannot guarantee every proxy, filesystem policy, future CLI version, or client configuration; report each failure at its actual step and keep recovery guidance current.
+CI defines these installation checks for Windows, macOS, and Linux with Codex CLI `0.159.1`. A configured CI job is not a passing result: inspect each platform's run before claiming support. Version `0.2.0` passed Windows, macOS, and Linux checks on September 29, 2026 ([CI run](https://github.com/youmissedaspot/ymas-agent-workflows/actions/runs/36633783998)); those results do not establish platform coverage for candidate `0.4.0`. Desktop discovery of the new skills and their automatic selection remain unverified. These tests cannot guarantee every proxy, filesystem policy, future CLI version, or client configuration; report each failure at its actual step and keep recovery guidance current.
 
 ## License
 

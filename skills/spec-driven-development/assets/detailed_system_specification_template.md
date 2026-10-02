@@ -1,13 +1,13 @@
 # Detailed System Specification — [system]
 
 Status: Draft / Accepted under the adopting project's process
-Document version: [v1 for a new document; next major/minor revision for an existing owner]
+Version: [v1 for a new document; next major/minor revision for an existing owner]
 Previous version: [archive link, or none for a new document]
 Change summary: [initial system specification or substantive changes]
 Governing product decisions and related specifications: [links and versions, or exact discovery rule]
 System owner and authority boundary: [project-defined]
 
-Derive this specification from the conversation and accepted decisions. Architecture can be specified here or in a related specification; keep undecided choices explicit. After writing the specifications, include this document in `systems.md`, which integrates all current specifications and maps their relationships. Follow [document versioning](../../../docs/workflows/document_versioning.md): keep the logical ID and current path for later versions and archive the complete predecessor before replacement.
+Derive this specification from the conversation and accepted decisions. Use SPEC for required system behavior and related SPECARC for a defined architectural concern; they can be developed in either order. Keep undecided choices explicit. After substantive work, review the complete current SPEC/SPECARC set and include this document in `systems.md` when a useful map is possible, updating affected architecture and relationships. Follow [document versioning](../../../docs/workflows/document_versioning.md): keep the logical ID and current path for later versions and archive the complete predecessor before replacement.
 
 ## Responsibility and behavior
 
