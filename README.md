@@ -121,9 +121,13 @@ By default, YMAS numbered documents use `<FAMILY>_<L2_CATEGORY>_<ID>_<l3-descrip
 
 `OPS_NEXT` alone uses `OPS_NEXT_<ID>_<L2_CATEGORY>_<l3-description>.md`, such as `OPS_NEXT_005_DOCS_update-installation-guidance.md`. Most families optimize domain retrieval; next-action records optimize chronological sorting while retaining searchable Level 2 categories. The highest numeric family-wide ID identifies the current recommended next action unless project authority says otherwise. Never normalize this exception back to category-first order or renumber historical records.
 
+Document sequence IDs are not versions. [Document versions](docs/workflows/document_versioning.md) use `v1`, `v2`, `v3`, and minor revisions such as `v3.1`. A revised document keeps its ID, current folder, and stable filename with updated version metadata; its complete predecessor moves to the archive with its old version recorded. Current links keep pointing to the current path.
+
 For substantive development work, the [agent execution loop](docs/workflows/agent_execution_loop.md) carries a task through verification and required durable updates; the [workbranch rule](docs/rules/multi_agent_workbranches.md) isolates repository writes. Installing the plugin makes the skills available. A repository adopting the YMAS workflow system must establish these defaults in its own agent instructions, using `project-bootstrap` to preserve equivalent or stronger existing governance and surface conflicts.
 
 When consequential product or system rules are unresolved, [specification-driven development](docs/workflows/specification_driven_development.md) connects accepted product intent, system specifications, implementation review, verification, and any human acceptance gate. Small work with settled requirements stays in its focused workflow.
+
+The handoff is **True Specification conversation and decisions → specification documents → `systems.md`**. Architecture can itself be a specification; `systems.md` takes all current specs into account and maps their required systems and relationships to each other. The agent creates or updates that integrated map after writing the specs, records the specification versions it covers, and returns consequential gaps or conflicts to the owning decisions/specifications.
 
 ## Update and version
 

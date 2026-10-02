@@ -10,6 +10,7 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Run substantive work to completion → `docs/workflows/agent_execution_loop.md`
 - Isolate repository writes by task → `docs/rules/multi_agent_workbranches.md`
 - Maintain this package's documentation → `docs/OPS_WORKFLOW_001_documentation_standard.md`
+- Version documents while keeping current owners in place → `docs/workflows/document_versioning.md`
 
 ## Orient or bootstrap a repository
 
@@ -28,6 +29,7 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Frame product intent → `skills/spec-driven-development/assets/true_specification_template.md`
 - Formalize accepted product truth → `skills/spec-driven-development/assets/canonical_specification_template.md`
 - Map major systems and ownership → `skills/spec-driven-development/references/systems_map_checklist.md`
+- Derive an integrated systems.md from all specifications → `skills/spec-driven-development/assets/systems_map_template.md`
 - Specify detailed system behavior → `skills/spec-driven-development/assets/detailed_system_specification_template.md`
 - Scope a staged increment → `skills/spec-driven-development/references/increment_specification_checklist.md`
 - Plan and review implementation → `skills/spec-driven-development/references/implementation_plan_review.md`
@@ -53,3 +55,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review CLI upgrade and plugin installation verification → `docs/operations/tasks/OPS_TASK_DOCS_006_plugin-installation-guide.md` (task record)
 - Review onboarding and repository-management workflows → `docs/operations/tasks/OPS_TASK_DOCS_007_repository-workflow-experience.md` (task record)
 - Review sequence-first next-action filenames → `docs/operations/tasks/OPS_TASK_DOCS_008_next-action-filename-order.md` (task record)
+- Review specification handoff and document versioning → `docs/operations/tasks/OPS_TASK_DOCS_009_specification-handoff-and-document-versioning.md` (task record)
