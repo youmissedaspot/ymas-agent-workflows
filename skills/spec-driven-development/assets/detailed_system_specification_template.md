@@ -7,7 +7,7 @@ Change summary: [initial system specification or substantive changes]
 Governing product decisions and related specifications: [links and versions, or exact discovery rule]
 System owner and authority boundary: [project-defined]
 
-Derive this specification from the conversation and accepted decisions. Use SPEC for required system behavior and related SPECARC for a defined architectural concern; they can be developed in either order. Keep undecided choices explicit. After substantive work, review the complete current SPEC/SPECARC set and include this document in `systems.md` when a useful map is possible, updating affected architecture and relationships. Follow [document versioning](../../../docs/workflows/document_versioning.md): keep the logical ID and current path for later versions and archive the complete predecessor before replacement.
+Derive this specification from the conversation and accepted decisions. Use SPEC for required system behavior and related SPECARC for a defined architectural concern; they can be developed in either order. Keep undecided choices explicit. After substantive work, review the complete current SPEC/SPECARC set and include this document in `systems.md` when a useful map is possible, updating affected architecture and relationships. Follow this project's adopted document-versioning rules: keep the logical ID and current path for later versions and archive the complete predecessor before replacement.
 
 ## Responsibility and behavior
 
