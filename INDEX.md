@@ -14,6 +14,8 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 
 ## Orient or bootstrap a repository
 
+- Explain how to begin or resume YMAS; orientation only → `skills/workflow-orientation/SKILL.md`
+
 - Repository orientation and documentation adoption → `skills/project-bootstrap/SKILL.md`
 - Adapt a documentation standard → `skills/project-bootstrap/assets/documentation_standard_template.md`
 
@@ -24,6 +26,9 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 
 ## Specify product and system development
 
+- Prepare consequential product/architecture decisions → `skills/true-spec-worksheet/SKILL.md`
+- Structure recommendations, alternatives, consequences, and decision capture → `skills/true-spec-worksheet/assets/true_spec_worksheet_template.md`
+- Define a durable architectural concern in SPECARC → `skills/spec-driven-development/assets/architecture_specification_template.md`
 - Route unresolved product or system work → `skills/spec-driven-development/SKILL.md`
 - Follow the specification-to-acceptance workflow → `docs/workflows/specification_driven_development.md`
 - Frame product intent → `skills/spec-driven-development/assets/true_specification_template.md`
@@ -56,3 +61,5 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review onboarding and repository-management workflows → `docs/operations/tasks/OPS_TASK_DOCS_007_repository-workflow-experience.md` (task record)
 - Review sequence-first next-action filenames → `docs/operations/tasks/OPS_TASK_DOCS_008_next-action-filename-order.md` (task record)
 - Review specification handoff and document versioning → `docs/operations/tasks/OPS_TASK_DOCS_009_specification-handoff-and-document-versioning.md` (task record)
+- Review orientation, decision worksheets, and SPECARC workflow → `docs/operations/tasks/OPS_TASK_DOCS_010_product-definition-and-architecture-workflow.md` (task record)
+- Review adopter-facing template versioning repair → `docs/operations/tasks/OPS_TASK_DOCS_011_template-versioning-portability.md` (task record)

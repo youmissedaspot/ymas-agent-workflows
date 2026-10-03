@@ -2,12 +2,12 @@
 
 Filename: systems.md at the project's established current architecture path
 Status: Draft / Accepted under the adopting project's process
-Document version: [v1 for a new map; next major/minor revision for the existing map]
+Version: [v1 for a new map; next major/minor revision for the existing map]
 Previous version: [archive link, or none for a new map]
 Change summary: [initial architecture map or substantive changes]
 Architecture owner and precedence: [project-defined]
 
-Write this map after turning the True Specification conversation and decisions into specification documents. Take all current specifications into account, including architecture specifications and those unchanged by the latest conversation. This document integrates their required architecture and relationships. Do not silently invent missing decisions or let the map override accepted specifications.
+Write this map when the current specification set supports useful whole-system integration. Review the complete current SPEC/SPECARC set or project-defined equivalents, including documents unchanged by the latest conversation. SPEC and SPECARC are siblings in either design order; this map integrates them and is not the first mandatory place to design architecture. Record early deferral instead of inventing a meaningless map. Do not invent missing decisions or let the map override newly accepted higher product decisions.
 
 ## Specification coverage
 
@@ -18,15 +18,15 @@ Write this map after turning the True Specification conversation and decisions i
 
 ## Systems and responsibilities
 
-| System | Responsibility | Ownership of reads, writes, and decisions | Supporting specifications |
-| --- | --- | --- | --- |
+| System | Responsibility | State owned | Ownership of reads, writes, and decisions | Governing specifications |
+| --- | --- | --- | --- | --- |
 
 ## Relationships between specifications and systems
 
 | Source specification/system | Related specification/system | Contract, dependency, shared constraint, or data/control flow | Enforcing owner | Supporting specification and decision status |
 | --- | --- | --- | --- | --- |
 
-[Map specifications to each other as well as to systems. Explain interfaces, upstream/downstream dependencies, data/commands/events/resources/state crossing boundaries, external integrations, lifecycle relationships, and cross-system invariants. Add a diagram if it makes the relationships clearer. Link architecture specifications for detailed design without replacing this whole-system map.]
+[Map specifications to each other as well as to systems. Explain communication, interfaces, upstream/downstream dependencies, data/control/event flows, commands/resources/state crossing boundaries, external integrations, lifecycle relationships, and cross-system invariants with their enforcing authorities. Add a diagram if it makes the relationships clearer. Link SPECARC for concern-level design without replacing this whole-system map.]
 
 ## Coverage gaps, conflicts, and unresolved architecture
 
@@ -35,6 +35,6 @@ Write this map after turning the True Specification conversation and decisions i
 
 Return missing decisions to the conversation or owning specification, then refresh this map. Include specification overlaps and unresolved integration questions. Do not claim complete coverage while consequential gaps remain. Check whether the architecture implied by the entire specification set forms a coherent whole.
 
-Review and update this map as part of completing any specification cycle that materially changes boundaries, ownership, dependencies, interfaces, or architecture. If a review finds the map still accurate and requires no meaningful revision, report that result without mechanically incrementing its version.
+After substantive SPEC or SPECARC creation/revision, review the complete current set and update this map when architecture, ownership, boundaries, dependencies, interfaces, flows, or cross-system behavior change. Report a review that needs no meaningful revision without mechanically incrementing its version. Preserve existing SYS records and project-specific precedence; ADRs support decision rationale without replacing specifications.
 
-Follow [document versioning](../../../docs/workflows/document_versioning.md): keep the newer `systems.md` at its current path and archive the complete predecessor before replacement. Specification sequence IDs remain identities, not revisions.
+Follow this project's adopted document-versioning rules: keep the newer `systems.md` at its current path and archive the complete predecessor before replacement. Specification sequence IDs remain identities, not revisions.

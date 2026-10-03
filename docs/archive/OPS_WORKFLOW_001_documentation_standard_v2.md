@@ -1,9 +1,14 @@
+> Status: Historical / superseded; not current authority.
+> Version: v2
+> Superseded by: v3 at the [current document](../OPS_WORKFLOW_001_documentation_standard.md).
+> Original revision follows; embedded status statements describe that historical revision.
+
 # OPS_WORKFLOW_001 — Documentation standard
 
 Status: Current
-Version: v3
-Previous version: [v2](archive/OPS_WORKFLOW_001_documentation_standard_v2.md)
-Change summary: Add sibling SPECARC architecture specifications, provisional worksheets, and explicit archive filename notation.
+Document version: v2
+Previous version: [v1](OPS_WORKFLOW_001_documentation_standard_v1.md)
+Change summary: Separate document revisions from sequence IDs; keep current documents in place and archive every substantively superseded version.
 Scope: This repository only. The reusable template in `skills/project-bootstrap/assets/` is adapted by an adopting project; this file does not govern other repositories.
 
 ## Locations and names
@@ -22,9 +27,7 @@ Level 2 must not use roadmap, milestone, phase, sprint, release, campaign, or ot
 
 Each family has one independent sequence across all its Level 2 categories. The logical record ID remains `<FAMILY>_<ID>`; Level 2 classifies the filename without changing that ID. If `AGENT` is later adopted, `OPS_TASK_DOCS_005_level-2-record-naming.md` and `OPS_TASK_AGENT_006_agent-instruction-update.md` would continue the same `OPS_TASK` sequence. IDs are never reused or renumbered, including after a move or archive. Inspect current, archived, and legacy locations across all categories before allocating the next family ID. Existing filenames without Level 2 remain valid legacy names; rename them only in an intentional migration that preserves IDs, Git history, and links.
 
-The standard families are `SOT`, `RM`, `SYS`, `SPEC`, `SPECARC`, `PLAN`, `AUDIT`, `ADR`, `BUG`, `OPS_TASK`, `OPS_STATE`, `OPS_NEXT`, `OPS_DECISION`, `OPS_SPECDEF`, `OPS_WORKFLOW`, and `REF`. Use a family only when the record has that purpose. In this package, `README.md`, `plugin.json`, and skill files are package artifacts rather than numbered project records.
-
-SPEC defines what must be true for a product/system; SPECARC defines accepted architecture for a durable concern. They are sibling specification types without a fixed design order. ADR records a specific architectural decision and its context/rationale, supporting but not automatically replacing SPECARC. SYS retains its adopted system-level documentation role. `systems.md` integrates the complete current specification set once that set supports a useful map. Worksheet output is provisional source material, not product authority. The adopting project owns acceptance and precedence; a family prefix alone grants no authority.
+The standard families are `SOT`, `RM`, `SYS`, `SPEC`, `PLAN`, `AUDIT`, `ADR`, `BUG`, `OPS_TASK`, `OPS_STATE`, `OPS_NEXT`, `OPS_DECISION`, `OPS_SPECDEF`, `OPS_WORKFLOW`, and `REF`. Use a family only when the record has that purpose. In this package, `README.md`, `plugin.json`, and skill files are package artifacts rather than numbered project records.
 
 ## Operational memory
 
@@ -49,13 +52,13 @@ Use the index to discover specialized procedures; do not expand always-on instru
 
 ## Functional directories
 
-Use `docs/engineering/bugs/` for `BUG` records and `docs/engineering/knowledge/` for generalized engineering `REF` records when those workflows are used in this repository. Other families belong in purpose-specific `docs/` directories chosen once and recorded here before use: `docs/sot/`, `docs/roadmap/`, `docs/systems/`, `docs/specifications/`, `docs/plans/`, `docs/audits/`, `docs/decisions/`, and `docs/references/`. Use `docs/specifications/` for SPEC and SPECARC when adopted here; no architecture-specification directory is required merely to add the family. A new integrated map defaults to `docs/systems/systems.md`; preserve an established owner and any existing SYS ID instead of assigning a new one solely for versioning. Do not create empty directories merely to express this map.
+Use `docs/engineering/bugs/` for `BUG` records and `docs/engineering/knowledge/` for generalized engineering `REF` records when those workflows are used in this repository. Other families belong in purpose-specific `docs/` directories chosen once and recorded here before use: `docs/sot/`, `docs/roadmap/`, `docs/systems/`, `docs/specifications/`, `docs/plans/`, `docs/audits/`, `docs/decisions/`, and `docs/references/`. Do not create empty directories merely to express this map.
 
 ## Creation, updates, and archives
 
 Update an existing document when it owns the subject. Create a new ID only for a new durable identity, a required chronological record, or a distinct decision, specification, or workflow. Never duplicate a record because files moved. Prefer links over repeated rules.
 
-Follow [document versioning](workflows/document_versioning.md) for project documents. Sequence IDs identify records, not revisions. New documents start at `v1`; substantive revisions use `v2`, `v3`, or a minor version such as `v3.1`. Keep the current document in its existing functional folder and stable filename with explicit version metadata. Before replacing it, archive the complete predecessor under `docs/archive/`, retaining its ID and filename stem with an old-version suffix in filename form: metadata `Version: v3.1` becomes `_v3dot1.md`, not `_v3.1.md`. This suffix is the explicit exception to retaining an identical filename when archiving a revision. Record the predecessor link and change summary in the current revision. Treat an unversioned predecessor as the `v1` baseline on its first substantive revision; preserve unrelated legacy documents.
+Follow [document versioning](../workflows/document_versioning.md) for project documents. Sequence IDs identify records, not revisions. New documents start at `v1`; substantive revisions use `v2`, `v3`, or a minor version such as `v3.1`. Keep the current document in its existing functional folder and stable filename with explicit version metadata. Before replacing it, archive the complete predecessor under `docs/archive/`, retaining its ID and filename stem with an old-version suffix. Record the predecessor link and change summary in the current revision. Treat an unversioned predecessor as the `v1` baseline on its first substantive revision; preserve unrelated legacy documents.
 
 Archive every substantively superseded version, mark it historical, and link it to its current owner. Preserve content and decision evidence, rebase relative links when needed, and verify links and stale paths. Archived material must not be cited as current authority. Package artifacts such as skill contracts and templates follow the plugin release rather than receiving project-record IDs or archive copies for each package edit.
 

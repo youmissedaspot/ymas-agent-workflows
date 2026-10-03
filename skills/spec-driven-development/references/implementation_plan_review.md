@@ -4,7 +4,7 @@ Use when the relevant specification layers are settled enough to plan. Apply the
 
 ## Plan contract
 
-- Link governing product, architecture, system, and increment sources. Mark unresolved decisions instead of silently choosing them.
+- Link governing SPEC/SPECARC, integrated systems map, and established product, system, and increment sources as applicable. Mark unresolved decisions instead of silently choosing them.
 - Name affected components, ownership boundaries, implementation order, interfaces, migrations, and integration points.
 - State tests and other verification, failure risks, justified compatibility needs, and explicit exclusions.
 - Compare current code, tests, schemas, and relevant history with the governing specifications. Treat those observations as evidence.
