@@ -43,4 +43,4 @@ Define only the architectural concern within this document's scope. SPEC and SPE
 
 [Observable contracts and acceptance cases for this concern. Distinguish agent verification from project-controlled human acceptance. Review the complete current specification set and update `systems.md` when this concern changes architecture, ownership, boundaries, dependencies, interfaces, flows, or cross-system behavior; record deferral if an early specification set cannot yet support a meaningful map.]
 
-Keep implementation scheduling, task decomposition, and delivery plans in plans. SYS remains the adopting project's system-level documentation family. Follow [document versioning](../../../docs/workflows/document_versioning.md): preserve the logical ID and live path; archive a superseded `v3.1` as `_v3dot1.md` before publishing its successor.
+Keep implementation scheduling, task decomposition, and delivery plans in plans. SYS remains the adopting project's system-level documentation family. Follow this project's adopted document-versioning rules: preserve the logical ID and live path; archive a superseded `v3.1` as `_v3dot1.md` before publishing its successor.

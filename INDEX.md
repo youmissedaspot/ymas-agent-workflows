@@ -62,3 +62,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review sequence-first next-action filenames → `docs/operations/tasks/OPS_TASK_DOCS_008_next-action-filename-order.md` (task record)
 - Review specification handoff and document versioning → `docs/operations/tasks/OPS_TASK_DOCS_009_specification-handoff-and-document-versioning.md` (task record)
 - Review orientation, decision worksheets, and SPECARC workflow → `docs/operations/tasks/OPS_TASK_DOCS_010_product-definition-and-architecture-workflow.md` (task record)
+- Review adopter-facing template versioning repair → `docs/operations/tasks/OPS_TASK_DOCS_011_template-versioning-portability.md` (task record)

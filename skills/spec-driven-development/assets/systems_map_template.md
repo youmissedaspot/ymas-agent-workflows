@@ -37,4 +37,4 @@ Return missing decisions to the conversation or owning specification, then refre
 
 After substantive SPEC or SPECARC creation/revision, review the complete current set and update this map when architecture, ownership, boundaries, dependencies, interfaces, flows, or cross-system behavior change. Report a review that needs no meaningful revision without mechanically incrementing its version. Preserve existing SYS records and project-specific precedence; ADRs support decision rationale without replacing specifications.
 
-Follow [document versioning](../../../docs/workflows/document_versioning.md): keep the newer `systems.md` at its current path and archive the complete predecessor before replacement. Specification sequence IDs remain identities, not revisions.
+Follow this project's adopted document-versioning rules: keep the newer `systems.md` at its current path and archive the complete predecessor before replacement. Specification sequence IDs remain identities, not revisions.

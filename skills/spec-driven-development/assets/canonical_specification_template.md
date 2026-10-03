@@ -9,7 +9,7 @@ Governing True Specification and accepted decision sources: [links]
 
 Use this aid for SPEC product/system requirements. SPECARC is the sibling aid for an architectural concern, with no fixed ordering relative to SPEC; follow project-defined authority and approval. Only approved content is canonical product authority. A draft or this template alone grants no authority.
 
-Formalize the conversation and accepted decisions here, then review the complete current specification set for integration in `systems.md`. Create or update a useful map for affected architecture/relationships; record early deferral if the current set cannot yet support one. Follow [document versioning](../../../docs/workflows/document_versioning.md): sequence IDs stay unchanged, the newer version stays at this owner's current path, and the complete predecessor is archived before replacement using its own version in filename form.
+Formalize the conversation and accepted decisions here, then review the complete current specification set for integration in `systems.md`. Create or update a useful map for affected architecture/relationships; record early deferral if the current set cannot yet support one. Follow this project's adopted document-versioning rules: sequence IDs stay unchanged, the newer version stays at this owner's current path, and the complete predecessor is archived before replacement using its own version in filename form.
 
 ## Stable terminology
 
