@@ -3,7 +3,7 @@
 Status: Complete
 Version: v1
 Branch: `work/product-definition-architecture`
-Base: `2da6f33`, the specification handoff/versioning work from PR #8. PR #8 was merged externally while this task was running; this task does not merge or publish its own branch.
+Base: `402ec8991885e3a14768dc46c898c3d4167ef52b`, the reachable PR #8 merge commit and parent of this task's `58bdfc2` commit. The original PR #8 reviewed head, `2da6f33`, has the same tree, so the file lists relative to the task base remain unchanged. PR #8 was merged externally while this task was running; this task does not merge or publish its own branch.
 Scope: The user's October 2, 2026 workflow-evolution request, informed by the “Correct Specification Workflow” conversation. SPECARC is the accepted architecture-specification family name.
 
 ## Resulting behavior
