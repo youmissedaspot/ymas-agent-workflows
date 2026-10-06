@@ -10,6 +10,20 @@ import validate_package
 
 
 class PackageLinksTest(unittest.TestCase):
+    def test_anchors_same_file_cross_file_duplicates_and_fenced_examples(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "README.md"
+            source.write_text("# Owner\n## systems.md\n## Same\n## Same\n```md\n## Fake\n```\n", encoding="utf-8")
+            with patch.object(validate_package, "ROOT", root):
+                errors = []
+                for target in ("#owner", "README.md#systemsmd", "#same-1"):
+                    validate_package.check_local_path(source, target, errors)
+                self.assertEqual(errors, [])
+                for target in ("#fake", "README.md#absent"):
+                    validate_package.check_local_path(source, target, errors)
+                self.assertEqual(len(errors), 2)
+
     def test_materialized_template_versioning_links_resolve_without_the_package(self):
         package_root = validate_package.ROOT
         outputs = (

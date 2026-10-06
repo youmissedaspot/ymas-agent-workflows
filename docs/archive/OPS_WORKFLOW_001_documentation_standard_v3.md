@@ -1,9 +1,12 @@
+Status: Historical
+Current owner: [current revision](../OPS_WORKFLOW_001_documentation_standard.md)
+
 # OPS_WORKFLOW_001 — Documentation standard
 
 Status: Current
-Version: v3.1
-Previous version: [v3](archive/OPS_WORKFLOW_001_documentation_standard_v3.md)
-Change summary: Add collision-aware allocation and receipt-linked integration closeout.
+Version: v3
+Previous version: [v2](OPS_WORKFLOW_001_documentation_standard_v2.md)
+Change summary: Add sibling SPECARC architecture specifications, provisional worksheets, and explicit archive filename notation.
 Scope: This repository only. The reusable template in `skills/project-bootstrap/assets/` is adapted by an adopting project; this file does not govern other repositories.
 
 ## Locations and names
@@ -26,8 +29,6 @@ The standard families are `SOT`, `RM`, `SYS`, `SPEC`, `SPECARC`, `PLAN`, `AUDIT`
 
 SPEC defines what must be true for a product/system; SPECARC defines accepted architecture for a durable concern. They are sibling specification types without a fixed design order. ADR records a specific architectural decision and its context/rationale, supporting but not automatically replacing SPECARC. SYS retains its adopted system-level documentation role. `systems.md` integrates the complete current specification set once that set supports a useful map. Worksheet output is provisional source material, not product authority. The adopting project owns acceptance and precedence; a family prefix alone grants no authority.
 
-Coordinate new family-ID reservations across active workers and recheck collisions before integration; see [document versioning](workflows/document_versioning.md#identity-and-revision). [Read-only document diagnostics](../scripts/diagnose_documents.py) report current-owner collisions and edition metadata. They preserve legitimate archive editions and do not repair or normalize files.
-
 ## Operational memory
 
 - `docs/operations/tasks/` — `OPS_TASK` records of substantive completed work.
@@ -38,8 +39,6 @@ Coordinate new family-ID reservations across active workers and recheck collisio
 - `docs/operations/workflows/` — additional `OPS_WORKFLOW` records. Keep this primary standard at its existing legacy path, `docs/OPS_WORKFLOW_001_documentation_standard.md`.
 
 When these chronological families exist, the highest numbered `OPS_TASK`, `OPS_STATE`, and `OPS_NEXT` is respectively the latest task, current snapshot, and current next action. Read relevant records, including legacy locations during a migration. Create a new chronological record when it is needed to preserve a meaningful transition; do not generate all three mechanically for every edit.
-
-After a material integration, the owning coordinator reconciles current state and the next action with live source, linking their small deltas to [one detailed source receipt](workflows/source_receipts.md). Preserve historical pre-integration task claims; do not copy the complete verification narrative into every family.
 
 ## Authority
 
@@ -59,7 +58,7 @@ Use `docs/engineering/bugs/` for `BUG` records and `docs/engineering/knowledge/`
 
 Update an existing document when it owns the subject. Create a new ID only for a new durable identity, a required chronological record, or a distinct decision, specification, or workflow. Never duplicate a record because files moved. Prefer links over repeated rules.
 
-Follow [document versioning](workflows/document_versioning.md) for project documents. Sequence IDs identify records, not revisions. New documents start at `v1`; substantive revisions use `v2`, `v3`, or a minor version such as `v3.1`. Keep the current document in its existing functional folder and stable filename with explicit version metadata. Before replacing it, archive the complete predecessor under `docs/archive/`, retaining its ID and filename stem with an old-version suffix in filename form: metadata `Version: v3.1` becomes `_v3dot1.md`, not `_v3.1.md`. This suffix is the explicit exception to retaining an identical filename when archiving a revision. Record the predecessor link and change summary in the current revision. Treat an unversioned predecessor as the `v1` baseline on its first substantive revision; preserve unrelated legacy documents.
+Follow [document versioning](../workflows/document_versioning.md) for project documents. Sequence IDs identify records, not revisions. New documents start at `v1`; substantive revisions use `v2`, `v3`, or a minor version such as `v3.1`. Keep the current document in its existing functional folder and stable filename with explicit version metadata. Before replacing it, archive the complete predecessor under `docs/archive/`, retaining its ID and filename stem with an old-version suffix in filename form: metadata `Version: v3.1` becomes `_v3dot1.md`, not `_v3.1.md`. This suffix is the explicit exception to retaining an identical filename when archiving a revision. Record the predecessor link and change summary in the current revision. Treat an unversioned predecessor as the `v1` baseline on its first substantive revision; preserve unrelated legacy documents.
 
 Archive every substantively superseded version, mark it historical, and link it to its current owner. Preserve content and decision evidence, rebase relative links when needed, and verify links and stale paths. Archived material must not be cited as current authority. Package artifacts such as skill contracts and templates follow the plugin release rather than receiving project-record IDs or archive copies for each package edit.
 

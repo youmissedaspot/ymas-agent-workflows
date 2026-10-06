@@ -3,6 +3,7 @@
 import json
 import re
 import sys
+import unicodedata
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 from urllib.request import urlopen
@@ -19,16 +20,45 @@ INDEX_ROUTE = re.compile(r"→\s*`([^`]+)`")
 SEMVER = re.compile(r"(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)")
 
 
+def markdown_anchors(contents: str) -> set[str]:
+    """Common GitHub heading slugs and explicit HTML IDs; skip fenced examples."""
+    anchors = set(re.findall(r'\bid=["\']([^"\']+)["\']', contents))
+    counts = {}
+    fence = None
+    for line in contents.splitlines():
+        marker = re.match(r"^\s{0,3}(`{3,}|~{3,})", line)
+        if marker:
+            if fence is None:
+                fence = marker[1][0]
+            elif marker[1][0] == fence:
+                fence = None
+            continue
+        if fence:
+            continue
+        heading = re.match(r"^ {0,3}#{1,6}\s+(.+?)\s*#*\s*$", line)
+        if not heading:
+            continue
+        title = re.sub(r"<[^>]+>", "", heading[1]).lower()
+        slug = "".join(c for c in title if c in " -_" or unicodedata.category(c)[0] in "LN").replace(" ", "-")
+        count = counts.get(slug, 0)
+        counts[slug] = count + 1
+        anchors.add(f"{slug}-{count}" if count else slug)
+    return anchors
+
+
 def check_local_path(source: Path, target: str, errors: list[str]) -> None:
     target = target.strip().strip("<>").split(" ", 1)[0]
-    if target.startswith("#") or urlparse(target).scheme or target.startswith("//"):
+    if urlparse(target).scheme or target.startswith("//"):
         return
     path = unquote(target.split("#", 1)[0].split("?", 1)[0])
-    if not path:
-        return
-    resolved = (source.parent / path).resolve()
+    resolved = (source.parent / path).resolve() if path else source.resolve()
     if not resolved.is_relative_to(ROOT.resolve()) or not resolved.exists():
         errors.append(f"{source.relative_to(ROOT)}: missing local target {target}")
+        return
+    fragment = unquote(target.partition("#")[2])
+    if fragment and resolved.is_file() and resolved.suffix.lower() == ".md":
+        if fragment not in markdown_anchors(resolved.read_text(encoding="utf-8-sig")):
+            errors.append(f"{source.relative_to(ROOT)}: missing local anchor {target}")
 
 
 def validate() -> list[str]:
