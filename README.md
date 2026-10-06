@@ -45,7 +45,16 @@ Examples: “I have an idea for an economic simulation”; “Help me figure out
 | `audit-repair` | Audit or repair the target you named or established in conversation. Without a target it asks for one; it cannot pick work from repository state. |
 | `bug-knowledge` | Log natural-language bug reports, investigate prior failures, and distill recurring lessons into engineering references. |
 
-[`plugin.json`](plugin.json) declares the portable package. Candidate `0.5.0` has nine `skills/<name>/SKILL.md` entrypoints and a repository [marketplace catalog](.agents/plugins/marketplace.json). Each skill keeps its templates nearby. [`AGENTS.md`](AGENTS.md) and the [documentation standard](docs/OPS_WORKFLOW_001_documentation_standard.md) govern this repository only.
+[`plugin.json`](plugin.json) declares the portable package. Candidate `0.5.1` has nine `skills/<name>/SKILL.md` entrypoints and a repository [marketplace catalog](.agents/plugins/marketplace.json). Each skill keeps its templates nearby. [`AGENTS.md`](AGENTS.md) and the [documentation standard](docs/OPS_WORKFLOW_001_documentation_standard.md) govern this repository only.
+
+The audit-repair update supports an explicitly requested whole-project audit, comparison
+of supplied reports under selected precedence, consequence separate from evidence
+confidence, and regression closure against the original failure. Its optional
+[assessment guidance](skills/audit-repair/references/audit_assessment.md) follows each
+project's accepted rules. Six neutral fixtures exercise known-good, defect, fixture,
+report-comparison, original-closure and stale-evidence cases. See the
+[release preparation record](docs/operations/tasks/OPS_TASK_DOCS_018_audit-release-preparation.md)
+for the candidate's scope and remaining gates.
 
 ## Install in Codex
 
@@ -82,11 +91,11 @@ You need Git on `PATH`, network access to GitHub, and a Codex CLI with plugin co
 
    Confirm `installed, enabled`. Alternatively, after registration, use the app's Plugins Directory, select **YouMissedASpot Workflows**, and install **ymas-agent-workflows**, or use `/plugins` in a supported CLI.
 
-4. Start a new chat after installation or refresh. For candidate `0.5.0`, confirm all nine skills in the table above are available with the `ymas-agent-workflows:` prefix. Use the plugin-qualified name when a standalone skill has the same name; existing standalone skills do not need to be removed.
+4. Start a new chat after installation or refresh. For candidate `0.5.1`, confirm all nine skills in the table above are available with the `ymas-agent-workflows:` prefix. Use the plugin-qualified name when a standalone skill has the same name; existing standalone skills do not need to be removed.
 
    `0.4.0` and the retained `0.4.1` checkpoint have eight entrypoints and exclude `like-im-5`. `0.3.0` has six skills and excludes orientation and worksheet; `0.2.0` has four and also excludes evaluation/consolidation. A version and skill-name match alone does not identify installed bytes.
 
-   `0.5.0` remains a [draft combined candidate](https://github.com/youmissedaspot/ymas-agent-workflows/pull/14). Authenticated discovery is still a release gate. Refresh the normal installation only after authorized, verified integration and release.
+   `0.5.0` was integrated through [PR14](https://github.com/youmissedaspot/ymas-agent-workflows/pull/14). Its [main-source CI](https://github.com/youmissedaspot/ymas-agent-workflows/actions/runs/37479242824) records package and installation checks for that source; it does not establish authenticated client discovery or validate this candidate. `0.5.1` remains a release candidate until its own required checks and authenticated discovery pass. Refresh the normal installation only after authorized, verified integration and release.
 
    For a discovery-only check, ask: "From your available skills, list the ymas-agent-workflows plugin skills and their installed paths. Do not execute a workflow or modify files." Successful installation means both an installed/enabled listing and discovery in the client where you intend to use the workflows.
 

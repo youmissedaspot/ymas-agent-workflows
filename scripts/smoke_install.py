@@ -32,6 +32,9 @@ SKILLS_BY_VERSION = {
     "0.5.0": {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge",
               "evaluate-repository", "documentation-consolidation", "workflow-orientation", "true-spec-worksheet",
               "like-im-5"},
+    "0.5.1": {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge",
+              "evaluate-repository", "documentation-consolidation", "workflow-orientation", "true-spec-worksheet",
+              "like-im-5"},
 }
 
 
