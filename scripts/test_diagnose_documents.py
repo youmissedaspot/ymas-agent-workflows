@@ -14,6 +14,12 @@ class DocumentTest(unittest.TestCase):
             self.write(root, "docs/SPEC_STORAGE_001_access.md", 'Version: v1\nStatus: Current\n````md\nVersion: v2\n```\nVersion: v3\n````\n')
             self.assertEqual(diagnose(root)["findings"], [])
 
+    def test_blockquoted_version_example_is_not_metadata(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write(root, "docs/SPEC_STORAGE_001_access.md", 'Version: v1\nStatus: Current\n> ```text\n> Version: v2\n> ```\n')
+            self.assertEqual(diagnose(root)["findings"], [])
+
     def write(self, root, name, text="Version: v1\nStatus: Current\n"):
         path = root / name
         path.parent.mkdir(parents=True, exist_ok=True)

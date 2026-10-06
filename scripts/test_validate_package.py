@@ -14,6 +14,10 @@ class PackageLinksTest(unittest.TestCase):
         text = '````html\n<a id="fake">\n```\n## Still fake\n````\n`<a id="inline-fake">`\n<a id="real">\n# Real heading\n'
         self.assertEqual(validate_package.markdown_anchors(text), {"real", "real-heading"})
 
+    def test_blockquoted_fences_and_unequal_inline_delimiters(self):
+        text = '> ```html\n> <a id="quoted-fake">\n> ```\n``literal `<a id="inline-fake">` more``\n<a id="real">\n'
+        self.assertEqual(validate_package.markdown_anchors(text), {"real"})
+
     def test_anchors_same_file_cross_file_duplicates_and_fenced_examples(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

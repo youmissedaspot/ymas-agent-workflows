@@ -10,7 +10,7 @@ from urllib.request import urlopen
 
 import yaml
 from jsonschema.validators import validator_for
-from markdown_utils import visible_lines
+from markdown_utils import visible_lines, without_inline_code
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,7 +26,7 @@ def markdown_anchors(contents: str) -> set[str]:
     anchors = set()
     counts = {}
     for line in visible_lines(contents):
-        html = re.sub(r"`+[^`]*`+", "", line)
+        html = without_inline_code(line)
         for tag in re.findall(r"<[A-Za-z][^>]*>", html):
             anchors.update(re.findall(r'\bid=["\']([^"\']+)["\']', tag))
         heading = re.match(r"^ {0,3}#{1,6}\s+(.+?)\s*#*\s*$", line)
