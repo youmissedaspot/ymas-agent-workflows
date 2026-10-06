@@ -12,6 +12,15 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Maintain this package's documentation → `docs/OPS_WORKFLOW_001_documentation_standard.md`
 - Version documents while keeping current owners in place → `docs/workflows/document_versioning.md`
 
+## Evidence and bounded verification
+
+- Bind review/test/integration to source → `docs/workflows/source_receipts.md`
+- Preserve task context, selected contracts and resume invariants → `docs/workflows/task_context.md`
+- Verify affected caller lifecycles and classify failures → `docs/workflows/verification_boundaries.md`
+- Diagnose adopted document IDs and edition metadata without writes → `scripts/diagnose_documents.py`
+
+- Inspect routing/scope/resume replay cases and evidence limits → `docs/workflows/behavioral_checks.md`
+
 ## Orient or bootstrap a repository
 
 - Explain how to begin or resume YMAS; orientation only → `skills/workflow-orientation/SKILL.md`
@@ -63,3 +72,5 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review specification handoff and document versioning → `docs/operations/tasks/OPS_TASK_DOCS_009_specification-handoff-and-document-versioning.md` (task record)
 - Review orientation, decision worksheets, and SPECARC workflow → `docs/operations/tasks/OPS_TASK_DOCS_010_product-definition-and-architecture-workflow.md` (task record)
 - Review adopter-facing template versioning repair → `docs/operations/tasks/OPS_TASK_DOCS_011_template-versioning-portability.md` (task record)
+
+- Review reusable source evidence and verification improvements → `docs/operations/tasks/OPS_TASK_DOCS_012_source-evidence-and-verification.md` (task record)

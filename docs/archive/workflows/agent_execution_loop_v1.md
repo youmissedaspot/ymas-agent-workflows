@@ -1,0 +1,16 @@
+Status: Historical
+Document version: v1 (assigned to the previously unversioned baseline).
+Current owner: [current revision](../../workflows/agent_execution_loop.md)
+
+# Agent execution loop
+
+Apply this loop to substantive development work even when the user states only the desired outcome. The loop governs progress; `INDEX.md` governs which files to retrieve. Follow the adopting repository's own instructions and product authority.
+
+1. **Orient and route.** Read the repository's `AGENTS.md` or equivalent, then this package's `INDEX.md` and any local index. Load only the applicable skill and supporting references.
+2. **Establish authority and inspect.** Identify current governing requirements and operational context. Inspect affected implementation and tests before code changes; investigate relevant history when a behavior's purpose is unclear. Distinguish authority from evidence and inference.
+3. **Plan when warranted.** Use or create a bounded plan for work whose complexity needs one. Resolve scope and integration constraints before writes.
+4. **Execute and verify.** Make the smallest valid change, run its relevant verification, and record the observed result. If verification fails, identify the smallest failed unit, expected and observed behavior, evidence, and permitted repair scope; repair that unit and rerun verification. Do not disturb correct neighboring work. After three failed attempts on the same unit, stop local patching and reassess specification interpretation, decomposition, authority or ownership, architecture, and strategy before another attempt.
+5. **Update and reassess.** Update durable project knowledge when its adopted workflow requires it. Check whether verification, documentation, project memory, cleanup, integration, or any requested work remains. If so, repeat with fresh state; an implementation step alone does not establish completion.
+6. **Finish accurately.** Stop when the requested goal and required checks are complete, or when a genuine blocker or decision boundary prevents progress. Report changes, evidence, verification, remaining work, and any decision needed without claiming unverified success.
+
+Surface a decision if current authority is silent on a consequential product rule, authoritative sources conflict, materially different architectures or product behaviors require a choice, or an action crosses a user-controlled approval boundary. Make routine technical choices supported by established authority without interrupting the loop. Do not invent product rules, repeat without progress, or treat a failed check as success.

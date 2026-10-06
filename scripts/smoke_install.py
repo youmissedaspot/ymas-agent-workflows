@@ -13,6 +13,7 @@ import subprocess
 import tempfile
 
 import validate_package
+from check_receipt import git, package_inventory
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,10 +30,24 @@ SKILLS_BY_VERSION = {
 }
 
 
+def verify_installed_snapshot(expected, installed):
+    """Compare all tracked candidate files, not just version/skill names."""
+    actual = package_inventory(installed, expected["files"])
+    if actual != expected:
+        changed = [name for name, digest in expected["files"].items()
+                   if actual["files"].get(name) != digest]
+        raise RuntimeError(f"Installed candidate bytes differ: {', '.join(changed)}")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", choices=("published", "checkout"), default="published")
     args = parser.parse_args()
+    expected_snapshot = None
+    if args.source == "checkout":
+        if git(ROOT, "status", "--porcelain", "--untracked-files=normal"):
+            raise RuntimeError("Commit/reconcile candidate changes before its installation identity test.")
+        expected_snapshot = package_inventory(ROOT, [name for name in git(ROOT, "ls-files", "-z").split("\0") if name])
     codex = shutil.which("codex.cmd" if os.name == "nt" else "codex")
     if not codex or not shutil.which("git"):
         raise RuntimeError("Install Codex CLI 0.159.1 and Git, then rerun this check.")
@@ -85,6 +100,8 @@ def main():
             if len(manifests) != 1:
                 raise RuntimeError(f"Expected one installed package, found {len(manifests)}.")
             installed = manifests[0].parent
+            if expected_snapshot is not None:
+                verify_installed_snapshot(expected_snapshot, installed)
             version = json.loads(manifests[0].read_text(encoding="utf-8"))["version"]
             if args.source == "checkout" and version != json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))["version"]:
                 raise RuntimeError("Installed version differs from the candidate package.")
