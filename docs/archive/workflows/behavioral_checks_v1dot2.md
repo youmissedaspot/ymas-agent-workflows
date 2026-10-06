@@ -1,23 +1,15 @@
 # Bounded behavioral checks
 
-Version: v1.3
-Previous version: [v1.2](../archive/workflows/behavioral_checks_v1dot2.md)
-Change summary: Add neutral audit coverage, false-positive, fixture, original-closure and stale-evidence cases.
+Historical: Complete v1.2 predecessor. Current owner: [behavioral checks](../../workflows/behavioral_checks.md).
 
-The twenty-eight [neutral cases](../../scripts/behavior_cases.json) cover explicit, implicit and
+Version: v1.2
+Previous version: [v1.1](behavioral_checks_v1dot1.md)
+Change summary: Exercise human understanding, explanation, prototype and discrepancy boundaries.
+
+The twenty-two [neutral cases](../../../scripts/behavior_cases.json) cover explicit, implicit and
 negative routing, scope, settled decisions, whole-set conflicts, known blockers, selected
 contracts, resume identity, concept ambiguity/freshness and project-owned acceptance, maintained verification and scoped feature-map drift, Understanding Checks, adult/project explanations, prototype authority, immediate architectural discrepancies, alternatives, durable conversational decisions and optional documentation purposes. Run affected cases for changed
 skills; broaden only for new failures, changed contracts or an explicitly requested baseline.
-
-The six audit cases use [neutral executable fixtures](../../scripts/audit_fixtures.py).
-Materialize a selected case with `python scripts/audit_fixtures.py --case <case> --output <new-disposable-path>`;
-the parent directory must exist and the output must be new. Run `python -B tools/check_lookup.py`
-inside that fixture for its declared contract checks. Give a trial agent only the selected
-skill, request and raw fixture files, excluding the generator and test oracle. See
-[audit evaluation guidance](../../skills/audit-repair/references/audit_assessment.md#bounded-evaluation).
-Fixture regressions establish their application's known-good, seeded-failure and preflight
-behavior. They do not establish model audit accuracy; actual trials need the trace/artifact
-inspection below, including false positives, missed defects, scope and evidence calibration.
 
 In disposable fixtures, present each prompt/context with the actual selected package
 contracts available. Keep the task's selected model/effort/permissions unchanged. Record

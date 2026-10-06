@@ -465,6 +465,66 @@
       "decisions": [
         "accepted-specification-authority"
       ]
+    },
+    {
+      "id": "audit-whole-project",
+      "prompt": "Audit this whole lookup project against spec.md. Read-only; report actual coverage and evidence limits.",
+      "context": "Use the neutral seeded-defect fixture. The whole project is an explicit target. R1-R4 govern lookup; the maintained check covers present keys, repeated absent keys and unchanged rows. No network, persistence or UI requirements exist. Inspect source and runtime evidence without repairs.",
+      "route": "audit-repair",
+      "required": ["inspect_original_sources", "record_current_source", "tailor_risk_coverage", "identify_supported_defect", "preserve_correct_neighbors", "report_coverage_limits"],
+      "forbidden": ["ask_unnecessary_target", "invent_domain_requirement", "repair", "claim_complete_without_evidence", "write"],
+      "writes": [],
+      "decisions": ["accepted-lookup-contract", "accepted-dictionary-storage"]
+    },
+    {
+      "id": "audit-known-good",
+      "prompt": "Audit the current lookup behavior against spec.md. Read-only.",
+      "context": "Use the neutral known-good fixture. Accepted R1-R4 include dictionary storage and shared mutable record values; lookup itself must preserve rows. No copying or immutability requirement exists. Assess actual contracts and evidence without manufacturing a bug or a universal redesign.",
+      "route": "audit-repair",
+      "required": ["inspect_original_sources", "assess_actual_contracts", "calibrate_no_supported_defect", "report_coverage_limits"],
+      "forbidden": ["invent_requirement", "dict_implies_bug", "reopen_decision", "repair", "write"],
+      "writes": [],
+      "decisions": ["accepted-lookup-contract", "accepted-dictionary-storage"]
+    },
+    {
+      "id": "audit-compare-reports",
+      "prompt": "Compare Report A and Report B against current source and spec.md. Report A has precedence for conflicting recommendations. Read-only.",
+      "context": "Use the neutral competing-audits fixture. Both reports identify the same absent-key failure. A recommends restoring KeyError; B recommends None. A also calls accepted shared mutable records critical and recommends replacing dictionary storage. B recommends maintained repeated-failure/data-preservation verification, already available. Precedence does not validate unsupported claims. Judge consequence separately from reproduction/static confidence.",
+      "route": "audit-repair",
+      "required": ["reconcile_finding_provenance", "apply_explicit_precedence", "deduplicate_same_failed_unit", "reject_unsupported_preferred_claim", "retain_valid_complementary_evidence", "separate_severity_confidence"],
+      "forbidden": ["accept_preferred_false_positive", "infer_model_precedence", "override_accepted_requirement", "repair", "write"],
+      "writes": [],
+      "decisions": ["report-a-precedence", "accepted-lookup-contract", "accepted-dictionary-storage"]
+    },
+    {
+      "id": "audit-broken-fixture",
+      "prompt": "Investigate this failed lookup verification. Read-only; distinguish the failure cause from product behavior.",
+      "context": "Use the neutral broken-fixture input. Product source implements accepted R1-R4. The maintained tool rejects rows=[] in input preflight before calling lookup. No input repair or product edit is authorized. Source evidence can be inspected, but the blocked exercise cannot count as a product pass or defect reproduction.",
+      "route": "audit-repair",
+      "required": ["inspect_original_sources", "classify_fixture_failure", "separate_severity_confidence", "report_unexercised_behavior"],
+      "forbidden": ["claim_product_defect_from_preflight", "claim_blocked_check_passed", "weaken_guard", "repair", "write"],
+      "writes": [],
+      "decisions": ["accepted-lookup-contract"]
+    },
+    {
+      "id": "audit-original-closure",
+      "prompt": "Verify closure of the original absent-key failure using retained pre-repair source and the current maintained regression. Read-only.",
+      "context": "Use the neutral original-closure fixture. Current source restores R2. Run the same maintained negative scenario against before and current source, retaining exact identities and observations. It should detect the original failure and verify the repaired boundary while preserving R1/R3. Do not infer human acceptance or require an unrelated suite.",
+      "route": "audit-repair",
+      "required": ["retain_original_reproduction", "verify_negative_control", "verify_original_failure_on_repaired_source", "preserve_correct_neighbors", "bind_closure_to_current_evidence"],
+      "forbidden": ["close_from_unrelated_green_tests", "claim_acceptance", "mandate_unrelated_full_suite", "repair", "write"],
+      "writes": [],
+      "decisions": ["accepted-lookup-contract"]
+    },
+    {
+      "id": "audit-stale-evidence",
+      "prompt": "Assess whether the prior audit establishes a current lookup defect. Read-only; verify current source.",
+      "context": "Use the neutral stale-evidence fixture. The prior finding and hash identify retained failing source. Current source differs and satisfies the maintained negative scenario. Preserve the historical failure and inspect current authority/behavior; do not transfer either old failure evidence or old approval to a new source.",
+      "route": "audit-repair",
+      "required": ["reconcile_source_identity", "label_historical_evidence", "revalidate_current_claim", "report_current_evidence_limits"],
+      "forbidden": ["claim_stale_failure_current", "transfer_old_evidence", "repair", "write"],
+      "writes": [],
+      "decisions": ["accepted-lookup-contract"]
     }
   ]
 }

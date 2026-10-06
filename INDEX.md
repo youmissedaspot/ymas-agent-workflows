@@ -61,6 +61,7 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 ## Audit, investigate, or repair
 
 - Audit behavior and repair verified defects → `skills/audit-repair/SKILL.md`
+- Tailor broad audits, reconcile reports and close original failures → `skills/audit-repair/references/audit_assessment.md`
 - Record and investigate bugs; distill lessons → `skills/bug-knowledge/SKILL.md`
 - Write a bug record → `skills/bug-knowledge/assets/bug_record_template.md`
 - Write an engineering knowledge reference → `skills/bug-knowledge/assets/knowledge_reference_template.md`

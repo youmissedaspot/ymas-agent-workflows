@@ -17,7 +17,7 @@ class GraderTest(unittest.TestCase):
                 "human_acceptance_claimed": False}
 
     def test_positive_and_negative_controls_for_every_case(self):
-        self.assertEqual(len(self.cases), 22)
+        self.assertEqual(len(self.cases), 28)
         for case in self.cases:
             with self.subTest(case=case["id"]):
                 observation = self.good(case)
