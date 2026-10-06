@@ -49,8 +49,10 @@ Final validation, independent source review, full raw inventory, disposable inst
 platform CI, PR state and authorization belong in one detailed source receipt under the
 [existing procedure](../../workflows/source_receipts.md). Fresh authenticated discovery
 of the intended package remains a release gate; listing installed/enabled files is
-insufficient. A CLI login-status check reported no authenticated session in the available
-environment. Do not initiate sign-in or move credentials to clear that limit.
+insufficient. A sandbox login-status check reported no visible session. The publishing
+user's normal home already has a ChatGPT sign-in; a new isolated home reports not logged
+in. These prerequisite checks do not establish authenticated discovery of the candidate.
+Do not initiate sign-in or move credentials to clear that limit.
 
 Keep the PR draft and unmerged if a required check remains blocked. Create `v0.5.1` only
 after integration and verification of the actual merged tree against reviewed source;
