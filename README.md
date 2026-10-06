@@ -27,7 +27,7 @@ Ask “How do I start with YMAS?” for [workflow-orientation](skills/workflow-o
 
 The [worksheet skill](skills/true-spec-worksheet/SKILL.md) explores consequential choices that remain unresolved. It records questions, recommendations, alternatives, reasoning and consequences for the decision owner. Its output is provisional source material. The project's acceptance process governs which decisions can enter authoritative specifications.
 
-Accepted SPEC defines what a product or system must do. Accepted SPECARC defines its architecture for a durable concern. Either can come first. `systems.md` relates the complete current specification set once it can support a useful map. ADR records a specific decision's context and rationale; SYS retains the adopting project's system-documentation role. The project controls approval and precedence. Small or already-specified work skips unnecessary stages.
+Accepted SPEC defines what must be true for a product or system. Accepted SPECARC defines its architecture for a durable concern. Either can come first. `systems.md` relates the complete current specification set once it can support a useful map. ADR records a specific decision's context and rationale; SYS retains the adopting project's system-documentation role. The project controls approval and precedence. Small or already-specified work skips unnecessary stages.
 
 Examples: “I have an idea for an economic simulation”; “Help me figure out how shipping contracts should work”; “We need to define the architecture for event reconciliation”; “These decisions are settled; turn them into specifications”; “Update the architecture map from the current specifications.”
 
