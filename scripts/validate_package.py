@@ -10,6 +10,7 @@ from urllib.request import urlopen
 
 import yaml
 from jsonschema.validators import validator_for
+from markdown_utils import visible_lines
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,19 +23,12 @@ SEMVER = re.compile(r"(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)")
 
 def markdown_anchors(contents: str) -> set[str]:
     """Common GitHub heading slugs and explicit HTML IDs; skip fenced examples."""
-    anchors = set(re.findall(r'\bid=["\']([^"\']+)["\']', contents))
+    anchors = set()
     counts = {}
-    fence = None
-    for line in contents.splitlines():
-        marker = re.match(r"^\s{0,3}(`{3,}|~{3,})", line)
-        if marker:
-            if fence is None:
-                fence = marker[1][0]
-            elif marker[1][0] == fence:
-                fence = None
-            continue
-        if fence:
-            continue
+    for line in visible_lines(contents):
+        html = re.sub(r"`+[^`]*`+", "", line)
+        for tag in re.findall(r"<[A-Za-z][^>]*>", html):
+            anchors.update(re.findall(r'\bid=["\']([^"\']+)["\']', tag))
         heading = re.match(r"^ {0,3}#{1,6}\s+(.+?)\s*#*\s*$", line)
         if not heading:
             continue

@@ -22,7 +22,7 @@ def grade(case, observation):
             errors.append(f"invalid {field}")
     if errors:
         return errors
-    if observation.get("route") != case["route"]:
+    if observation.get("route") not in case.get("routes", [case["route"]]):
         errors.append("wrong selected route")
     actions = set(observation["actions"])
     if set(case["required"]) - actions:
@@ -51,9 +51,15 @@ def grade_run(run):
     )):
         return {"run": ["missing provenance/model/permissions/artifacts"]}
     observations = run.get("observations")
-    if not isinstance(observations, dict) or set(observations) != {case["id"] for case in cases}:
+    selected = run.get("case_ids", [case["id"] for case in cases])
+    known = {case["id"] for case in cases}
+    if not isinstance(selected, list) or not selected or any(not isinstance(value, str) for value in selected):
+        return {"run": ["invalid affected-case selection"]}
+    if len(selected) != len(set(selected)) or set(selected) - known:
+        return {"run": ["duplicate or unknown affected-case selection"]}
+    if not isinstance(observations, dict) or set(observations) != set(selected):
         return {"run": ["missing or unexpected case observations"]}
-    return {case["id"]: grade(case, observations[case["id"]]) for case in cases}
+    return {case["id"]: grade(case, observations[case["id"]]) for case in cases if case["id"] in selected}
 
 
 def main():

@@ -8,6 +8,12 @@ from diagnose_documents import diagnose
 
 
 class DocumentTest(unittest.TestCase):
+    def test_version_examples_inside_fences_are_not_metadata(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write(root, "docs/SPEC_STORAGE_001_access.md", 'Version: v1\nStatus: Current\n````md\nVersion: v2\n```\nVersion: v3\n````\n')
+            self.assertEqual(diagnose(root)["findings"], [])
+
     def write(self, root, name, text="Version: v1\nStatus: Current\n"):
         path = root / name
         path.parent.mkdir(parents=True, exist_ok=True)

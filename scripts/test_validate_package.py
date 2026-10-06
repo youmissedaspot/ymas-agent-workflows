@@ -10,6 +10,10 @@ import validate_package
 
 
 class PackageLinksTest(unittest.TestCase):
+    def test_fenced_and_inline_html_do_not_make_real_anchors(self):
+        text = '````html\n<a id="fake">\n```\n## Still fake\n````\n`<a id="inline-fake">`\n<a id="real">\n# Real heading\n'
+        self.assertEqual(validate_package.markdown_anchors(text), {"real", "real-heading"})
+
     def test_anchors_same_file_cross_file_duplicates_and_fenced_examples(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

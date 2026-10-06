@@ -42,6 +42,13 @@ Record exact commands, results, source/tree, full inventory and any unrun checks
 external detailed receipt. This task record intentionally avoids copying that receipt.
 No current state/next record is created before a material integration occurs.
 
+Independent source review identified and reproduced three checker gaps: affected-case
+selection incorrectly required the whole suite, fenced HTML generated false anchors,
+and fenced version examples were read as metadata. Focused repairs exclude fenced
+examples consistently, preserve fence lengths, and validate explicit case selections;
+negative regressions retain those failures. Valid supporting route compositions are
+explicitly allowed where the same outcome can use either focused repair or the loop.
+
 The package remains instruction-only. Snapshot diagnostics cannot prevent another actor
 changing a candidate, authenticate authorization, prove tests/review quality, reserve
 unseen branch IDs, or replace semantic authority review. No release/tag/install/deploy

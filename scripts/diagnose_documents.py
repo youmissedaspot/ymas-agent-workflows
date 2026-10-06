@@ -9,6 +9,7 @@ from collections import defaultdict
 import json
 from pathlib import Path
 import re
+from markdown_utils import visible_lines
 
 
 FAMILIES = "OPS_WORKFLOW|OPS_SPECDEF|OPS_DECISION|OPS_STATE|OPS_TASK|OPS_NEXT|SPECARC|SPEC|SOT|RM|SYS|PLAN|AUDIT|ADR|BUG|REF"
@@ -39,6 +40,7 @@ def diagnose(root, archive_dirs=("docs/archive",)):
         name = path.relative_to(root).as_posix()
         record_id = f"{match['family']}_{match['id']}"
         text = path.read_text(encoding="utf-8-sig")
+        text = "\n".join(visible_lines(text))
         versions = list(dict.fromkeys(VERSION.findall(text)))
         status = STATUS.search(text)
         archived = any(path.resolve().is_relative_to(folder) for folder in archives)
