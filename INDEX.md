@@ -76,3 +76,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review adopter-facing template versioning repair → `docs/operations/tasks/OPS_TASK_DOCS_011_template-versioning-portability.md` (task record)
 
 - Review reusable source evidence and verification improvements → `docs/operations/tasks/OPS_TASK_DOCS_012_source-evidence-and-verification.md` (task record)
+- Review the distribution version and release evidence → `docs/operations/tasks/OPS_TASK_DOCS_013_release-version-and-evidence.md` (task record)

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ymas-agent-workflows",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "An instruction-only agent harness with reusable YMAS orientation, decision worksheets, repository governance, specification and architecture, audit repair, and bug knowledge workflows.",
   "author": {
     "name": "YouMissedASpot"
