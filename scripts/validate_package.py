@@ -11,6 +11,7 @@ from urllib.request import urlopen
 import yaml
 from jsonschema.validators import validator_for
 from markdown_utils import visible_lines, without_inline_code
+from check_feature_map import check_freshness, load_json, validate_map
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -122,6 +123,21 @@ def validate() -> list[str]:
             errors.append(f"{skill.relative_to(ROOT)}: name differs from directory")
         if not isinstance(front.get("description"), str) or not front["description"].strip():
             errors.append(f"{skill.relative_to(ROOT)}: description must be nonempty")
+
+    feature_assets = SKILL_ROOT / "spec-driven-development/assets"
+    try:
+        feature_schema = load_json(feature_assets / "feature_map.schema.json")
+        for map_path, source_root in (
+            (feature_assets / "feature_map_template.json", None),
+            (feature_assets / "feature_map_example/feature_map.json", feature_assets / "feature_map_example"),
+        ):
+            feature_map = load_json(map_path)
+            findings = validate_map(feature_map, feature_schema)
+            if not findings and source_root is not None:
+                findings = check_freshness(feature_map, source_root)
+            errors.extend(f"{map_path.relative_to(ROOT)}: {row['code']}: {row['message']}" for row in findings)
+    except (OSError, ValueError) as exc:
+        errors.append(f"Feature Map assets unavailable: {exc}")
 
     markdown_files = sorted(ROOT.rglob("*.md"))
     markdown_files = [path for path in markdown_files if ".git" not in path.parts]

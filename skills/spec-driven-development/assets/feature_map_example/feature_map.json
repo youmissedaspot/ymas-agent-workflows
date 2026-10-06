@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "map_id": "records",
+  "document_version": "v1",
+  "kind": "derived-feature-map",
+  "coverage": {
+    "scope": "Synthetic record lookup fixture only",
+    "omissions": [
+      "No persistence, network, UI, performance claim, or application acceptance."
+    ]
+  },
+  "sources": [
+    {
+      "id": "source.lookup-contract",
+      "kind": "requirement",
+      "path": "requirements.md",
+      "locator": "#lookup",
+      "sha256": "a156e22194185cd63a96e466253868177a5dd511201b07bfe13a56a016dc9663",
+      "status": "accepted",
+      "acceptance": "Synthetic fixture contract, requirements.md"
+    },
+    {
+      "id": "source.records",
+      "kind": "implementation",
+      "path": "src/records.py",
+      "locator": "lookup",
+      "sha256": "6aad7057ea6a319d7ed6cbb14cb05eb0e87c86533f3425b8f8dd232e0417cd7e",
+      "status": "observed",
+      "acceptance": ""
+    },
+    {
+      "id": "source.check-records",
+      "kind": "tool",
+      "path": "tools/check_records.py",
+      "locator": "exercise",
+      "sha256": "b7bd1dc6d2c7f7e35423fe0ff08ee003a23005f2d4667c258662162cdf180661",
+      "status": "observed",
+      "acceptance": ""
+    }
+  ],
+  "features": [
+    {
+      "id": "records",
+      "purpose": "Group record lookup capabilities",
+      "status": "partial",
+      "entrypoints": [],
+      "prerequisites": [],
+      "gotchas": [],
+      "limits": [
+        "Use child features for operational entrypoints and verification."
+      ]
+    },
+    {
+      "id": "records.storage",
+      "purpose": "Provide known in-memory records to lookup",
+      "status": "observed",
+      "entrypoints": [
+        {
+          "kind": "system",
+          "description": "Fixture dictionary",
+          "source": "source.check-records",
+          "locator": "exercise: records"
+        }
+      ],
+      "prerequisites": [
+        "Maintained in-memory fixture"
+      ],
+      "gotchas": [
+        "No persistent store"
+      ],
+      "limits": []
+    },
+    {
+      "id": "records.lookup",
+      "purpose": "Read existing or missing records without mutation",
+      "status": "observed",
+      "entrypoints": [
+        {
+          "kind": "system",
+          "description": "lookup(records, key)",
+          "source": "source.records",
+          "locator": "lookup"
+        }
+      ],
+      "prerequisites": [
+        "Known record dictionary"
+      ],
+      "gotchas": [
+        "Missing keys return null"
+      ],
+      "limits": []
+    }
+  ],
+  "tools": [
+    {
+      "id": "tool.records-check",
+      "purpose": "Exercise known present/absent lookup states",
+      "source": "source.check-records",
+      "argv": [
+        "python",
+        "-B",
+        "tools/check_records.py"
+      ],
+      "capabilities": [
+        "seed",
+        "exercise",
+        "inspect",
+        "cleanup"
+      ],
+      "effects": "read",
+      "target_scope": "Owned synthetic in-memory fixture only",
+      "preview_argv": [],
+      "limits": [
+        "No persistent mutation; preview is unnecessary.",
+        "No UI or performance claim."
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scenario.records-lookup",
+      "purpose": "Prove fixture lookup outcomes and nonmutation",
+      "status": "ready",
+      "prerequisites": [
+        "Python 3.12 available"
+      ],
+      "setup": [
+        "The maintained tool constructs the known dictionary in memory."
+      ],
+      "exercise": "Manually invoke tool.records-check in this fixture root after checking scope.",
+      "expectations": [
+        {
+          "source": "source.lookup-contract",
+          "statement": "Existing value, null for absent, original dictionary unchanged."
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "json",
+          "capture": "Retain stdout, command, exit status and exact source identity in the task receipt."
+        }
+      ],
+      "cleanup": [
+        "Process exit releases the dictionary; no persisted resources."
+      ],
+      "limits": [
+        "This proves only the synthetic fixture assertions."
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "from": "records.lookup",
+      "type": "depends_on",
+      "to": "records.storage",
+      "basis": "observed",
+      "provenance": [
+        "source.records"
+      ]
+    },
+    {
+      "from": "records.lookup",
+      "type": "governed_by",
+      "to": "source.lookup-contract",
+      "basis": "specified",
+      "provenance": [
+        "source.lookup-contract"
+      ]
+    },
+    {
+      "from": "records.storage",
+      "type": "governed_by",
+      "to": "source.lookup-contract",
+      "basis": "specified",
+      "provenance": [
+        "source.lookup-contract"
+      ]
+    },
+    {
+      "from": "records.lookup",
+      "type": "implemented_by",
+      "to": "source.records",
+      "basis": "observed",
+      "provenance": [
+        "source.records"
+      ]
+    },
+    {
+      "from": "records.storage",
+      "type": "implemented_by",
+      "to": "source.check-records",
+      "basis": "observed",
+      "provenance": [
+        "source.check-records"
+      ]
+    },
+    {
+      "from": "records.lookup",
+      "type": "verified_by",
+      "to": "scenario.records-lookup",
+      "basis": "observed",
+      "provenance": [
+        "source.check-records"
+      ]
+    },
+    {
+      "from": "records.storage",
+      "type": "verified_by",
+      "to": "scenario.records-lookup",
+      "basis": "observed",
+      "provenance": [
+        "source.check-records"
+      ]
+    },
+    {
+      "from": "scenario.records-lookup",
+      "type": "uses_tool",
+      "to": "tool.records-check",
+      "basis": "observed",
+      "provenance": [
+        "source.check-records"
+      ]
+    },
+    {
+      "from": "records",
+      "type": "contains",
+      "to": "records.lookup",
+      "basis": "observed",
+      "provenance": [
+        "source.check-records"
+      ]
+    },
+    {
+      "from": "records",
+      "type": "contains",
+      "to": "records.storage",
+      "basis": "observed",
+      "provenance": [
+        "source.check-records"
+      ]
+    },
+    {
+      "from": "records",
+      "type": "governed_by",
+      "to": "source.lookup-contract",
+      "basis": "specified",
+      "provenance": [
+        "source.lookup-contract"
+      ]
+    }
+  ]
+}

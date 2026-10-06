@@ -19,6 +19,8 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Bind review/test/integration to source → `docs/workflows/source_receipts.md`
 - Preserve task context, selected contracts and resume invariants → `docs/workflows/task_context.md`
 - Verify affected caller lifecycles and classify failures → `docs/workflows/verification_boundaries.md`
+- Map capabilities to authority, implementation and verification → `docs/workflows/feature_maps.md`
+- Check map structure/raw freshness and export typed graphs → `scripts/check_feature_map.py`
 - Diagnose adopted document IDs and edition metadata without writes → `scripts/diagnose_documents.py`
 
 - Inspect routing/scope/resume replay cases and evidence limits → `docs/workflows/behavioral_checks.md`
@@ -77,3 +79,5 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 
 - Review reusable source evidence and verification improvements → `docs/operations/tasks/OPS_TASK_DOCS_012_source-evidence-and-verification.md` (task record)
 - Review the distribution version and release evidence → `docs/operations/tasks/OPS_TASK_DOCS_013_release-version-and-evidence.md` (task record)
+
+- Review maintained verification and derived Feature Maps → `docs/operations/tasks/OPS_TASK_DOCS_014_agent-verification-and-feature-maps.md` (provisional task record)

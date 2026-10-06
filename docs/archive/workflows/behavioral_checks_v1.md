@@ -1,12 +1,12 @@
+> Status: Historical. Complete v1 predecessor; superseded by [the current owner](../../workflows/behavioral_checks.md).
+
 # Bounded behavioral checks
 
-Version: v1.1
-Previous version: [v1](../archive/workflows/behavioral_checks_v1.md)
-Change summary: Add maintained-verification and feature-map drift cases without changing grader authority.
+Version: v1
 
-The fourteen [neutral cases](../../scripts/behavior_cases.json) cover explicit, implicit and
+The twelve [neutral cases](../../../scripts/behavior_cases.json) cover explicit, implicit and
 negative routing, scope, settled decisions, whole-set conflicts, known blockers, selected
-contracts, resume identity, concept ambiguity/freshness and project-owned acceptance, maintained verification and scoped feature-map drift. Run affected cases for changed
+contracts, resume identity, concept ambiguity/freshness and project-owned acceptance. Run affected cases for changed
 skills; broaden only for new failures, changed contracts or an explicitly requested baseline.
 
 In disposable fixtures, present each prompt/context with the actual selected package
