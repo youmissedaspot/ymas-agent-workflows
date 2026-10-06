@@ -14,6 +14,8 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 
 ## Evidence and bounded verification
 
+- Offer relevant candidate paths with scoped identities and aliases → `docs/workflows/source_navigation.md`
+
 - Bind review/test/integration to source → `docs/workflows/source_receipts.md`
 - Preserve task context, selected contracts and resume invariants → `docs/workflows/task_context.md`
 - Verify affected caller lifecycles and classify failures → `docs/workflows/verification_boundaries.md`

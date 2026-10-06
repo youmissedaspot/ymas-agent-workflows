@@ -2,9 +2,9 @@
 
 Version: v1
 
-The ten [neutral cases](../../scripts/behavior_cases.json) cover explicit, implicit and
+The twelve [neutral cases](../../scripts/behavior_cases.json) cover explicit, implicit and
 negative routing, scope, settled decisions, whole-set conflicts, known blockers, selected
-contracts, resume identity and project-owned acceptance. Run affected cases for changed
+contracts, resume identity, concept ambiguity/freshness and project-owned acceptance. Run affected cases for changed
 skills; broaden only for new failures, changed contracts or an explicitly requested baseline.
 
 In disposable fixtures, present each prompt/context with the actual selected package

@@ -23,11 +23,16 @@ stops. Existing complete-set SPEC/SPECARC review, repository authority, narrow r
 isolation and project-owned acceptance remain in force. Reduced-text review and optional
 aggregate usage measurement remain experiments without savings claims or telemetry.
 
-Ten neutral replay cases and a declared-outcome grader cover routing/scope/decision/stop
+Twelve neutral replay cases and a declared-outcome grader cover routing/scope/decision/stop
 boundaries. Positive/negative fixtures validate the grader; they do not prove model
 behavior. Independent replay/review evidence belongs in the task's detailed receipt.
 Installation byte-copy regressions detect same-version supporting-file drift; CLI smoke
 also compares complete tracked content when installation testing is authorized.
+
+Optional concept-to-source navigation adapts a public research source to existing
+indexes: relevant candidate paths, scoped identity/aliases, original-source provenance
+and stale/deleted/revoked-source handling. No graph, automatic retrieval or savings claim
+is added; full authority and complete-set specification obligations are preserved.
 
 ## Validation and limits
 

@@ -25,6 +25,7 @@ Record only what the next action needs:
 Layer retrieval: lean instruction/index pointers → task context and owning clauses →
 full owning/dependent contracts when needed → raw evidence/history for a specific
 question. Check hashes/editions against current sources before relying on a packet.
+For a larger corpus, see [optional concept-to-source navigation](source_navigation.md).
 If stale or conflicting, reconcile/regenerate it. Never let a summary override authority,
 erase accepted qualifications, reopen settled choices or manufacture permission.
 
