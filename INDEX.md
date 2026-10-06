@@ -91,3 +91,6 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review human understanding, bounded probes and discrepancy escalation → `docs/operations/tasks/OPS_TASK_DOCS_015_human-understanding.md` (task record)
 
 - Review worksheet-link portability and combined release preparation → `docs/operations/tasks/OPS_TASK_DOCS_016_template-portability-and-release-preparation.md` (task record)
+
+- Review audit coverage and regression evaluations → `docs/operations/tasks/OPS_TASK_DOCS_017_audit-coverage-and-regression-evaluations.md` (local checkpoint record)
+- Review audit release preparation and remaining gates → `docs/operations/tasks/OPS_TASK_DOCS_018_audit-release-preparation.md` (task record)
