@@ -33,6 +33,8 @@ SPEC defines what must be true for a product/system; SPECARC defines accepted ar
 
 Record adopted durable categories, their meanings, and any documented fallback here. Keep the vocabulary small, mutually distinguishable where practical, and broad enough to remain stable. Before adding a token, search the existing taxonomy and current and legacy filenames, decide whether an established category owns the concept, and add a new one only for a durable distinction. If legacy aliases exist, record their mapping without automatically renaming records. Label proposals as provisional until the project adopts them. Do not put planning periods or campaign names in this taxonomy.
 
+For concurrent record creation, coordinate family-ID reservations with the integration owner, then recheck current/archive/legacy and active-worker allocations before integration. A next number visible in one branch is provisional. Preserve colliding records and resolve only the affected allocation; no historical renumbering campaign. Read-only diagnostics may expose stable facts but cannot infer ownership or unseen reservations.
+
 ## Operational memory and workflow discovery
 
 - `docs/operations/tasks/` — `OPS_TASK` substantive completed work.
@@ -45,6 +47,8 @@ Record adopted durable categories, their meanings, and any documented fallback h
 When present, the highest numbered `OPS_TASK`, `OPS_STATE`, and `OPS_NEXT` is respectively the latest task, current snapshot, and current next action. Find relevant records in legacy locations during migrations. Operational records are context and evidence, not product authority. Discover specialized workflows through the repository's instructions and installed skills; load only those relevant to the task.
 
 During authorized adoption, keep agent instructions concise: point to this project's standard and the available workflow index, and ask the agent to use relevant workflows for ordinary requests without requiring users to name skills or assign record IDs. Preserve local approval and Git rules. Evaluation assesses the current repository without edits; consolidation requires a request and preserves information by default; destructive cleanup requires explicit intent. An audit target must come from the request or conversation, not these operational records. Detailed procedures belong in the specialized skills, not the always-on instructions. Installation alone does not adopt this standard or guarantee automatic skill selection.
+
+After a material integration, reconcile current source/state and next action through the owning coordinator. Keep one detailed evidence receipt and link small state/next deltas to it; preserve historical pre-integration task claims. Roles name responsibilities; model/effort preferences and qualified skill selection come from project/task authority, not a universal vendor default.
 
 ## Authority hierarchy — project owner must complete
 

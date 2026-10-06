@@ -10,9 +10,10 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 
-import validate_package
+from check_receipt import git, package_inventory
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,13 +27,52 @@ SKILLS_BY_VERSION = {
               "evaluate-repository", "documentation-consolidation"},
     "0.4.0": {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge",
               "evaluate-repository", "documentation-consolidation", "workflow-orientation", "true-spec-worksheet"},
+    "0.4.1": {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge",
+              "evaluate-repository", "documentation-consolidation", "workflow-orientation", "true-spec-worksheet"},
+    "0.5.0": {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge",
+              "evaluate-repository", "documentation-consolidation", "workflow-orientation", "true-spec-worksheet",
+              "like-im-5"},
 }
+
+
+def verify_skill_contract(version, installed_skills):
+    """Check the release-specific catalog without installing or running a model."""
+    expected = SKILLS_BY_VERSION.get(version)
+    if expected is None:
+        raise RuntimeError(f"No documented skill contract for installed version {version}.")
+    if set(installed_skills) != expected:
+        raise RuntimeError(f"Installed skill set differs from the {len(expected)} documented skills for {version}.")
+
+
+def verify_installed_snapshot(expected, installed):
+    """Compare all tracked candidate files, not just version/skill names."""
+    actual = package_inventory(installed, expected["files"])
+    if actual != expected:
+        changed = [name for name, digest in expected["files"].items()
+                   if actual["files"].get(name) != digest]
+        raise RuntimeError(f"Installed candidate bytes differ: {', '.join(changed)}")
+
+
+def verify_installed_package(installed):
+    """Validate the installed release with its own versioned package contract."""
+    result = subprocess.run(
+        [sys.executable, "-B", str(installed / "scripts/validate_package.py")],
+        cwd=installed, capture_output=True, text=True, encoding="utf-8", timeout=180,
+    )
+    if result.returncode:
+        raise RuntimeError(f"Installed package validation failed ({result.returncode})\n{result.stdout}\n{result.stderr}")
+    return result.stdout
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", choices=("published", "checkout"), default="published")
     args = parser.parse_args()
+    expected_snapshot = None
+    if args.source == "checkout":
+        if git(ROOT, "status", "--porcelain", "--untracked-files=normal"):
+            raise RuntimeError("Commit/reconcile candidate changes before its installation identity test.")
+        expected_snapshot = package_inventory(ROOT, [name for name in git(ROOT, "ls-files", "-z").split("\0") if name])
     codex = shutil.which("codex.cmd" if os.name == "nt" else "codex")
     if not codex or not shutil.which("git"):
         raise RuntimeError("Install Codex CLI 0.159.1 and Git, then rerun this check.")
@@ -85,20 +125,13 @@ def main():
             if len(manifests) != 1:
                 raise RuntimeError(f"Expected one installed package, found {len(manifests)}.")
             installed = manifests[0].parent
+            if expected_snapshot is not None:
+                verify_installed_snapshot(expected_snapshot, installed)
             version = json.loads(manifests[0].read_text(encoding="utf-8"))["version"]
             if args.source == "checkout" and version != json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))["version"]:
                 raise RuntimeError("Installed version differs from the candidate package.")
-            expected = SKILLS_BY_VERSION.get(version)
-            if expected is None:
-                raise RuntimeError(f"No documented skill contract for installed version {version}.")
-            if {path.parent.name for path in (installed / "skills").glob("*/SKILL.md")} != expected:
-                raise RuntimeError(f"Installed skill set differs from the {len(expected)} documented skills for {version}.")
-            validate_package.ROOT = installed
-            validate_package.SKILL_ROOT = installed / "skills"
-            validate_package.MARKETPLACE = installed / ".agents/plugins/marketplace.json"
-            failures = validate_package.validate()
-            if failures:
-                raise RuntimeError("\n".join(failures))
+            verify_skill_contract(version, (path.parent.name for path in (installed / "skills").glob("*/SKILL.md")))
+            print(verify_installed_package(installed).strip(), flush=True)
 
         verify_install()
         print("PASS: fresh registration, installation, versioned skill set, and package validation", flush=True)

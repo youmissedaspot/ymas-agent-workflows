@@ -3,12 +3,15 @@
 import json
 import re
 import sys
+import unicodedata
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 from urllib.request import urlopen
 
 import yaml
 from jsonschema.validators import validator_for
+from markdown_utils import visible_lines, without_inline_code
+from check_feature_map import check_freshness, load_json, validate_map
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,16 +22,38 @@ INDEX_ROUTE = re.compile(r"→\s*`([^`]+)`")
 SEMVER = re.compile(r"(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)")
 
 
+def markdown_anchors(contents: str) -> set[str]:
+    """Common GitHub heading slugs and explicit HTML IDs; skip fenced examples."""
+    anchors = set()
+    counts = {}
+    for line in visible_lines(contents):
+        html = without_inline_code(line)
+        for tag in re.findall(r"<[A-Za-z][^>]*>", html):
+            anchors.update(re.findall(r'\bid=["\']([^"\']+)["\']', tag))
+        heading = re.match(r"^ {0,3}#{1,6}\s+(.+?)\s*#*\s*$", line)
+        if not heading:
+            continue
+        title = re.sub(r"<[^>]+>", "", heading[1]).lower()
+        slug = "".join(c for c in title if c in " -_" or unicodedata.category(c)[0] in "LN").replace(" ", "-")
+        count = counts.get(slug, 0)
+        counts[slug] = count + 1
+        anchors.add(f"{slug}-{count}" if count else slug)
+    return anchors
+
+
 def check_local_path(source: Path, target: str, errors: list[str]) -> None:
     target = target.strip().strip("<>").split(" ", 1)[0]
-    if target.startswith("#") or urlparse(target).scheme or target.startswith("//"):
+    if urlparse(target).scheme or target.startswith("//"):
         return
     path = unquote(target.split("#", 1)[0].split("?", 1)[0])
-    if not path:
-        return
-    resolved = (source.parent / path).resolve()
+    resolved = (source.parent / path).resolve() if path else source.resolve()
     if not resolved.is_relative_to(ROOT.resolve()) or not resolved.exists():
         errors.append(f"{source.relative_to(ROOT)}: missing local target {target}")
+        return
+    fragment = unquote(target.partition("#")[2])
+    if fragment and resolved.is_file() and resolved.suffix.lower() == ".md":
+        if fragment not in markdown_anchors(resolved.read_text(encoding="utf-8-sig")):
+            errors.append(f"{source.relative_to(ROOT)}: missing local anchor {target}")
 
 
 def validate() -> list[str]:
@@ -98,6 +123,21 @@ def validate() -> list[str]:
             errors.append(f"{skill.relative_to(ROOT)}: name differs from directory")
         if not isinstance(front.get("description"), str) or not front["description"].strip():
             errors.append(f"{skill.relative_to(ROOT)}: description must be nonempty")
+
+    feature_assets = SKILL_ROOT / "spec-driven-development/assets"
+    try:
+        feature_schema = load_json(feature_assets / "feature_map.schema.json")
+        for map_path, source_root in (
+            (feature_assets / "feature_map_template.json", None),
+            (feature_assets / "feature_map_example/feature_map.json", feature_assets / "feature_map_example"),
+        ):
+            feature_map = load_json(map_path)
+            findings = validate_map(feature_map, feature_schema)
+            if not findings and source_root is not None:
+                findings = check_freshness(feature_map, source_root)
+            errors.extend(f"{map_path.relative_to(ROOT)}: {row['code']}: {row['message']}" for row in findings)
+    except (OSError, ValueError) as exc:
+        errors.append(f"Feature Map assets unavailable: {exc}")
 
     markdown_files = sorted(ROOT.rglob("*.md"))
     markdown_files = [path for path in markdown_files if ".git" not in path.parts]

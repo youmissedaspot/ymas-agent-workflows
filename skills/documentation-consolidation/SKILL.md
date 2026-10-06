@@ -47,3 +47,5 @@ By default, for new YMAS records use `<FAMILY>_<L2_CATEGORY>_<ID>_<l3-descriptio
 Verify the scoped diff against the migration map, document IDs, content preservation, references/indexes, and stale paths. Use before/after hashes for content-preserving moves; for intentional consolidation, account for each source's unique information and retained historical location. Preserve mode must have no unexplained loss; cleanup must have recovery evidence for each removal. Run applicable documentation/package checks.
 
 Report the mode used, files changed, owners established, preserved/archived material, any deletions with recovery commits, verification results, unresolved questions, and the next action. Keep recommendations separate from completed changes and product authority separate from organizational decisions.
+
+Use [human explanation and editorial judgment](../../docs/workflows/human_understanding.md) for readable explanations and documentation. Consider ordinary documentation purposes only where useful; do not reclassify canonical specifications or infer migration authority from editorial guidance.

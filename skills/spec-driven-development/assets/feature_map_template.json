@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "map_id": "application",
+  "document_version": "v1",
+  "kind": "derived-feature-map",
+  "coverage": {
+    "scope": "Template; no capabilities mapped",
+    "omissions": [
+      "All capabilities are unmapped. Populate from accepted authority and inspected implementation."
+    ]
+  },
+  "sources": [],
+  "features": [],
+  "tools": [],
+  "scenarios": [],
+  "relations": []
+}

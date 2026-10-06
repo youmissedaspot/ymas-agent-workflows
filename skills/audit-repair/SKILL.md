@@ -56,12 +56,14 @@ with no task context, and the agent selects the highest `OPS_NEXT_###` or anothe
 
 Repository state is evidence and context, not user intent.
 
+Before substantial specification, architecture or implementation, demonstrate a concise [Understanding Check](../../docs/workflows/human_understanding.md#understanding-check) after relevant inspection and before proposing implementation. Keep trivial explicitly authorized work proportional; this is not a new approval gate.
+
 ## Workflow
 
-1. Bootstrap into the repository: read applicable instructions, governing authority, current context, affected implementation and tests. Treat documented requirements and inferred expectations separately. Inspect relevant Git history when a behavior's purpose is non-obvious.
+1. Bootstrap into the repository: read applicable instructions, governing authority, current context, affected implementation and tests. Treat documented requirements and inferred expectations separately. An adopted [Feature Map](../../docs/workflows/feature_maps.md) can locate governing clauses, actual entrypoints and maintained scenarios; inspect originals and freshness. It does not create an audit target or acceptance authority. Inspect relevant Git history when a behavior's purpose is non-obvious.
 2. Report findings with precise evidence, affected boundary, and severity where supported. Do not create a requirement from a surprising observation alone.
 3. Before editing after a verified failure, state the failed unit, expected behavior, observed behavior, evidence, allowed repair scope, and boundaries to preserve.
-4. Repair the smallest unit that explains the failure. Keep neighboring correct behavior intact; avoid unrelated cleanup.
-5. Rerun the relevant verification and report actual results. If the same narrowly scoped unit fails three repair attempts, stop patching and reconsider specification interpretation, task decomposition, authority, architecture, and implementation strategy before a fourth attempt.
+4. Repair the smallest unit that explains the failure. Keep neighboring correct behavior intact; avoid unrelated cleanup. A meaningful [architecture discrepancy](../../docs/workflows/specification_driven_development.md#architecture-discrepancy) stops expansion and returns to the smallest planning/specification owner immediately, even before three failed repairs; do not quietly change architecture to make the repair work.
+5. Rerun the relevant verification, using maintained tools/scenarios where available, and report actual results; promote repeated nontrivial verification where warranted. Update only affected map/tool entries after relevant changes, preserving correct neighbors. For changed shared contracts, verify [affected caller lifecycles](../../docs/workflows/verification_boundaries.md). Stop a known blocker or denied action immediately; do not retry or route it through another tool or worker. Retain the failed unit, valid reproduction, cause class, source change and attempt count. If the same narrowly scoped unit fails three repair attempts, stop patching and reconsider specification interpretation, task decomposition, authority, architecture, and implementation strategy before a fourth attempt.
 
 In the completion report, distinguish what was implemented, what was verified, tests run, observed results, and any remaining manual acceptance. Compilation or green unit tests establish only what they actually cover.

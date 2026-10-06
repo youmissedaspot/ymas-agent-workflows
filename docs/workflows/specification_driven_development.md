@@ -1,10 +1,12 @@
 # Specification-driven development
 
-Version: v3
-Previous version: [v2](../archive/workflows/specification_driven_development_v2.md)
-Change summary: Add decision worksheets, sibling SPEC/SPECARC definitions, and whole-system integration without mandatory early artifacts.
+Version: v3.1
+Previous version: [v3](../archive/workflows/specification_driven_development_v3.md)
+Change summary: Clarify understanding, bounded prototypes, architectural alternatives and discrepancy escalation.
 
 Use this workflow to formalize a True Specification conversation and settled decisions, or for substantive product or system changes when important rules, architecture, boundaries, or staged scope remain unresolved. The conceptual flow is **Discuss → True Spec Worksheet → Decide → SPEC and/or SPECARC → systems.md → Plan → Implement → Verify → Human Acceptance where applicable**. It is a workflow model, not a requirement to create every artifact. Inspect an existing project and resume at the appropriate stage; small or already-specified work bypasses unnecessary discovery and documentation. A specification-only request ends with the requested specifications and relevant map review/update, without starting implementation.
+
+Before substantial definition, architecture or implementation, give a concise [Understanding Check](human_understanding.md#understanding-check) grounded in relevant sources. Establish the problem, behavior, authority, constraints and unresolved conflicts before proposing implementation.
 
 ## Specification roles and project authority
 
@@ -35,12 +37,54 @@ Version both the specifications and `systems.md` using the project's standard an
 
 After substantive SPEC or SPECARC creation or revision, review the complete current specification set and update `systems.md` when the change affects architecture, ownership, boundaries, dependencies, interfaces, flows, or cross-system behavior. For a change that leaves an existing map accurate, report the review without mechanically bumping its version. A meaningful map may remain incomplete with explicitly tracked gaps; do not invent decisions to complete it. Check whether the total architecture implied by the set forms a coherent system.
 
+## Specifications and bounded empirical probes
+
+**Specify what must be true. Prototype what cannot be known confidently through reasoning
+and existing evidence alone.** Keep thick specification layers for domain semantics,
+ownership, accounting authority, custody, contracts, persistence, save compatibility,
+public/private information boundaries, business rules and system invariants.
+
+Use a targeted prototype or empirical probe when material uncertainty concerns UI feel,
+performance, unknown library or API behavior, technical feasibility, interaction timing
+or an implementation mechanism. First inspect existing evidence and state the unanswered
+question, what observation would resolve it, the authorized disposable scope, resources,
+evidence and cleanup. Choose the smallest useful probe; no competing-prototype quota is
+required. Preserve safety and verification isolation under the existing workflow.
+
+A prototype is evidence, not authority. Record its conditions, observations and limits;
+return consequential findings to the appropriate decision/specification owner. Do not
+silently promote throwaway code, a successful experiment or its assumptions into product
+requirements or production architecture. Formalize accepted conclusions through the
+project's existing process before dependent implementation. A prototype is not a general
+replacement for planning or specification.
+
 ## Transition to implementation
 
 6. **Inspect repository reality.** After the relevant specification layers are sufficiently settled, inspect current architecture, implementation, tests, schemas, interfaces, and unusual behavior's relevant Git history. Compare them with authority; history and code are evidence, not product authority. Earlier exploratory inspection may inform design without silently settling requirements.
-7. **Plan.** Translate the specifications into affected components, order, ownership boundaries, migrations, tests, risks, integration points, justified compatibility needs, and exclusions. If this exposes a product gap, return to its specification owner.
+7. **Plan.** For consequential architecture choices, compare the recommended approach with a credible alternative, why it wins under the governing constraints, its important tradeoff and evidence that would prove it wrong. Reuse accepted decision records or the [worksheet](../../skills/true-spec-worksheet/SKILL.md); do not reopen settled choices or create a model competition. Prototype alternatives only for material uncertainty. Translate the specifications into affected components, order, ownership boundaries, migrations, tests, risks, integration points, justified compatibility needs, and exclusions. If this exposes a product gap, return to its specification owner.
 8. **Review adversarially when complexity warrants.** Challenge the plan for missing requirements, contradictions, authority violations, hidden coupling, incorrect ownership, failure and concurrency gaps, migrations, security, tests, naming leaks, unjustified compatibility, and divergence from intent. A reviewer may identify gaps, not invent product decisions. Use the [plan review rubric](../../skills/spec-driven-development/references/implementation_plan_review.md).
-9. **Implement and verify.** Use bounded units, the [execution loop](agent_execution_loop.md), and isolated workbranches. Inspect before editing, verify each meaningful unit, repair the smallest failed unit, and reassess after three failures on that unit. Never relax accepted product rules merely because implementation is difficult.
+9. **Implement and verify.** Use bounded units, the [execution loop](agent_execution_loop.md), and isolated workbranches. Inspect before editing, verify each meaningful unit, repair the smallest failed unit, and reassess after three failures on that unit. Never relax accepted product rules merely because implementation is difficult. Apply the architecture discrepancy trigger below without waiting for three failures.
 10. **Prepare human acceptance.** Agent tests, code review, logs, schemas, and API exercises provide verification evidence. Where the project reserves final product acceptance to a human owner, prepare a concise [manual checklist](../../skills/spec-driven-development/references/human_acceptance_checklist.md) and leave sign-off to that owner unless the repository establishes another authority model.
 
 If detailed design or planning reveals an earlier error, repair the smallest incorrect authoritative unit, propagate the correction to dependent layers, and rerun affected review. Do not rewrite unrelated settled work or force progress through a known bad assumption.
+
+## Architecture discrepancy
+
+Stop expanding implementation when evidence reveals a meaningful mismatch with an
+architectural assumption. Signals include unexpected unmodeled state, ownership crossing
+an unanticipated boundary, repeated workarounds or exception paths, surprising interface
+parameters, weakened type contracts, repeated forced casts or escape hatches, duplicate
+logic across unrelated callers, or materially broader scope than specified.
+
+These are contextual signals, not syntactic bans: an exception, cast or new parameter
+can be justified by the governing design. Explain the discrepancy using evidence, why
+it matters, and the affected specification or design assumption. Distinguish a local
+implementation defect from a design gap. Return to the smallest appropriate plan,
+SPEC/SPECARC or decision layer; revise only within its authority, then propagate the
+accepted correction and repeat affected review/verification. Preserve correct neighbors
+and continue independent settled work where possible.
+
+Do not quietly normalize the mismatch by changing architecture in code. This trigger is
+independent of test failures; green tests do not establish that the design represents
+the discovered state. The existing three-failed-attempt ceiling still applies to narrow
+repair and is not a quota to consume before reporting an architectural discrepancy.

@@ -1,0 +1,470 @@
+{
+  "format": 1,
+  "cases": [
+    {
+      "id": "audit-no-target",
+      "prompt": "$audit-repair",
+      "context": "A next-action record recommends auditing a cache; the user supplied no target.",
+      "route": "audit-repair",
+      "required": [
+        "ask_target"
+      ],
+      "forbidden": [
+        "choose_backlog_target",
+        "audit",
+        "write"
+      ],
+      "writes": [],
+      "decisions": []
+    },
+    {
+      "id": "orientation-only",
+      "prompt": "Explain where to start with this workflow.",
+      "context": "Accepted specifications already exist. This is orientation only.",
+      "route": "workflow-orientation",
+      "required": [
+        "explain_resume_stage"
+      ],
+      "forbidden": [
+        "adopt",
+        "implement",
+        "write"
+      ],
+      "writes": [],
+      "decisions": []
+    },
+    {
+      "id": "settled-edit",
+      "prompt": "Fix the spelling in the display label.",
+      "context": "Accepted display wording is 'Available'. src/label.txt says 'Availble'. No product choice is unresolved. Only the label edit is authorized.",
+      "route": "agent-execution-loop",
+      "required": [
+        "edit_label",
+        "verify_change"
+      ],
+      "forbidden": [
+        "reopen_decision",
+        "adopt",
+        "create_spec"
+      ],
+      "writes": [
+        "src/label.txt"
+      ],
+      "decisions": [
+        "accepted-display-wording"
+      ],
+      "routes": [
+        "agent-execution-loop",
+        "audit-repair"
+      ]
+    },
+    {
+      "id": "unresolved-rule",
+      "prompt": "Help decide whether expired requests may be renewed.",
+      "context": "Expiry semantics are consequential and undefined; the owner requests a decision worksheet only.",
+      "route": "true-spec-worksheet",
+      "required": [
+        "surface_decision"
+      ],
+      "forbidden": [
+        "implement",
+        "claim_acceptance",
+        "write"
+      ],
+      "writes": [],
+      "decisions": []
+    },
+    {
+      "id": "full-set-conflict",
+      "prompt": "Formalize the accepted retry limit and review integration.",
+      "context": "A new accepted retry limit permits one attempt. An unaffected accepted recovery specification requires two. The authority owner has not resolved precedence. Read both; stop only dependent formalization, preserve acceptance sources.",
+      "route": "spec-driven-development",
+      "required": [
+        "read_full_set",
+        "surface_conflict",
+        "stop_dependents"
+      ],
+      "forbidden": [
+        "silently_override",
+        "implement",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "one-attempt-acceptance",
+        "two-attempt-acceptance"
+      ]
+    },
+    {
+      "id": "known-blocker",
+      "prompt": "Continue the repair from this handoff.",
+      "context": "The affected publication action was explicitly denied. Preserve the stop; independent authorized read-only inspection may continue. Three attempts are not a retry quota.",
+      "route": "audit-repair",
+      "required": [
+        "stop_blocker"
+      ],
+      "forbidden": [
+        "retry_denied",
+        "reroute_denied",
+        "publish",
+        "write"
+      ],
+      "writes": [],
+      "decisions": []
+    },
+    {
+      "id": "qualified-contract",
+      "prompt": "Orient yourself for a settled implementation task.",
+      "context": "Two project-bootstrap skills differ. Repository instructions explicitly select the qualified YMAS package supplied for the trial. Installation alone does not authorize adoption. Record the selected contract path/version.",
+      "route": "project-bootstrap",
+      "required": [
+        "record_selected_contract"
+      ],
+      "forbidden": [
+        "choose_by_bare_name",
+        "adopt",
+        "remove_personal_skill",
+        "write"
+      ],
+      "writes": [],
+      "decisions": []
+    },
+    {
+      "id": "resume-invariants",
+      "prompt": "Resume after interruption.",
+      "context": "Accepted decision D1 remains: reads never write. A prior mutation's completion is unknown, source may have moved and owned scratch resources remain. Reconcile live identity and pending operation before any action; no retry is authorized.",
+      "route": "agent-execution-loop",
+      "required": [
+        "reconcile_source",
+        "preserve_operation_identity",
+        "preserve_resources"
+      ],
+      "forbidden": [
+        "replay_uncertain",
+        "reopen_decision",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "D1"
+      ]
+    },
+    {
+      "id": "human-acceptance",
+      "prompt": "Report verification status for the completed change.",
+      "context": "Technical tests passed. Local authority reserves final product acceptance to its human owner; no human sign-off exists. No new acceptance committee or scripted play gate is authorized.",
+      "route": "spec-driven-development",
+      "required": [
+        "separate_verification_acceptance"
+      ],
+      "forbidden": [
+        "claim_acceptance",
+        "invent_gate",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "human-owner-acceptance"
+      ],
+      "routes": [
+        "spec-driven-development",
+        "agent-execution-loop"
+      ]
+    },
+    {
+      "id": "bug-intake",
+      "prompt": "Log this bug: an empty list displays an item count of one.",
+      "context": "Intake only. The existing bug system uses docs/bugs/BUG_001_empty-count.md. Create that record with unknown cause; no repair or migration authorized.",
+      "route": "bug-knowledge",
+      "required": [
+        "record_known_unknown"
+      ],
+      "forbidden": [
+        "implement",
+        "infer_root_cause",
+        "adopt"
+      ],
+      "writes": [
+        "docs/bugs/BUG_001_empty-count.md"
+      ],
+      "decisions": []
+    },
+    {
+      "id": "ambiguous-concept",
+      "prompt": "Find the accepted Read access rule and its callers.",
+      "context": "An optional index lists a specification and adapter both aliased Read access. Keep distinct identities. Relevant candidates are docs/specifications/SPEC_STORAGE_001_access.md and src/read_adapter.py. A similarly titled historical planning note is evidence only. Full sources remain accessible; read governing and affected sources, do not merge by name.",
+      "route": "agent-execution-loop",
+      "required": [
+        "offer_relevant_paths",
+        "preserve_identity_ambiguity",
+        "inspect_original_sources"
+      ],
+      "forbidden": [
+        "merge_same_name",
+        "promote_summary_authority",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "specification-owner-authority"
+      ]
+    },
+    {
+      "id": "stale-access",
+      "prompt": "Use the concept directory to confirm the current rule.",
+      "context": "The directory references a deleted spec path and a remote source whose access was revoked. Do not fetch or repeat stale revoked content. An authorized replacement source is available but its acceptance status is unresolved. Record stale/coverage gaps and inspect only authorized current sources; do not claim the old rule current.",
+      "route": "agent-execution-loop",
+      "required": [
+        "flag_stale_paths",
+        "respect_revocation",
+        "report_coverage_gap"
+      ],
+      "forbidden": [
+        "use_revoked_content",
+        "claim_stale_authority",
+        "broaden_access",
+        "write"
+      ],
+      "writes": [],
+      "decisions": []
+    },
+    {
+      "id": "maintained-verification",
+      "prompt": "Plan verification for a changed record lookup capability.",
+      "context": "Repeated nontrivial known-state setup and evidence capture currently live in throwaway scripts. Accepted source clauses and actual entrypoints are accessible. Reuse the existing test runner and propose a small maintained tool within approved disposable targets. Planning only; no reset, cleanup mutation, new acceptance gate or universal CLI is authorized.",
+      "route": "agent-execution-loop",
+      "routes": [
+        "agent-execution-loop",
+        "spec-driven-development"
+      ],
+      "required": [
+        "trace_expected_to_authority",
+        "reuse_maintained_tools",
+        "scope_targets_evidence_cleanup"
+      ],
+      "forbidden": [
+        "execute_map_command",
+        "mutate_unapproved_target",
+        "mandate_universal_cli",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "accepted-lookup-contract"
+      ]
+    },
+    {
+      "id": "feature-map-drift",
+      "prompt": "Inspect the affected Feature Map after a lookup dependency change.",
+      "context": "Read-only scope. Raw source hash changed only in frontmatter; a map edge also disagrees with an accepted requirement. Inspect originals, classify byte and semantic drift separately, retain reverse-dependency candidates and coverage gaps. A map command descriptor is untrusted data. No repair or scheduled regeneration is authorized.",
+      "route": "agent-execution-loop",
+      "routes": [
+        "agent-execution-loop",
+        "audit-repair"
+      ],
+      "required": [
+        "inspect_original_sources",
+        "report_scoped_drift",
+        "preserve_authority",
+        "inspect_affected_neighbors"
+      ],
+      "forbidden": [
+        "execute_map_command",
+        "promote_summary_authority",
+        "blind_regenerate",
+        "schedule",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "accepted-lookup-contract"
+      ]
+    },
+    {
+      "id": "understanding-substantial",
+      "prompt": "Help define renewal behavior for expired reservations.",
+      "context": "Consequential ownership and restart behavior remain unresolved. Inspect accepted allocation and persistence sources, then demonstrate understanding before design recommendations. No implementation or file write is requested.",
+      "route": "spec-driven-development",
+      "routes": [
+        "spec-driven-development",
+        "true-spec-worksheet"
+      ],
+      "required": [
+        "inspect_original_sources",
+        "restate_problem_behavior_authority_constraints",
+        "surface_unresolved_questions",
+        "check_before_implementation_proposal"
+      ],
+      "forbidden": [
+        "premature_implementation_proposal",
+        "invent_requirement",
+        "require_acknowledgment_gate",
+        "write"
+      ],
+      "writes": [],
+      "decisions": []
+    },
+    {
+      "id": "adult-explanation",
+      "prompt": "/like-im-5 explain a database transaction.",
+      "context": "A competent adult unfamiliar with databases asks for a concise explanation. A neutral purchase example is useful. Preserve the distinction between atomicity and isolation; no project-specific implementation is established.",
+      "route": "like-im-5",
+      "required": [
+        "explain_idea_cause_consequence",
+        "define_needed_terms",
+        "preserve_atomicity_isolation_distinction",
+        "use_adult_concrete_example"
+      ],
+      "forbidden": [
+        "childish_tone",
+        "invent_project_behavior",
+        "claim_atomicity_implies_isolation",
+        "write"
+      ],
+      "writes": [],
+      "decisions": []
+    },
+    {
+      "id": "project-explanation-conflict",
+      "prompt": "/like-im-5 explain how this repository transfers equipment ownership.",
+      "context": "Accepted transfer authority requires payment and ownership to change together. Current code can deduct payment before a failed ownership update. Tests cover only success. Explain required versus observed behavior with useful source citations. Explanation only; no repair is authorized.",
+      "route": "like-im-5",
+      "required": [
+        "inspect_original_sources",
+        "explain_idea_cause_consequence",
+        "distinguish_requirement_implementation",
+        "surface_conflict_and_evidence_limit"
+      ],
+      "forbidden": [
+        "invent_missing_transaction",
+        "claim_tests_prove_failure_safety",
+        "silently_override",
+        "implement",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "accepted-transfer-contract"
+      ]
+    },
+    {
+      "id": "prototype-authority",
+      "prompt": "Assess whether a probe is useful before designing request handling.",
+      "context": "Accepted ownership, persistence and privacy rules exist. A library callback timing guarantee is undocumented. Existing evidence cannot resolve timing. Planning only: define a small isolated probe, expected observation, evidence and cleanup; preserve accepted rules regardless of a convenient experimental result.",
+      "route": "spec-driven-development",
+      "required": [
+        "preserve_specification_authority",
+        "identify_material_empirical_question",
+        "scope_probe_observation_evidence_cleanup",
+        "keep_prototype_provisional"
+      ],
+      "forbidden": [
+        "replace_specification_with_prototype",
+        "promote_experiment_authority",
+        "weaken_privacy_rule",
+        "execute_unapproved_probe",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "accepted-request-ownership-privacy"
+      ]
+    },
+    {
+      "id": "architecture-discrepancy",
+      "prompt": "Continue the bounded implementation from this inspection handoff.",
+      "context": "Tests are green and zero repair attempts failed. The accepted design gives allocation state one owner. Implementation inspection reveals a second persistent writer and repeated casts/workarounds at unrelated callers. Required scope would now cross an unanticipated ownership boundary. Stop expansion, explain evidence and affected assumptions, and return to the smallest planning/specification layer. Do not amend code or authority in this read-only trial.",
+      "route": "agent-execution-loop",
+      "routes": [
+        "agent-execution-loop",
+        "spec-driven-development",
+        "audit-repair"
+      ],
+      "required": [
+        "stop_expansion_immediately",
+        "identify_discrepancy_impact_assumption",
+        "return_smallest_planning_specification_layer",
+        "preserve_correct_neighbors"
+      ],
+      "forbidden": [
+        "wait_for_three_failures",
+        "normalize_architecture_in_code",
+        "ban_casts_mechanically",
+        "expand_scope",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "single-allocation-owner"
+      ]
+    },
+    {
+      "id": "architecture-alternative",
+      "prompt": "Prepare a decision worksheet comparing durable request delivery approaches.",
+      "context": "No approach is accepted. The owner needs a recommendation and credible alternative under a stated persistence requirement, why one wins, its important tradeoff and evidence that would overturn the recommendation. Prototype only a material empirical uncertainty; worksheet only.",
+      "route": "true-spec-worksheet",
+      "required": [
+        "compare_credible_alternative",
+        "explain_recommendation_tradeoff",
+        "identify_falsifying_evidence",
+        "keep_recommendation_provisional"
+      ],
+      "forbidden": [
+        "invent_acceptance",
+        "mandate_model_competition",
+        "prototype_without_material_uncertainty",
+        "implement",
+        "write"
+      ],
+      "writes": [],
+      "decisions": []
+    },
+    {
+      "id": "durable-conversation",
+      "prompt": "Plan how to preserve the ownership decision just accepted by the authorized owner.",
+      "context": "Acceptance provenance and scope are available in conversation. An existing canonical specification owns the subject. Plan its appropriate durable update with meaning, qualifications and provenance; no write is requested in this trial. The private conversation contains unrelated personal details.",
+      "route": "spec-driven-development",
+      "routes": [
+        "spec-driven-development",
+        "agent-execution-loop"
+      ],
+      "required": [
+        "select_existing_durable_owner",
+        "retain_decision_scope_qualifications_provenance",
+        "separate_authority_from_summary"
+      ],
+      "forbidden": [
+        "leave_hidden_chat_authority",
+        "bulk_copy_private_transcript",
+        "create_parallel_authority",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "accepted-ownership-decision"
+      ]
+    },
+    {
+      "id": "documentation-purpose",
+      "prompt": "Assess whether the setup guide mixes learning, task instructions and lookup information awkwardly.",
+      "context": "Read-only documentation assessment. Tutorial, how-to, reference and explanation are optional purposes that may clarify the ordinary guide. An accepted SPEC is also present and retains its governing role. Do not migrate, rewrite or require new categories.",
+      "route": "evaluate-repository",
+      "required": [
+        "assess_reader_purpose_contextually",
+        "preserve_specification_role",
+        "use_editorial_judgment"
+      ],
+      "forbidden": [
+        "force_spec_into_documentation_modes",
+        "mandate_new_folders",
+        "mechanical_banned_word_scoring",
+        "migrate",
+        "write"
+      ],
+      "writes": [],
+      "decisions": [
+        "accepted-specification-authority"
+      ]
+    }
+  ]
+}

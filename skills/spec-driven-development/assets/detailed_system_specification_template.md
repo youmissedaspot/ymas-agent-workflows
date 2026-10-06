@@ -23,7 +23,7 @@ Derive this specification from the conversation and accepted decisions. Use SPEC
 
 ## Verification and acceptance
 
-[Expected tests, observable outcomes, and acceptance cases. Distinguish agent verification from any human approval gate.]
+[Expected tests, observable outcomes, and acceptance cases. Where adopted, reference affected Feature Map IDs and maintained scenarios/tools, deterministic prerequisites/setup, actual entrypoints, accepted-source assertions, evidence and owned cleanup. Update derived entries after relevant changes; this specification remains authority. Distinguish agent verification from any human approval gate.]
 
 ## Decision status
 

@@ -1,8 +1,8 @@
 # Document versioning
 
-Version: v1.1
-Previous version: [v1](../archive/workflows/document_versioning_v1.md)
-Change summary: Distinguish dotted version metadata from dot-encoded archive filenames and include sibling SPECARC identities.
+Version: v1.2
+Previous version: [v1.1](../archive/workflows/document_versioning_v1dot1.md)
+Change summary: Clarify coordinated permanent-ID allocation and read-only edition diagnostics.
 
 Use this procedure when creating or substantively revising an adopting project's documents under its documentation standard. Keep its governing approval process and any explicitly established version convention. This package's skill contracts, templates, README, and index are distribution artifacts governed by the plugin release; versions in output templates describe the resulting project documents, not the template or plugin release.
 
@@ -17,6 +17,8 @@ When a version appears in a YMAS filename, replace the metadata dot with the lit
 Typographical, formatting, and link-only corrections can retain the document version when meaning is unchanged. If meaning changes, create a versioned revision and archive its predecessor. For an existing unversioned document, preserve it as a `v1` baseline when first making a substantive revision, then publish the revision as `v2`; do not mass-rename or rewrite unrelated legacy documents.
 
 Version metadata records revision, not acceptance. Mark drafts, accepted decisions, and unresolved questions according to project authority; a higher version never grants approval or resolves an authority conflict.
+
+For concurrent document creation, the integration owner coordinates family-ID reservations across active workers/branches. Recheck the proposed ID against current, archived, legacy and reserved identities before integration. A branch-local next number is provisional until reconciled. If a collision exists, stop the affected allocation/integration, preserve both records and their evidence, and resolve through the owning coordinator; do not overwrite, silently renumber historical records or ask the user to choose routine IDs. [Read-only diagnostics](../../scripts/diagnose_documents.py) can expose duplicate current IDs and edition metadata, but cannot infer semantic ownership or unseen branch reservations.
 
 ## Publish a revision
 
