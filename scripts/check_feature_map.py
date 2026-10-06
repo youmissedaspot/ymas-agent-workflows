@@ -30,8 +30,9 @@ def finding(code, location, message, correction):
 
 def path_problem(name):
     parts = name.split("/")
-    if ("\\" in name or ":" in name or "\0" in name or PurePosixPath(name).is_absolute()
-            or any(part in {"", ".", "..", ".git"} or part.endswith((".", " "))
+    if ("\\" in name or ":" in name or any(ord(char) < 32 or ord(char) == 127 for char in name)
+            or PurePosixPath(name).is_absolute()
+            or any(part in {"", ".", ".."} or part.casefold() == ".git" or part.endswith((".", " "))
                    or DEVICE.match(part) for part in parts)):
         return "source path must be a normalized repository-relative file path"
     return None
@@ -235,7 +236,10 @@ def main():
         result["passed"] = not result["findings"]
         if result["passed"] and args.mode == "graph":
             result["graph"] = export_graph(document)
-    except (OSError, ValueError) as exc:
+    except RecursionError:
+        result["findings"] = [finding("input_depth", "/", "input nesting exceeds parser capability",
+                                      "Use the compact map schema and flatten excessive nesting; do not raise runtime recursion limits.")]
+    except (OSError, ValueError):
         # Do not echo OS error paths, which can disclose a resolved outside root.
         result["findings"] = [finding("input", "/", "map/schema/root could not be read or parsed",
                                       "Check local JSON, unique keys, dependency availability and the explicit authorized root.")]

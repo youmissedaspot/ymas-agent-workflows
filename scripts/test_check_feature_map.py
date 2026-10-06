@@ -57,6 +57,22 @@ class FeatureMapTest(unittest.TestCase):
         altered["map_id"] = "release2.records"
         self.assertIn("planning_id", self.codes(altered))
 
+    def test_identifier_version_and_hash_patterns_reject_final_line_terminators(self):
+        for value in ("records\n", "release2\n", "records\r", "records\u2028", "records\u2029"):
+            altered = copy.deepcopy(self.document)
+            altered["map_id"] = value
+            self.assertIn("schema", self.codes(altered))
+        for group in ("sources", "features", "scenarios", "tools"):
+            altered = copy.deepcopy(self.document)
+            altered[group][0]["id"] += "\n"
+            self.assertIn("schema", self.codes(altered))
+        altered = copy.deepcopy(self.document)
+        altered["document_version"] += "\n"
+        self.assertIn("schema", self.codes(altered))
+        altered = copy.deepcopy(self.document)
+        altered["sources"][0]["sha256"] += "\n"
+        self.assertIn("schema", self.codes(altered))
+
     def test_dangling_wrong_typed_and_duplicate_edges(self):
         for target in ("unknown.feature", "tool.records-check"):
             altered = copy.deepcopy(self.document)
@@ -113,7 +129,8 @@ class FeatureMapTest(unittest.TestCase):
 
     def test_declared_path_traversal_absolute_devices_and_git_are_rejected(self):
         for name in ("../outside", "/outside", "C:/outside", "dir\\file", "dir/../file",
-                     "dir//file", "dir/./file", ".git/config", "NUL", "dir/CON.txt", "dir/.. /file"):
+                     "dir//file", "dir/./file", ".git/config", ".GIT/config", "dir/file\n",
+                     "NUL", "dir/CON.txt", "dir/.. /file"):
             altered = copy.deepcopy(self.document)
             altered["sources"][0]["path"] = name
             with self.subTest(path=name):
@@ -199,6 +216,16 @@ class FeatureMapTest(unittest.TestCase):
                 code, result = self.cli("validate", path)
                 self.assertEqual(code, 1)
                 self.assertEqual(result["findings"][0]["code"], "input")
+
+    def test_deep_input_returns_an_actionable_json_failure(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "deep.json"
+            path.write_text("[" * 10000 + "]" * 10000, encoding="utf-8")
+            code, result = self.cli("validate", path)
+            self.assertEqual(code, 1)
+            self.assertFalse(result["passed"])
+            self.assertEqual(result["findings"][0]["code"], "input_depth")
+            self.assertIn("flatten", result["findings"][0]["correction"])
 
     def test_materialized_example_runs_without_package_paths(self):
         with tempfile.TemporaryDirectory() as directory:

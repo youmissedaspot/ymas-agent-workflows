@@ -7,11 +7,11 @@
     },
     "map_id": {
       "type": "string",
-      "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+      "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
     },
     "document_version": {
       "type": "string",
-      "pattern": "^v[1-9][0-9]*(?:\\.[0-9]+)*$"
+      "pattern": "^v[1-9][0-9]*(?:\\.[0-9]+)*(?![\\s\\S])"
     },
     "kind": {
       "const": "derived-feature-map"
@@ -47,7 +47,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
           },
           "kind": {
             "enum": [
@@ -69,7 +69,7 @@
           },
           "sha256": {
             "type": "string",
-            "pattern": "^[0-9a-f]{64}$"
+            "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
           },
           "status": {
             "enum": [
@@ -102,7 +102,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
           },
           "purpose": {
             "type": "string",
@@ -136,7 +136,7 @@
                 },
                 "source": {
                   "type": "string",
-                  "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+                  "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
                 },
                 "locator": {
                   "type": "string",
@@ -196,7 +196,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
           },
           "purpose": {
             "type": "string",
@@ -205,7 +205,7 @@
           },
           "source": {
             "type": "string",
-            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
           },
           "argv": {
             "type": "array",
@@ -285,7 +285,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
           },
           "purpose": {
             "type": "string",
@@ -329,7 +329,7 @@
               "properties": {
                 "source": {
                   "type": "string",
-                  "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+                  "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
                 },
                 "statement": {
                   "type": "string",
@@ -406,7 +406,7 @@
         "properties": {
           "from": {
             "type": "string",
-            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
           },
           "type": {
             "enum": [
@@ -420,7 +420,7 @@
           },
           "to": {
             "type": "string",
-            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+            "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
           },
           "basis": {
             "enum": [
@@ -433,7 +433,7 @@
             "type": "array",
             "items": {
               "type": "string",
-              "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+              "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*(?![\\s\\S])"
             },
             "uniqueItems": true,
             "minItems": 1
