@@ -1,8 +1,9 @@
+> Status: Historical / superseded
+> Current owner: [current workflow](../../workflows/task_context.md)
+
 # Compact task context and resume
 
-Version: v1.1
-Previous version: [v1](../archive/workflows/task_context_v1.md)
-Change summary: Keep accepted conversational decisions in their durable repository owners.
+Version: v1
 
 Keep a short task-specific projection of existing authority when a handoff, interruption
 or complex task needs it. Use the existing task/receipt location; this is an optional aid,
@@ -27,7 +28,7 @@ Record only what the next action needs:
 Layer retrieval: lean instruction/index pointers → task context and owning clauses →
 full owning/dependent contracts when needed → raw evidence/history for a specific
 question. Check hashes/editions against current sources before relying on a packet.
-For a larger corpus, see [optional concept-to-source navigation](source_navigation.md).
+For a larger corpus, see [optional concept-to-source navigation](../../workflows/source_navigation.md).
 If stale or conflicting, reconcile/regenerate it. Never let a summary override authority,
 erase accepted qualifications, reopen settled choices or manufacture permission.
 
@@ -35,19 +36,6 @@ After compaction or interruption, preserve latest user steering, acceptance boun
 known stops, per-unit failures, pending operation identity and owned resources. Recheck
 live Git and operation state before acting. Do not replay an uncertain mutation or
 retry a known blocker. Complete independent authorized work while dependent work stops.
-
-## Durable knowledge and conversation
-
-The repository retains canonical and system specifications, accepted decisions, current
-state, audits, implementation, verification evidence and history. Conversation can
-clarify a request or supply an acceptance source; it must not become a hidden prerequisite
-for understanding or governing the project. When a conversational decision becomes
-authoritative through the project's process, record its meaning, scope, qualifications,
-owner and acceptance provenance in the appropriate existing durable artifact. Keep
-proposals provisional and update dependent owners as required. Capture the decision,
-not a bulk private transcript. A task summary remains a projection, not that authority.
-Use [readable explanation](human_understanding.md) so a returning owner can understand
-the decision and its consequence as well as inspect its evidence.
 
 ## Roles and selected contracts
 

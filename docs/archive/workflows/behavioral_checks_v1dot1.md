@@ -1,12 +1,15 @@
+> Status: Historical / superseded
+> Current owner: [current workflow](../../workflows/behavioral_checks.md)
+
 # Bounded behavioral checks
 
-Version: v1.2
-Previous version: [v1.1](../archive/workflows/behavioral_checks_v1dot1.md)
-Change summary: Exercise human understanding, explanation, prototype and discrepancy boundaries.
+Version: v1.1
+Previous version: [v1](behavioral_checks_v1.md)
+Change summary: Add maintained-verification and feature-map drift cases without changing grader authority.
 
-The twenty-two [neutral cases](../../scripts/behavior_cases.json) cover explicit, implicit and
+The fourteen [neutral cases](../../../scripts/behavior_cases.json) cover explicit, implicit and
 negative routing, scope, settled decisions, whole-set conflicts, known blockers, selected
-contracts, resume identity, concept ambiguity/freshness and project-owned acceptance, maintained verification and scoped feature-map drift, Understanding Checks, adult/project explanations, prototype authority, immediate architectural discrepancies, alternatives, durable conversational decisions and optional documentation purposes. Run affected cases for changed
+contracts, resume identity, concept ambiguity/freshness and project-owned acceptance, maintained verification and scoped feature-map drift. Run affected cases for changed
 skills; broaden only for new failures, changed contracts or an explicitly requested baseline.
 
 In disposable fixtures, present each prompt/context with the actual selected package
@@ -36,5 +39,3 @@ samples, with no claim of automatic host selection, compaction-loss rates or bro
 Installation tests establish installed files/discovery, not these behaviors. Preserve
 failures and distinguish an unexecuted case from a pass. No savings target or telemetry
 collector is included.
-
-For human-understanding cases, independently inspect the actual wording, source use and action order. Action labels alone cannot establish an adult tone, technical accuracy, readable prose or that an Understanding Check preceded implementation recommendations. Editorial quality is contextual judgment, not a banned-word or punctuation score.

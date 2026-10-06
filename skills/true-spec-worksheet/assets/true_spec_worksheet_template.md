@@ -25,7 +25,8 @@ Repeat only for unresolved topics. Adapt the detail to the decision; omit irrele
 - **Depends on:** [upstream questions or accepted sources; none when independent]
 - **Recommendation:** [supported proposal, or no recommendation with reason]
 - **Reasoning:** [evidence, assumptions, and important tradeoffs]
-- **Meaningful alternatives:** [different choices and their tradeoffs]
+- **Meaningful alternatives:** [credible different choices, why the recommendation wins, and the important tradeoff]
+- **Evidence that would change the recommendation:** [for consequential architecture, observations that would falsify its assumptions; probe only material uncertainty]
 - **Downstream consequences:** [affected behavior, architectural concerns, ownership, contracts, specifications, map relationships, or acceptance]
 - **Decision:** [unresolved / proposed / accepted through the project's process; choice, owner, and explicit acceptance source]
 

@@ -24,3 +24,5 @@ Return the assessment in conversation by default. Do not reorganize, rename, del
 Give a concise, source-linked assessment covering the repository model, authority, organization, operational memory, bugs/knowledge, naming/taxonomy, conflicts, YMAS compatibility, and the recommended next action. Scale detail to the repository; no mandatory report template or new record is needed.
 
 Clearly distinguish established authority, implementation evidence, historical material, likely duplication, ambiguity, missing information, and recommendation. State any inspection limits. Recommend consolidation only where supported, and leave unresolved authority with the project's owner.
+
+Use [human explanation and editorial judgment](../../docs/workflows/human_understanding.md) for readable explanations and documentation. Consider ordinary documentation purposes only where useful; do not reclassify canonical specifications or infer migration authority from editorial guidance.

@@ -29,3 +29,5 @@ Users can describe work naturally; they do not need to memorize skill names, IDs
 - “Update the architecture map from the current specifications.”
 
 Use the [workflow index](../../INDEX.md) to explain the relevant next stage. End after orientation. Do not generate a decision worksheet, settle product choices, write specifications, adopt documentation rules, make a plan, or implement changes as part of this skill. `/start` is a temporary conversational label, not a registered command alias; the packaged skill name is `workflow-orientation`.
+
+Use [human explanation and editorial judgment](../../docs/workflows/human_understanding.md) for readable explanations and documentation. Consider ordinary documentation purposes only where useful; do not reclassify canonical specifications or infer migration authority from editorial guidance.

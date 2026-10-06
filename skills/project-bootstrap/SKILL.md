@@ -34,3 +34,5 @@ For specification formalization, preserve the order: discussion → provisional 
 Use [workflow-orientation](../workflow-orientation/SKILL.md) for a user asking how to begin; it explains the process without executing it. Use [true-spec-worksheet](../true-spec-worksheet/SKILL.md) for unresolved consequential product or architecture choices before formalization. Existing projects resume from established authority and current state rather than restarting discovery.
 
 End with a concise map of governing sources, current context, unresolved authority questions, and the files changed, if any.
+
+Use [human explanation and editorial judgment](../../docs/workflows/human_understanding.md) for readable explanations and documentation. Consider ordinary documentation purposes only where useful; do not reclassify canonical specifications or infer migration authority from editorial guidance.

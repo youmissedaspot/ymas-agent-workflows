@@ -29,7 +29,19 @@ SKILLS_BY_VERSION = {
               "evaluate-repository", "documentation-consolidation", "workflow-orientation", "true-spec-worksheet"},
     "0.4.1": {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge",
               "evaluate-repository", "documentation-consolidation", "workflow-orientation", "true-spec-worksheet"},
+    "0.5.0": {"project-bootstrap", "spec-driven-development", "audit-repair", "bug-knowledge",
+              "evaluate-repository", "documentation-consolidation", "workflow-orientation", "true-spec-worksheet",
+              "like-im-5"},
 }
+
+
+def verify_skill_contract(version, installed_skills):
+    """Check the release-specific catalog without installing or running a model."""
+    expected = SKILLS_BY_VERSION.get(version)
+    if expected is None:
+        raise RuntimeError(f"No documented skill contract for installed version {version}.")
+    if set(installed_skills) != expected:
+        raise RuntimeError(f"Installed skill set differs from the {len(expected)} documented skills for {version}.")
 
 
 def verify_installed_snapshot(expected, installed):
@@ -107,11 +119,7 @@ def main():
             version = json.loads(manifests[0].read_text(encoding="utf-8"))["version"]
             if args.source == "checkout" and version != json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))["version"]:
                 raise RuntimeError("Installed version differs from the candidate package.")
-            expected = SKILLS_BY_VERSION.get(version)
-            if expected is None:
-                raise RuntimeError(f"No documented skill contract for installed version {version}.")
-            if {path.parent.name for path in (installed / "skills").glob("*/SKILL.md")} != expected:
-                raise RuntimeError(f"Installed skill set differs from the {len(expected)} documented skills for {version}.")
+            verify_skill_contract(version, (path.parent.name for path in (installed / "skills").glob("*/SKILL.md")))
             validate_package.ROOT = installed
             validate_package.SKILL_ROOT = installed / "skills"
             validate_package.MARKETPLACE = installed / ".agents/plugins/marketplace.json"

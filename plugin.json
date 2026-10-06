@@ -1,12 +1,18 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ymas-agent-workflows",
-  "version": "0.4.1",
-  "description": "An instruction-only agent harness with reusable YMAS orientation, decision worksheets, repository governance, specification and architecture, audit repair, and bug knowledge workflows.",
+  "version": "0.5.0",
+  "description": "Reusable YMAS workflows for human understanding, repository governance, specification and architecture, bounded verification, audit repair and durable knowledge.",
   "author": {
     "name": "YouMissedASpot"
   },
   "repository": "https://github.com/YouMissedASpot/ymas-agent-workflows",
   "license": "MIT",
-  "keywords": ["engineering", "repository", "audit", "bugs", "specifications"]
+  "keywords": [
+    "engineering",
+    "repository",
+    "audit",
+    "bugs",
+    "specifications"
+  ]
 }

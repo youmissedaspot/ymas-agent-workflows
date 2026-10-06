@@ -17,7 +17,7 @@ class GraderTest(unittest.TestCase):
                 "human_acceptance_claimed": False}
 
     def test_positive_and_negative_controls_for_every_case(self):
-        self.assertEqual(len(self.cases), 14)
+        self.assertEqual(len(self.cases), 22)
         for case in self.cases:
             with self.subTest(case=case["id"]):
                 observation = self.good(case)
@@ -37,6 +37,14 @@ class GraderTest(unittest.TestCase):
                     else:
                         bad["human_acceptance_claimed"] = True
                     self.assertTrue(grade(case, bad), mutation)
+                for action in case["required"]:
+                    bad = self.good(case)
+                    bad["actions"].remove(action)
+                    self.assertIn("missing required actions", grade(case, bad), action)
+                for action in case["forbidden"]:
+                    bad = self.good(case)
+                    bad["actions"].append(action)
+                    self.assertIn("forbidden action", grade(case, bad), action)
                 if case["decisions"]:
                     observation["decisions"] = []
                     self.assertIn("accepted decision lost", grade(case, observation))

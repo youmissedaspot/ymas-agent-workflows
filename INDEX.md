@@ -12,6 +12,11 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Maintain this package's documentation → `docs/OPS_WORKFLOW_001_documentation_standard.md`
 - Version documents while keeping current owners in place → `docs/workflows/document_versioning.md`
 
+## Human understanding
+
+- Check understanding before substantial work; explain and write clearly → `docs/workflows/human_understanding.md`
+- Explain an unfamiliar technical, domain or project concept in adult language → `skills/like-im-5/SKILL.md`
+
 ## Evidence and bounded verification
 
 - Offer relevant candidate paths with scoped identities and aliases → `docs/workflows/source_navigation.md`
@@ -81,3 +86,5 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review the distribution version and release evidence → `docs/operations/tasks/OPS_TASK_DOCS_013_release-version-and-evidence.md` (task record)
 
 - Review maintained verification and derived Feature Maps → `docs/operations/tasks/OPS_TASK_DOCS_014_agent-verification-and-feature-maps.md` (provisional task record)
+
+- Review human understanding, bounded probes and discrepancy escalation → `docs/operations/tasks/OPS_TASK_DOCS_015_human-understanding.md` (task record)

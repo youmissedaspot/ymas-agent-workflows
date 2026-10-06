@@ -34,6 +34,7 @@ Examples: “I have an idea for an economic simulation”; “Help me figure out
 | Skill | Use it for |
 | --- | --- |
 | `workflow-orientation` | Explain how to start or resume YMAS; orientation only. |
+| `like-im-5` | Explain an unfamiliar technical, architectural, domain or project concept in clear adult language, using actual repository evidence where available. |
 | `true-spec-worksheet` | Prepare a provisional decision worksheet before formal specifications. |
 | `project-bootstrap` | Supporting orientation and authorized foundation setup. It returns to the ordinary task once the needed context is understood. |
 | `evaluate-repository` | Assess the current repository's documentation, authority, and YMAS fit without changing files. Bare invocation is valid. |
@@ -42,7 +43,7 @@ Examples: “I have an idea for an economic simulation”; “Help me figure out
 | `audit-repair` | Audit or repair the target you named or established in conversation. Without a target it asks for one; it cannot pick work from repository state. |
 | `bug-knowledge` | Log natural-language bug reports, investigate prior failures, and distill recurring lessons into engineering references. |
 
-The package has a portable root [`plugin.json`](plugin.json), eight `skills/<name>/SKILL.md` entrypoints in candidate `0.4.1`, and a repository [marketplace catalog](.agents/plugins/marketplace.json). Templates sit next to the skills that use them. [`AGENTS.md`](AGENTS.md) and the [documentation standard](docs/OPS_WORKFLOW_001_documentation_standard.md) govern this repository only.
+The package has a portable root [`plugin.json`](plugin.json), nine `skills/<name>/SKILL.md` entrypoints in candidate `0.5.0`, and a repository [marketplace catalog](.agents/plugins/marketplace.json). Templates sit next to the skills that use them. [`AGENTS.md`](AGENTS.md) and the [documentation standard](docs/OPS_WORKFLOW_001_documentation_standard.md) govern this repository only.
 
 ## Install in Codex
 
@@ -79,7 +80,7 @@ You need Git on `PATH`, network access to GitHub, and a Codex CLI with plugin co
 
    Confirm `installed, enabled`. Alternatively, after registration, use the app's Plugins Directory, select **YouMissedASpot Workflows**, and install **ymas-agent-workflows**, or use `/plugins` in a supported CLI.
 
-4. Start a new chat after installation or refresh. For candidate `0.4.1`, confirm all eight skills in the table above are available with the `ymas-agent-workflows:` prefix. Use the plugin-qualified name when a standalone skill has the same name; existing standalone skills do not need to be removed. Published main `0.4.0` has the same eight entrypoints but earlier supporting content; the version and skill names alone do not identify candidate bytes. Older `0.3.0` has six skills and excludes orientation and worksheet; `0.2.0` has four and also excludes evaluation/consolidation. Candidate `0.4.1` is release preparation on a workbranch; refresh after its verified integration/release to obtain that content.
+4. Start a new chat after installation or refresh. For candidate `0.5.0`, confirm all nine skills in the table above are available with the `ymas-agent-workflows:` prefix. Use the plugin-qualified name when a standalone skill has the same name; existing standalone skills do not need to be removed. Earlier `0.4.0` and pending `0.4.1` retain eight entrypoints and exclude `like-im-5`; their version and skill names alone do not identify candidate bytes. Older `0.3.0` has six skills and excludes orientation and worksheet; `0.2.0` has four and also excludes evaluation/consolidation. Candidate `0.5.0` is an isolated workbranch addition based on the verification/Feature Map addition, which includes the pending `0.4.1` release candidate. Neither dependency integration nor candidate installation/discovery is established by this branch. Refresh only after authorized, verified integration/release.
 
    For a discovery-only check, ask: "From your available skills, list the ymas-agent-workflows plugin skills and their installed paths. Do not execute a workflow or modify files." Successful installation means both an installed/enabled listing and discovery in the client where you intend to use the workflows.
 
@@ -147,13 +148,40 @@ When consequential product or system rules are unresolved, [specification-driven
 
 The specification handoff is **accepted True Spec decisions → SPEC and/or SPECARC → systems.md**. SPECARC can precede surrounding product specifications or a complete map. After substantive SPEC/SPECARC creation or revision, the agent reviews the complete current set and updates `systems.md` when architecture, ownership, boundaries, dependencies, interfaces, flows, or cross-system behavior change. It records specification versions and acceptance status, preserves settled higher product decisions, and returns consequential integration gaps to their owners. Early projects do not need a meaningless map; an accurate existing map does not need a mechanical version bump.
 
+## Human understanding
+
+Before substantial specification, architecture or implementation, use the concise
+[Understanding Check](docs/workflows/human_understanding.md#understanding-check) to make
+the problem, affected behavior, authority, constraints and unresolved conflicts clear.
+It adds no report ritual or approval gate. **Teach for human understanding. Trace for
+evidence.** Shared [editorial guidance](docs/workflows/human_understanding.md) improves
+explanations and ordinary documentation through judgment rather than word bans.
+
+Use `$like-im-5` or the qualified `ymas-agent-workflows:like-im-5` skill to explain an
+unfamiliar concept in adult language. The requested `/like-im-5` spelling is informal;
+client command presentation and automatic discovery require their own verification.
+An explanation request alone does not authorize file changes. In a repository the skill
+explains actual evidence, including missing behavior or conflicts, rather than inventing
+an implementation.
+
+The [specification workflow](docs/workflows/specification_driven_development.md) keeps
+thick definitions authoritative, uses probes for material empirical uncertainty, and
+stops expansion immediately when implementation reveals an architectural discrepancy.
+The three-failed-attempt repair ceiling remains in force. Decision worksheets compare
+credible alternatives and evidence that could overturn a consequential recommendation.
+
+This candidate depends on verification addition `69bb414e5ae2ca10ed617d7f358d4e4b98627470`,
+which includes PR13 candidate `cd41c538e153e293e728932bd9804e2effb93c86`. Upstream
+authenticated discovery remains pending; this addition grants no publication or
+installation authority. See the [task record](docs/operations/tasks/OPS_TASK_DOCS_015_human-understanding.md).
+
 ## Source evidence and behavioral checks
 
 Use [source receipts](docs/workflows/source_receipts.md) for exact reviewed/tested identity, blocked/superseded state and integration closeout. [Task context](docs/workflows/task_context.md) preserves authority, dependencies, resume invariants and project-selected model/skill preferences; full specification review remains required. [Boundary verification](docs/workflows/verification_boundaries.md) covers affected caller lifecycles and failure classes. These aids reuse existing owners rather than requiring new record families.
 
 `python scripts/diagnose_documents.py .` is a read-only diagnostic for adopted YMAS IDs/current paths/edition metadata. Configure archive directories for the repository; inspect warnings under its authority. It does not rename records, validate semantic authority or reserve IDs across branches. Package link checks validate common Markdown heading anchors; complex renderer-specific syntax still needs inspection.
 
-The [twelve behavioral cases](docs/workflows/behavioral_checks.md) and outcome grader include positive and negative controls. Run `python -m unittest discover -s scripts -p "test_*.py"` for deterministic regressions, including exact copied-package identity. Synthetic fixtures test diagnostics/graders, not agent efficacy. Actual replays require independently inspected traces and filesystem effects; automatic client selection remains unproved. [Optional concept-to-source navigation](docs/workflows/source_navigation.md) reuses existing indexes with task-relevant candidates, scoped identities, aliases and freshness checks; it adds no retrieval service or mandatory graph.
+The [bounded behavioral cases](docs/workflows/behavioral_checks.md) and outcome grader include positive and negative controls. Run `python -m unittest discover -s scripts -p "test_*.py"` for deterministic regressions, including exact copied-package identity. Synthetic fixtures test diagnostics/graders, not agent efficacy. Actual replays require independently inspected traces and filesystem effects; automatic client selection remains unproved. [Optional concept-to-source navigation](docs/workflows/source_navigation.md) reuses existing indexes with task-relevant candidates, scoped identities, aliases and freshness checks; it adds no retrieval service or mandatory graph.
 
 Checkout installation smoke checks now compare every tracked candidate file against installed raw bytes. They require a clean committed source; a manifest version or skill-name match alone is insufficient. Existing installation evidence above remains historical; candidate changes need fresh checks within the authorized installation scope before release.
 
