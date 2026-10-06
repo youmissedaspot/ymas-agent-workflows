@@ -10,9 +10,9 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 
-import validate_package
 from check_receipt import git, package_inventory
 
 
@@ -51,6 +51,17 @@ def verify_installed_snapshot(expected, installed):
         changed = [name for name, digest in expected["files"].items()
                    if actual["files"].get(name) != digest]
         raise RuntimeError(f"Installed candidate bytes differ: {', '.join(changed)}")
+
+
+def verify_installed_package(installed):
+    """Validate the installed release with its own versioned package contract."""
+    result = subprocess.run(
+        [sys.executable, "-B", str(installed / "scripts/validate_package.py")],
+        cwd=installed, capture_output=True, text=True, encoding="utf-8", timeout=180,
+    )
+    if result.returncode:
+        raise RuntimeError(f"Installed package validation failed ({result.returncode})\n{result.stdout}\n{result.stderr}")
+    return result.stdout
 
 
 def main():
@@ -120,12 +131,7 @@ def main():
             if args.source == "checkout" and version != json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))["version"]:
                 raise RuntimeError("Installed version differs from the candidate package.")
             verify_skill_contract(version, (path.parent.name for path in (installed / "skills").glob("*/SKILL.md")))
-            validate_package.ROOT = installed
-            validate_package.SKILL_ROOT = installed / "skills"
-            validate_package.MARKETPLACE = installed / ".agents/plugins/marketplace.json"
-            failures = validate_package.validate()
-            if failures:
-                raise RuntimeError("\n".join(failures))
+            print(verify_installed_package(installed).strip(), flush=True)
 
         verify_install()
         print("PASS: fresh registration, installation, versioned skill set, and package validation", flush=True)
