@@ -16,8 +16,8 @@ The [local checkpoint record](OPS_TASK_DOCS_017_audit-coverage-and-regression-ev
 preserves its original local-only authorization and evidence boundaries. It is historical
 scope for that checkpoint, not the current distribution authorization.
 
-The owner subsequently authorized publication after verification, selected version and
-tag `0.5.1`, and authorized merge after PR review and deletion of only the merged feature
+The owner subsequently authorized publication after verification, selected package version
+`0.5.1` and tag `v0.5.1`, and authorized merge after PR review and deletion of only the merged feature
 branch. Normal installation refresh was authorized through the supported flow. These
 actions remain conditional on their applicable release checks. No credential transfer,
 interactive sign-in, security change, unrelated branch deletion or gate bypass is authorized.
