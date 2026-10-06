@@ -6,7 +6,7 @@ Previous version: [archive link, or none for a new document]
 Change summary: [initial specification or substantive changes]
 Decision owner: [named by the project]
 
-Use the [True Spec worksheet](../../true-spec-worksheet/assets/true_spec_worksheet_template.md) when consequential product or architecture choices remain unresolved. The worksheet is a decision aid; this template records intent and accepted decision sources. Formalize an accepted architectural concern in sibling SPECARC where appropriate rather than treating this product-intent artifact as the mandatory first architecture design.
+Use this project's True Spec worksheet or the available `true-spec-worksheet` skill when consequential product or architecture choices remain unresolved. Link to the actual project-owned worksheet when recording its decisions. The worksheet is a decision aid; this template records intent and accepted decision sources. Formalize an accepted architectural concern in sibling SPECARC where appropriate rather than treating this product-intent artifact as the mandatory first architecture design.
 
 ## Product intent and user experience
 
