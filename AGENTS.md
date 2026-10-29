@@ -8,4 +8,6 @@ For substantive work, follow the [agent execution loop](docs/workflows/agent_exe
 
 For substantive product or system work with unresolved requirements, architecture, or authority boundaries, use `spec-driven-development` before implementation. Keep narrow, well-specified defect repairs in `audit-repair`.
 
+Follow the [no-code-comments rule](docs/rules/code_comments.md). Keep business explanations, design rationale and implementation reasoning in the owning specification documents.
+
 This repository distributes reusable engineering workflows. Keep product rules and project-specific authority in the adopting repository; its governing authority takes precedence over shared procedures. The portable plugin manifest is the package contract; each `SKILL.md` is the behavioral contract for its workflow. Prefer small, focused edits and validate changed skills and packaging before release.

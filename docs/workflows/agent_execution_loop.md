@@ -1,10 +1,12 @@
 # Agent execution loop
 
-Version: v2.2
-Previous version: [v2.1](../archive/workflows/agent_execution_loop_v2dot1.md)
-Change summary: Add human understanding, immediate architecture discrepancy escalation and readable completion.
+Version: v2.3
+Previous version: [v2.2](../archive/workflows/agent_execution_loop_v2dot2.md)
+Change summary: Apply the no-code-comments rule and preserve reasoning in specification owners during implementation and verification.
 
 Apply this loop to substantive development work even when the user states only the desired outcome. The loop governs progress; `INDEX.md` governs which files to retrieve. Follow the adopting repository's own instructions and product authority.
+
+For code changes, apply the [no-code-comments rule](../rules/code_comments.md) during implementation and verification. Preserve necessary reasoning in the relevant specification owner and report unresolved notice or directive conflicts.
 
 1. **Orient and route.** Read the repository's `AGENTS.md` or equivalent, then this package's `INDEX.md` and any local index. Load only the applicable skill and supporting references. Resolve material same-name contract ambiguity using the user/repository-selected qualified package; see [task context](task_context.md#roles-and-selected-contracts).
 2. **Establish authority and inspect.** Identify current governing requirements and operational context. Use an adopted [Feature Map](feature_maps.md) to locate relevant clauses, entrypoints, dependencies and scenarios; verify its provenance and inspect original sources. Inspect affected implementation and tests before code changes; investigate relevant history when a behavior's purpose is unclear. Distinguish authority from evidence and inference.

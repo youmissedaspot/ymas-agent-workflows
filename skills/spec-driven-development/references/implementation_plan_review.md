@@ -10,6 +10,7 @@ Use when the relevant specification layers are settled enough to plan. Apply the
 - For a consequential architectural decision, link the recommendation, credible alternative, why it wins, important tradeoff and falsifying evidence. Inspect whether any probe resolves material uncertainty without becoming authority.
 - State tests and other verification, failure risks, justified compatibility needs, and explicit exclusions.
 - Compare current code, tests, schemas, and relevant history with the governing specifications. Treat those observations as evidence.
+- Apply the [no-code-comments rule](../../../docs/rules/code_comments.md): identify the specification owners for necessary explanations and reasoning, then review changed code and examples for compliance during verification. Report unresolved notice or directive conflicts.
 
 ## Adversarial review
 

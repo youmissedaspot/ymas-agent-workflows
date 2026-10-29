@@ -18,3 +18,5 @@ Before substantial specification, architecture or implementation, demonstrate a 
 7. Prepare [human acceptance guidance](references/human_acceptance_checklist.md) where the project reserves final acceptance to a human owner. Report agent verification and human acceptance separately.
 
 When a downstream layer exposes an upstream error, correct the smallest authoritative unit, propagate its effects forward, and repeat affected review. Keep project-specific decisions in the adopting repository.
+
+For implementation and verification, apply the [no-code-comments rule](../../docs/rules/code_comments.md); keep necessary explanations and reasoning in the owning specifications and review changed code and examples before completion.

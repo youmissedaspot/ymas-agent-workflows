@@ -9,6 +9,7 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Follow this package's agent instructions → `AGENTS.md`
 - Run substantive work to completion → `docs/workflows/agent_execution_loop.md`
 - Isolate repository writes by task → `docs/rules/multi_agent_workbranches.md`
+- Keep code free of comments and preserve reasoning in specifications → `docs/rules/code_comments.md`
 - Maintain this package's documentation → `docs/OPS_WORKFLOW_001_documentation_standard.md`
 - Version documents while keeping current owners in place → `docs/workflows/document_versioning.md`
 
@@ -94,3 +95,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 
 - Review audit coverage and regression evaluations → `docs/operations/tasks/OPS_TASK_DOCS_017_audit-coverage-and-regression-evaluations.md` (local checkpoint record)
 - Review audit release preparation and remaining gates → `docs/operations/tasks/OPS_TASK_DOCS_018_audit-release-preparation.md` (task record)
+- Review the no-code-comments policy implementation → `docs/operations/tasks/OPS_TASK_DOCS_019_no-code-comments.md` (task record)
