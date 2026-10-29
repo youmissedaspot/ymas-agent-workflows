@@ -70,4 +70,6 @@ For a requested whole-project audit or comparison of audit reports, use [audit c
 
 In the completion report, distinguish what was implemented, what was verified, tests run, observed results, and any remaining manual acceptance. Compilation or green unit tests establish only what they actually cover.
 
+For authorized code repairs, apply the [no-code-comments rule](../../docs/rules/code_comments.md) and its verification check. Preserve useful reasoning in the owning specification; do not expand a repair into unrelated comment cleanup.
+
 Use the existing [execution loop](../../docs/workflows/agent_execution_loop.md) for applicable durable updates and [source receipts](../../docs/workflows/source_receipts.md) for consequential review/integration evidence. These links add no publication authority or mandatory record triad.

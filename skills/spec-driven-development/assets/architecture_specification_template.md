@@ -36,6 +36,12 @@ Define only the architectural concern within this document's scope. SPEC and SPE
 
 ## Decision status and integration gaps
 
+Record architectural rationale, tradeoffs, non-obvious implementation constraints
+and hazards here, or link their existing specification owner. Include affected
+symbols/paths and verification cases where useful, and distinguish accepted
+choices from evidence or proposals. Keep this reasoning in the specifications
+under the adopted code-comment policy.
+
 | Choice, overlap, or gap | Status: accepted / proposal / unresolved / evidence / recommendation | Decision owner and source | Affected specifications and systems |
 | --- | --- | --- | --- |
 

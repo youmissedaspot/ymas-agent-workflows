@@ -21,6 +21,10 @@ Derive this specification from the conversation and accepted decisions. Use SPEC
 
 [Edge cases, failures, concurrency, persistence, migration, observability, and security where relevant.]
 
+## Explanations and implementation reasoning
+
+[Business explanations, design rationale, non-obvious implementation constraints and hazards belonging to this system. Preserve useful reasoning here or link its existing specification owner, with affected symbols/paths and verification cases where useful. Keep accepted requirements distinct from observations and proposals. Apply the adopted code-comment policy; do not put this prose into source comments.]
+
 ## Verification and acceptance
 
 [Expected tests, observable outcomes, and acceptance cases. Where adopted, reference affected Feature Map IDs and maintained scenarios/tools, deterministic prerequisites/setup, actual entrypoints, accepted-source assertions, evidence and owned cleanup. Update derived entries after relevant changes; this specification remains authority. Distinguish agent verification from any human approval gate.]
