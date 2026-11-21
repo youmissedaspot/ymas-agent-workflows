@@ -49,8 +49,8 @@ Examples: “I have an idea for an economic simulation”; “Help me figure out
 
 The `0.5.3` candidate clarifies [delegation and return](docs/workflows/task_context.md#delegation-and-return):
 the coordinator reconciles returned work with the current request, evidence and next owner.
-It distinguishes task setup, observed execution, verification and human acceptance, with
-three neutral regression cases. See the [task record](docs/operations/tasks/OPS_TASK_DOCS_020_delegated-work-closeout.md)
+It distinguishes task setup, execution, verification, recipient access and human acceptance,
+with four neutral regression cases. See the [task record](docs/operations/tasks/OPS_TASK_DOCS_020_delegated-work-closeout.md)
 for evidence and limits. This is a branch candidate, not an installed release.
 
 The `0.5.2` workflow update adopts the [no-code-comments rule](docs/rules/code_comments.md),

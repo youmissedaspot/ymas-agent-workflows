@@ -1,18 +1,18 @@
 # OPS_TASK_020 — Delegated work closeout
 
 Status: Branch candidate; verification and publication evidence remain source-specific.
-Version: v1
-Previous version: None; new chronological task record.
+Version: v1.1
+Previous version: [v1](../../archive/operations/tasks/OPS_TASK_DOCS_020_delegated-work-closeout_v1.md)
+Change summary: Record the recipient access requirement and affected verification case.
 Date: 2026-11-21
 
 ## Scope and evidence
 
-This bounded workflow review extends the existing task-context owner. The current
-guide records scope, source identity, resume invariants and roles, but does not
-explicitly require the coordinator to reconcile a returned unit against the whole
-latest request or identify the next actor. The execution loop requires completion;
-source receipts bind verification and integration to exact source. The missing
-return step is a static documentation gap, not evidence that every agent fails it.
+This bounded workflow review extends the existing task-context owner. Before this
+candidate, the guide recorded scope, source identity, resume invariants and roles.
+The execution loop required completion and source receipts bound checks to source.
+The guide needed an explicit return step that reconciles a worker's result against
+the latest request and identifies the next actor.
 
 Recent primary sources describe relevant host-level failures and remedies:
 
@@ -35,17 +35,20 @@ system or permanent parallel status register is required.
 
 ## Change and preserved authority
 
-Task context becomes v1.2 at its stable path; its complete v1.1 predecessor is
-[archived](../../archive/workflows/task_context_v1dot1.md). The coordinator checks
+Task context becomes v1.3 at its stable path. Its complete
+[v1.2 predecessor](../../archive/workflows/task_context_v1dot2.md) preserves the
+original handoff candidate and links its v1.1 predecessor. The coordinator checks
 the returned artifact against latest steering and live source, names the next
 owner, and distinguishes setup, execution, technical verification and acceptance.
 An unreachable executor leaves current execution unknown; uncertain mutations
-retain their identity rather than being replayed.
+retain their identity rather than being replayed. A finished artifact in an isolated
+runner can still be inaccessible to its recipient. The return verifies recipient
+access or uses a surface already authorized for that audience.
 
-The existing grader gains three neutral cases: newer steering/source at return,
-an unreachable executor, and setup without delivery. Behavioral-check guidance
-becomes v1.4 with its complete
-[v1.3 predecessor](../../archive/workflows/behavioral_checks_v1dot3.md) preserved.
+The existing grader gains four neutral cases: newer steering/source at return,
+an unreachable executor, setup without delivery, and recipient access failure.
+Behavioral-check guidance becomes v1.5 with its complete
+[v1.4 predecessor](../../archive/workflows/behavioral_checks_v1dot4.md) preserved.
 Existing per-action negative controls cover the added cases. Package candidate
 0.5.3 retains all nine skills and older installation catalog contracts. The
 manifest increment prepares a distributable candidate; no release is made here.
@@ -82,7 +85,8 @@ Platform CI and authenticated discovery require evidence for this exact candidat
 
 Manual review scenarios: a changed-source return stays unverified until reconciled;
 an unreachable worker is reported with last-confirmed evidence and a next owner;
-a configured report stays undelivered until its artifact is verified. A small
+a configured report stays undelivered until its artifact and recipient access are
+confirmed. A worker-local result uses an authorized accessible return format. A small
 settled edit can still use an inline return without creating extra records.
 No private conversation, project examples or personal operating preferences are
 part of these public cases.

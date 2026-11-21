@@ -1,8 +1,8 @@
 # Compact task context and resume
 
-Version: v1.2
-Previous version: [v1.1](../archive/workflows/task_context_v1dot1.md)
-Change summary: Close delegated handoffs with reconciled evidence, a next owner and accurate execution status.
+Version: v1.3
+Previous version: [v1.2](../archive/workflows/task_context_v1dot2.md)
+Change summary: Verify that the intended recipient can access the delivered result.
 
 Keep a short task-specific projection of existing authority when a handoff, interruption
 or complex task needs it. Use the existing task/receipt location; this is an optional aid,
@@ -62,6 +62,12 @@ current execution unknown. Check the existing operation before considering a rep
 never imply that a follow-up was delivered or work resumed without confirmation. Do not
 promise continued monitoring without an active supported executor or an authorized
 scheduled mechanism. This guidance creates neither one nor permission to configure one.
+
+Before reporting delivery, confirm that the final artifact is available through a
+surface the intended recipient is authorized and able to use. If access cannot be
+confirmed, use an already authorized accessible format or report the delivery
+blocker and preserve the artifact. A worker-local path alone does not establish
+delivery. Keep the original audience and permissions when providing a fallback.
 
 Keep the handoff proportional: a short inline return can suffice for a small unit;
 larger work links the existing detailed receipt. Report material transitions, blockers
