@@ -1,13 +1,19 @@
 # Bounded behavioral checks
 
-Version: v1.3
-Previous version: [v1.2](../archive/workflows/behavioral_checks_v1dot2.md)
-Change summary: Add neutral audit coverage, false-positive, fixture, original-closure and stale-evidence cases.
+Version: v1.4
+Previous version: [v1.3](../archive/workflows/behavioral_checks_v1dot3.md)
+Change summary: Add delegated-return, unreachable-executor and setup-without-delivery cases.
 
-The twenty-eight [neutral cases](../../scripts/behavior_cases.json) cover explicit, implicit and
+The thirty-one [neutral cases](../../scripts/behavior_cases.json) cover explicit, implicit and
 negative routing, scope, settled decisions, whole-set conflicts, known blockers, selected
 contracts, resume identity, concept ambiguity/freshness and project-owned acceptance, maintained verification and scoped feature-map drift, Understanding Checks, adult/project explanations, prototype authority, immediate architectural discrepancies, alternatives, durable conversational decisions and optional documentation purposes. Run affected cases for changed
 skills; broaden only for new failures, changed contracts or an explicitly requested baseline.
+
+Three [handoff](task_context.md#delegation-and-return) cases cover returned work under
+newer steering, an unreachable executor with an uncertain operation, and configured
+work without a produced deliverable. Inspect the actual return, current source, status
+evidence and next owner. Synthetic controls verify required/forbidden observations in
+the grader; they do not prove live task delivery, recovery or future agent compliance.
 
 The six audit cases use [neutral executable fixtures](../../scripts/audit_fixtures.py).
 Materialize a selected case with `python scripts/audit_fixtures.py --case <case> --output <new-disposable-path>`;

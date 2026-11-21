@@ -1,8 +1,8 @@
 # Compact task context and resume
 
-Version: v1.1
-Previous version: [v1](../archive/workflows/task_context_v1.md)
-Change summary: Keep accepted conversational decisions in their durable repository owners.
+Version: v1.2
+Previous version: [v1.1](../archive/workflows/task_context_v1dot1.md)
+Change summary: Close delegated handoffs with reconciled evidence, a next owner and accurate execution status.
 
 Keep a short task-specific projection of existing authority when a handoff, interruption
 or complex task needs it. Use the existing task/receipt location; this is an optional aid,
@@ -35,6 +35,38 @@ After compaction or interruption, preserve latest user steering, acceptance boun
 known stops, per-unit failures, pending operation identity and owned resources. Recheck
 live Git and operation state before acting. Do not replay an uncertain mutation or
 retry a known blocker. Complete independent authorized work while dependent work stops.
+
+## Delegation and return
+
+When delegation is authorized and useful, identify one coordinator responsible for
+the whole request. Before handing off a bounded unit, preserve its expected outcome,
+governing clauses, latest steering, scope and acceptance boundary in the existing task
+context. Include the task reference, source/branch identity where applicable, return
+destination and who acts next. Reuse the context above; do not create a parallel ledger
+or require delegation for work one agent can finish.
+
+The returning worker reports the delivered artifact, exact source exercised, meaningful
+checks and their limits, unresolved work and one next action with its owner. The
+coordinator compares that return with the latest request and live state before treating
+it as completion. A worker finishing its unit does not establish that the whole request
+is complete. Changed source or newer steering needs reconciliation; unrelated green
+checks cannot establish the requested outcome. Continue the remaining authorized work,
+or present the specific blocked decision and its consequence to the decision owner.
+Keep required independent review and human acceptance distinct from this reconciliation.
+
+Distinguish authorization, task setup, observed execution, technical verification and
+owner acceptance. A created task or configured schedule proves setup, not a produced
+deliverable. A stale running label proves only the last reported state. If the executor
+cannot be reached, report the last confirmed observation with its time/source and mark
+current execution unknown. Check the existing operation before considering a replacement;
+never imply that a follow-up was delivered or work resumed without confirmation. Do not
+promise continued monitoring without an active supported executor or an authorized
+scheduled mechanism. This guidance creates neither one nor permission to configure one.
+
+Keep the handoff proportional: a short inline return can suffice for a small unit;
+larger work links the existing detailed receipt. Report material transitions, blockers
+and the final review surface in plain English under the host's reporting requirements.
+Avoid duplicate status reports that add no new evidence or decision.
 
 ## Durable knowledge and conversation
 

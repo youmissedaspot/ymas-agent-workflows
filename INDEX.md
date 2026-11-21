@@ -23,7 +23,7 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Offer relevant candidate paths with scoped identities and aliases → `docs/workflows/source_navigation.md`
 
 - Bind review/test/integration to source → `docs/workflows/source_receipts.md`
-- Preserve task context, selected contracts and resume invariants → `docs/workflows/task_context.md`
+- Preserve task context, delegated returns, selected contracts and resume invariants → `docs/workflows/task_context.md`
 - Verify affected caller lifecycles and classify failures → `docs/workflows/verification_boundaries.md`
 - Map capabilities to authority, implementation and verification → `docs/workflows/feature_maps.md`
 - Check map structure/raw freshness and export typed graphs → `scripts/check_feature_map.py`
@@ -96,3 +96,4 @@ Use this index to locate the smallest relevant workflow or reference. Do not rea
 - Review audit coverage and regression evaluations → `docs/operations/tasks/OPS_TASK_DOCS_017_audit-coverage-and-regression-evaluations.md` (local checkpoint record)
 - Review audit release preparation and remaining gates → `docs/operations/tasks/OPS_TASK_DOCS_018_audit-release-preparation.md` (task record)
 - Review the no-code-comments policy implementation → `docs/operations/tasks/OPS_TASK_DOCS_019_no-code-comments.md` (task record)
+- Review delegated-return and execution-status clarification → `docs/operations/tasks/OPS_TASK_DOCS_020_delegated-work-closeout.md` (task record)
